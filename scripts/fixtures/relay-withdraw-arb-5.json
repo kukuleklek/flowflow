@@ -1,0 +1,310 @@
+{
+ "capturedAt": 1790090548000,
+ "note": "live POST https://api.relay.link/quote/v2, 2026-09-22: 5 USDC out of Hyperliquid (1337, USDC Perps, 8 decimals) to Arbitrum USDC, EXACT_INPUT, user = recipient = 0x..dEaD. Trimmed to the fields the parser reads; values unedited.",
+ "body": {
+  "user": "0x000000000000000000000000000000000000dEaD",
+  "recipient": "0x000000000000000000000000000000000000dEaD",
+  "originChainId": 1337,
+  "originCurrency": "0x00000000000000000000000000000000",
+  "destinationChainId": 42161,
+  "destinationCurrency": "0xaf88d065e77c8cC2239327C5EDb3A432268e5831",
+  "amount": "500000000",
+  "tradeType": "EXACT_INPUT"
+ },
+ "response": {
+  "requestId": "0x179009054837ad710c6e90af86b9c278f25bfb7ff764c49ec6e3d112ba50dde6",
+  "steps": [
+   {
+    "id": "authorize",
+    "action": "Sign nonce-mapping for the deposit",
+    "description": "Sign the message that maps the deposit to the order",
+    "kind": "signature",
+    "items": [
+     {
+      "status": "incomplete",
+      "data": {
+       "sign": {
+        "signatureKind": "eip712",
+        "domain": {
+         "name": "RelayNonceMapping",
+         "version": "2",
+         "chainId": 1,
+         "verifyingContract": "0x0000000000000000000000000000000000000000"
+        },
+        "types": {
+         "NonceMapping": [
+          {
+           "name": "chainId",
+           "type": "string"
+          },
+          {
+           "name": "wallet",
+           "type": "address"
+          },
+          {
+           "name": "depositor",
+           "type": "address"
+          },
+          {
+           "name": "id",
+           "type": "bytes32"
+          },
+          {
+           "name": "nonce",
+           "type": "uint256"
+          }
+         ]
+        },
+        "value": {
+         "chainId": "hyperliquid",
+         "wallet": "0x000000000000000000000000000000000000dEaD",
+         "nonce": 1790090548510,
+         "id": "0x936bac98cfb0eefde6ec3f3fc5f4c385b401d7bd92ff1c566bb860f8875a8ed6",
+         "depositor": "0x000000000000000000000000000000000000dEaD"
+        },
+        "primaryType": "NonceMapping"
+       },
+       "post": {
+        "endpoint": "/authorize",
+        "method": "POST",
+        "body": {
+         "type": "nonce-mapping",
+         "walletChainId": 1337,
+         "wallet": "0x000000000000000000000000000000000000dead",
+         "nonce": 1790090548510,
+         "id": "0x936bac98cfb0eefde6ec3f3fc5f4c385b401d7bd92ff1c566bb860f8875a8ed6",
+         "depositor": "0x000000000000000000000000000000000000dEaD",
+         "signatureChainId": 1
+        }
+       }
+      }
+     }
+    ],
+    "requestId": "0x179009054837ad710c6e90af86b9c278f25bfb7ff764c49ec6e3d112ba50dde6"
+   },
+   {
+    "id": "deposit",
+    "action": "Confirm transaction in your wallet",
+    "kind": "transaction",
+    "items": [
+     {
+      "status": "incomplete",
+      "data": {
+       "action": {
+        "type": "sendAsset",
+        "parameters": {
+         "hyperliquidChain": "Mainnet",
+         "destination": "0x66cf0aace1b4e562593bec10ec7868fba9932224",
+         "sourceDex": "",
+         "destinationDex": "",
+         "token": "USDC:0x6d1e7cde53ba9467b783cb7c530ce054",
+         "amount": "5.000000",
+         "fromSubAccount": "",
+         "nonce": 1790090548510
+        }
+       },
+       "nonce": 1790090548510,
+       "eip712Types": {
+        "HyperliquidTransaction:SendAsset": [
+         {
+          "name": "hyperliquidChain",
+          "type": "string"
+         },
+         {
+          "name": "destination",
+          "type": "string"
+         },
+         {
+          "name": "sourceDex",
+          "type": "string"
+         },
+         {
+          "name": "destinationDex",
+          "type": "string"
+         },
+         {
+          "name": "token",
+          "type": "string"
+         },
+         {
+          "name": "amount",
+          "type": "string"
+         },
+         {
+          "name": "fromSubAccount",
+          "type": "string"
+         },
+         {
+          "name": "nonce",
+          "type": "uint64"
+         }
+        ]
+       },
+       "eip712PrimaryType": "HyperliquidTransaction:SendAsset"
+      },
+      "check": {
+       "endpoint": "/intents/status/v3?requestId=0x179009054837ad710c6e90af86b9c278f25bfb7ff764c49ec6e3d112ba50dde6",
+       "method": "GET"
+      }
+     }
+    ],
+    "requestId": "0x179009054837ad710c6e90af86b9c278f25bfb7ff764c49ec6e3d112ba50dde6",
+    "depositAddress": ""
+   }
+  ],
+  "fees": {
+   "relayer": {
+    "currency": {
+     "chainId": 1337,
+     "address": "0x00000000000000000000000000000000",
+     "symbol": "USDC",
+     "name": "USDC (Perps)",
+     "decimals": 8,
+     "metadata": {
+      "logoURI": "https://ethereum-optimism.github.io/data/USDC/logo.png",
+      "verified": true
+     }
+    },
+    "amount": "450300",
+    "amountFormatted": "0.004503",
+    "amountUsd": "0.004503",
+    "minimumAmount": "450300"
+   },
+   "relayerGas": {
+    "currency": {
+     "chainId": 1337,
+     "address": "0x00000000000000000000000000000000",
+     "symbol": "USDC",
+     "name": "USDC (Perps)",
+     "decimals": 8,
+     "metadata": {
+      "logoURI": "https://ethereum-optimism.github.io/data/USDC/logo.png",
+      "verified": true
+     }
+    },
+    "amount": "350300",
+    "amountFormatted": "0.003503",
+    "amountUsd": "0.003503",
+    "minimumAmount": "350300"
+   },
+   "relayerService": {
+    "currency": {
+     "chainId": 1337,
+     "address": "0x00000000000000000000000000000000",
+     "symbol": "USDC",
+     "name": "USDC (Perps)",
+     "decimals": 8,
+     "metadata": {
+      "logoURI": "https://ethereum-optimism.github.io/data/USDC/logo.png",
+      "verified": true
+     }
+    },
+    "amount": "100000",
+    "amountFormatted": "0.001",
+    "amountUsd": "0.001000",
+    "minimumAmount": "100000"
+   }
+  },
+  "details": {
+   "operation": "swap",
+   "sender": "0x000000000000000000000000000000000000dEaD",
+   "recipient": "0x000000000000000000000000000000000000dEaD",
+   "currencyIn": {
+    "currency": {
+     "chainId": 1337,
+     "address": "0x00000000000000000000000000000000",
+     "symbol": "USDC",
+     "name": "USDC (Perps)",
+     "decimals": 8,
+     "metadata": {
+      "logoURI": "https://ethereum-optimism.github.io/data/USDC/logo.png",
+      "verified": true
+     }
+    },
+    "amount": "500000000",
+    "amountFormatted": "5.0",
+    "amountUsd": "4.999930",
+    "minimumAmount": "500000000"
+   },
+   "currencyOut": {
+    "currency": {
+     "chainId": 42161,
+     "address": "0xaf88d065e77c8cc2239327c5edb3a432268e5831",
+     "symbol": "USDC",
+     "name": "USD Coin",
+     "decimals": 6,
+     "metadata": {
+      "logoURI": "https://ethereum-optimism.github.io/data/USDC/logo.png",
+      "verified": true
+     }
+    },
+    "amount": "4995497",
+    "amountFormatted": "4.995497",
+    "amountUsd": "4.995427",
+    "minimumAmount": "4895588"
+   },
+   "timeEstimate": 1,
+   "rate": "0.9990994000000001"
+  },
+  "protocol": {
+   "v2": {
+    "orderId": "0x936bac98cfb0eefde6ec3f3fc5f4c385b401d7bd92ff1c566bb860f8875a8ed6",
+    "orderData": {
+     "version": "v1",
+     "solverChainId": "base",
+     "solver": "0xf70da97812cb96acdf810712aa562db8dfa3dbef",
+     "salt": "0xe585d46ff745647ffb41d18bb102545a45e80991b1bc4ae0a5b24b0ab13da4b2",
+     "inputs": [
+      {
+       "payment": {
+        "chainId": "hyperliquid",
+        "currency": "0x00000000000000000000000000000000",
+        "amount": "500000000",
+        "weight": "1"
+       },
+       "refunds": [
+        {
+         "chainId": "hyperliquid",
+         "recipient": "0x000000000000000000000000000000000000dEaD",
+         "currency": "0x00000000000000000000000000000000",
+         "minimumAmount": "0",
+         "deadline": 1790695348,
+         "extraData": "0x"
+        },
+        {
+         "chainId": "arbitrum",
+         "recipient": "0x000000000000000000000000000000000000dEaD",
+         "currency": "0xaf88d065e77c8cc2239327c5edb3a432268e5831",
+         "minimumAmount": "0",
+         "deadline": 1790695348,
+         "extraData": "0x000000000000000000000000b92fe925dc43a0ecde6c8b1a2709c170ec4fff4f"
+        }
+       ]
+      }
+     ],
+     "output": {
+      "chainId": "arbitrum",
+      "payments": [
+       {
+        "recipient": "0x000000000000000000000000000000000000dEaD",
+        "currency": "0xaf88d065e77c8cc2239327c5edb3a432268e5831",
+        "minimumAmount": "4895588",
+        "expectedAmount": "4995497"
+       }
+      ],
+      "calls": [],
+      "deadline": 1790695348,
+      "extraData": "0x000000000000000000000000b92fe925dc43a0ecde6c8b1a2709c170ec4fff4f"
+     },
+     "fees": []
+    },
+    "paymentDetails": {
+     "chainId": "hyperliquid",
+     "depository": "0x66cf0aace1b4e562593bec10ec7868fba9932224",
+     "currency": "0x00000000000000000000000000000000",
+     "amount": "500000000"
+    }
+   }
+  }
+ }
+}

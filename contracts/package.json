@@ -1,0 +1,21 @@
+{
+  "name": "flowflow-contracts",
+  "private": true,
+  "type": "commonjs",
+  "scripts": {
+    "compile": "hardhat compile",
+    "test": "hardhat test",
+    "wallet": "node scripts/wallet.js",
+    "deploy": "hardhat run scripts/deploy.js --network avalanche",
+    "verify": "hardhat run scripts/verify.js --network avalanche"
+  },
+  "devDependencies": {
+    "@nomicfoundation/hardhat-chai-matchers": "^2.0.8",
+    "@nomicfoundation/hardhat-ethers": "3.0.8",
+    "@nomicfoundation/hardhat-verify": "2.0.13",
+    "chai": "4.5.0",
+    "dotenv": "16.4.7",
+    "ethers": "6.13.5",
+    "hardhat": "2.22.19"
+  }
+}

@@ -1,0 +1,15 @@
+{
+ "capturedAt": "2026-10-15T07:37:00Z",
+ "request": {
+  "method": "POST",
+  "url": "https://api.hyperliquid.xyz/info",
+  "body": {
+   "type": "perpDexStatus",
+   "dex": "xyz"
+  }
+ },
+ "note": "Unedited.",
+ "response": {
+  "totalNetDeposit": "1070220009.5771820545"
+ }
+}

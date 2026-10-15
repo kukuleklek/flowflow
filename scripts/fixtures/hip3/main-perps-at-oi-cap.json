@@ -1,0 +1,20 @@
+{
+ "capturedAt": "2026-10-15T07:37:00Z",
+ "request": {
+  "method": "POST",
+  "url": "https://api.hyperliquid.xyz/info",
+  "body": {
+   "type": "perpsAtOpenInterestCap"
+  }
+ },
+ "note": "Unedited (main dex).",
+ "response": [
+  "CANTO",
+  "FTM",
+  "JELLY",
+  "LOOM",
+  "RLB",
+  "VINE",
+  "ZEREBRO"
+ ]
+}

@@ -1,0 +1,85 @@
+{
+ "_source": "live GET https://1click.chaindefuser.com/v0/tokens at 2026-10-15T07:01:07.460Z (205 assets; this subset unedited)",
+ "_added": "Avalanche and Polygon USDC rows added unedited from a second live GET /v0/tokens at 2026-10-15T09:07:44.034Z (205 assets)",
+ "tokens": [
+  {
+   "assetId": "nep141:arb.omft.near",
+   "decimals": 18,
+   "blockchain": "arb",
+   "symbol": "ETH",
+   "price": 2355.29,
+   "priceUpdatedAt": "2026-10-15T07:00:30.655Z",
+   "coingeckoId": "ethereum"
+  },
+  {
+   "assetId": "nep141:arb-0xaf88d065e77c8cc2239327c5edb3a432268e5831.omft.near",
+   "decimals": 6,
+   "blockchain": "arb",
+   "symbol": "USDC",
+   "price": 0.9997,
+   "priceUpdatedAt": "2026-10-15T07:00:30.655Z",
+   "contractAddress": "0xaf88d065e77c8cc2239327c5edb3a432268e5831",
+   "coingeckoId": "usd-coin"
+  },
+  {
+   "assetId": "nep141:arb-0xfd086bc7cd5c481dcc9c85ebe478a1c0b69fcbb9.omft.near",
+   "decimals": 6,
+   "blockchain": "arb",
+   "symbol": "USDT0",
+   "price": 0.998976,
+   "priceUpdatedAt": "2026-10-15T07:00:30.655Z",
+   "contractAddress": "0xfd086bc7cd5c481dcc9c85ebe478a1c0b69fcbb9",
+   "coingeckoId": "usdt0"
+  },
+  {
+   "assetId": "nep141:base-0x833589fcd6edb6e08f4c7c32d4f71b54bda02913.omft.near",
+   "decimals": 6,
+   "blockchain": "base",
+   "symbol": "USDC",
+   "price": 0.9997,
+   "priceUpdatedAt": "2026-10-15T07:00:30.655Z",
+   "contractAddress": "0x833589fcd6edb6e08f4c7c32d4f71b54bda02913",
+   "coingeckoId": "usd-coin"
+  },
+  {
+   "assetId": "1cs_v1:hypercore:hip1:0x6d1e7cde53ba9467b783cb7c530ce054",
+   "decimals": 8,
+   "blockchain": "hypercore",
+   "symbol": "USDC",
+   "price": 0.9997,
+   "priceUpdatedAt": "2026-10-15T07:00:30.655Z",
+   "contractAddress": "0x6d1e7cde53ba9467b783cb7c530ce054",
+   "coingeckoId": "usd-coin"
+  },
+  {
+   "assetId": "1cs_v1:hypercore:erc20:0xb88339CB7199b77E23DB6E890353E22632Ba630f",
+   "decimals": 6,
+   "blockchain": "hypercore",
+   "symbol": "USDC",
+   "price": 0.9997,
+   "priceUpdatedAt": "2026-10-15T07:00:30.655Z",
+   "contractAddress": "0xb88339CB7199b77E23DB6E890353E22632Ba630f",
+   "coingeckoId": "usd-coin"
+  },
+  {
+   "assetId": "nep245:v2_1.omni.hot.tg:137_qiStmoQJDQPTebaPjgx5VBxZv6L",
+   "decimals": 6,
+   "blockchain": "pol",
+   "symbol": "USDC",
+   "price": 0.999573,
+   "priceUpdatedAt": "2026-10-15T09:07:00.625Z",
+   "contractAddress": "0x3c499c542cef5e3811e1192ce70d8cc03d5c3359",
+   "coingeckoId": "usd-coin"
+  },
+  {
+   "assetId": "nep245:v2_1.omni.hot.tg:43114_3atVJH3r5c4GqiSYmg9fECvjc47o",
+   "decimals": 6,
+   "blockchain": "avax",
+   "symbol": "USDC",
+   "price": 0.999573,
+   "priceUpdatedAt": "2026-10-15T09:07:00.625Z",
+   "contractAddress": "0xb97ef9ef8734c71904d8002f8b6bc66dd9c48a6e",
+   "coingeckoId": "usd-coin"
+  }
+ ]
+}

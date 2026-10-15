@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+    xmlns:content="http://purl.org/rss/1.0/modules/content/"
+    xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+    xmlns:dc="http://purl.org/dc/elements/1.1/"
+    xmlns:atom="http://www.w3.org/2005/Atom"
+    xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+    xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+    xmlns:media="http://search.yahoo.com/mrss/"
+    >
+
+<channel>
+    <title>The Block</title>
+    <link>https://www.theblock.co</link>
+    <atom:link href="https://www.theblock.co/rss.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://www.theblock.co/rss.xml?paged=2" rel="next" type="application/rss+xml" />
+    <atom:link href="https://pubsubhubbub.appspot.com/" rel="hub"/>
+    <description>Feed</description>
+    <lastBuildDate>Thu, 15 Oct 2026 08:05:24 +0000</lastBuildDate>
+    <language>en-US</language>
+    <copyright>© 2026 THE BLOCK</copyright>
+    <generator>TheBlock</generator>
+    <ttl>5</ttl>
+    <sy:updatePeriod>hourly</sy:updatePeriod>
+    <sy:updateFrequency>1</sy:updateFrequency>
+    
+        <item>
+        <title><![CDATA[Bitcoin drops below $81,000 as risk-off sentiment weighs on Asian equities]]></title>
+        <link>https://www.theblock.co/news/markets/2026-10-15-bitcoin-drops-asian-equities-tumble-418623</link>
+                <guid isPermaLink="false">ecbb6501-1147-5eae-a287-bacd54bdf1ee</guid>
+        <pubDate>Thu, 15 Oct 2026 04:38:48 +0000</pubDate>
+            <description><![CDATA[<p>BODY-TEXT-MUST-NOT-LEAK</p>]]></description>            <dc:creator><![CDATA[Timmy Shen]]></dc:creator>
+        		<category domain="https://www.theblock.co/category/markets"><![CDATA[Markets]]></category>
+		<category domain="https://www.theblock.co/">News</category>
+                </item>
+<item>
+        <title><![CDATA[Patrick Witt exits White House crypto role as Clarity Act stalls]]></title>
+        <link>https://www.theblock.co/news/regulation/2026-10-14-white-house-crypto-adviser-patrick-witt-departs-418611</link>
+                <guid isPermaLink="false">d6dbfa6f-48d0-5f1c-94f8-fc4f68f91d32</guid>
+        <pubDate>Wed, 14 Oct 2026 20:30:15 +0000</pubDate>
+            <description><![CDATA[<p>BODY-TEXT-MUST-NOT-LEAK</p>]]></description>            <dc:creator><![CDATA[Sarah Wynn]]></dc:creator>
+        		<category domain="https://www.theblock.co/category/policy-people"><![CDATA[People]]></category>
+		<category domain="https://www.theblock.co/category/policy"><![CDATA[Policy]]></category>
+		<category domain="https://www.theblock.co/category/regulation"><![CDATA[Regulation]]></category>
+		<category domain="tag"><![CDATA[Donald Trump]]></category>
+		<category domain="https://www.theblock.co/">News</category>
+                </item>
+<item>
+        <title><![CDATA[Major shareholder presses SkyAI on Solana sales after treasury shrinks 70% in a month]]></title>
+        <link>https://www.theblock.co/news/business/2026-10-14-solana-treasury-skyai-bastion-sol-sales-tender-offer-418598</link>
+                <guid isPermaLink="false">ed7ed84c-f8bc-5143-9d2b-756442b900c8</guid>
+        <pubDate>Wed, 14 Oct 2026 18:25:54 +0000</pubDate>
+            <description><![CDATA[<p>BODY-TEXT-MUST-NOT-LEAK</p>]]></description>            <dc:creator><![CDATA[Kyle Baird]]></dc:creator>
+        		<category domain="https://www.theblock.co/category/companies"><![CDATA[Companies]]></category>
+		<category domain="https://www.theblock.co/category/crypto-ecosystems"><![CDATA[Crypto Ecosystems]]></category>
+		<category domain="https://www.theblock.co/category/layer-1s"><![CDATA[Layer 1s]]></category>
+		<category domain="https://www.theblock.co/category/markets"><![CDATA[Markets]]></category>
+		<category domain="https://www.theblock.co/category/public-equities"><![CDATA[Public Equities]]></category>
+		<category domain="https://www.theblock.co/category/token-projects"><![CDATA[Token Projects]]></category>
+		<category domain="tag"><![CDATA[Crypto Treasuries]]></category>
+		<category domain="tag"><![CDATA[Solana]]></category>
+		<category domain="https://www.theblock.co/">News</category>
+                </item>
+<item>
+        <title><![CDATA[‘You’re committing crime in broad daylight’: Kalshi CEO defends prediction markets amid insider trading concerns]]></title>
+        <link>https://www.theblock.co/news/regulation/2026-10-14-youre-committing-crime-broad-daylight-kalshi-ceo-defends-prediction-markets-insider-trading-concerns-418601</link>
+                <guid isPermaLink="false">2a6ec1f2-20ec-52e6-8971-54101f84f049</guid>
+        <pubDate>Wed, 14 Oct 2026 17:47:18 +0000</pubDate>
+            <description><![CDATA[<p>BODY-TEXT-MUST-NOT-LEAK</p>]]></description>            <dc:creator><![CDATA[Sarah Wynn]]></dc:creator>
+        		<category domain="https://www.theblock.co/category/companies"><![CDATA[Companies]]></category>
+		<category domain="https://www.theblock.co/category/crypto-ecosystems"><![CDATA[Crypto Ecosystems]]></category>
+		<category domain="https://www.theblock.co/category/defi"><![CDATA[DeFi]]></category>
+		<category domain="https://www.theblock.co/category/markets"><![CDATA[Markets]]></category>
+		<category domain="https://www.theblock.co/category/policy"><![CDATA[Policy]]></category>
+		<category domain="https://www.theblock.co/category/regulation"><![CDATA[Regulation]]></category>
+		<category domain="tag"><![CDATA[CFTC]]></category>
+		<category domain="tag"><![CDATA[Kalshi]]></category>
+		<category domain="https://www.theblock.co/">News</category>
+                </item>
+<item>
+        <title><![CDATA[Bitcoin falls below $82,000 as hotter core CPI revives Fed hike concerns]]></title>
+        <link>https://www.theblock.co/news/markets/2026-10-14-bitcoin-falls-below-82000-core-inflation-fed-rate-hike-418582</link>
+                <guid isPermaLink="false">00d384f6-87f2-5ed1-857e-4162f9aed50c</guid>
+        <pubDate>Wed, 14 Oct 2026 16:51:54 +0000</pubDate>
+            <description><![CDATA[<p>BODY-TEXT-MUST-NOT-LEAK</p>]]></description>            <dc:creator><![CDATA[Jason Shubnell]]></dc:creator>
+        		<category domain="https://www.theblock.co/category/crypto-ecosystems"><![CDATA[Crypto Ecosystems]]></category>
+		<category domain="https://www.theblock.co/category/equities"><![CDATA[Equities]]></category>
+		<category domain="https://www.theblock.co/category/layer-1s"><![CDATA[Layer 1s]]></category>
+		<category domain="https://www.theblock.co/category/macro-analysis"><![CDATA[Macro]]></category>
+		<category domain="https://www.theblock.co/category/markets"><![CDATA[Markets]]></category>
+		<category domain="https://www.theblock.co/category/token-projects"><![CDATA[Token Projects]]></category>
+		<category domain="tag"><![CDATA[Analyst Reports]]></category>
+		<category domain="tag"><![CDATA[Bitcoin]]></category>
+		<category domain="tag"><![CDATA[Economic Indicators]]></category>
+		<category domain="https://www.theblock.co/">News</category>
+                </item>
+<item>
+        <title><![CDATA[Hex and PulseChain founder Richard Heart detained in Istanbul: reports]]></title>
+        <link>https://www.theblock.co/news/regulation/2026-10-14-hex-pulsechain-founder-richard-heart-detained-istanbul-turkish-media-reports-418574</link>
+                <guid isPermaLink="false">3f263420-af86-5b34-92e4-a62f65b0a840</guid>
+        <pubDate>Wed, 14 Oct 2026 15:53:15 +0000</pubDate>
+            <description><![CDATA[<p>BODY-TEXT-MUST-NOT-LEAK</p>]]></description>            <dc:creator><![CDATA[Kyle Baird]]></dc:creator>
+        		<category domain="https://www.theblock.co/category/crypto-ecosystems"><![CDATA[Crypto Ecosystems]]></category>
+		<category domain="https://www.theblock.co/category/legal"><![CDATA[Legal]]></category>
+		<category domain="https://www.theblock.co/category/markets"><![CDATA[Markets]]></category>
+		<category domain="https://www.theblock.co/category/policy"><![CDATA[Policy]]></category>
+		<category domain="https://www.theblock.co/category/regulation"><![CDATA[Regulation]]></category>
+		<category domain="tag"><![CDATA[Crime]]></category>
+		<category domain="https://www.theblock.co/">News</category>
+                </item>
+<item>
+        <title><![CDATA[Standard Chartered pushes $2 trillion stablecoin market forecast to 2030 as supply growth stalls]]></title>
+        <link>https://www.theblock.co/news/web3/2026-10-14-standard-chartered-stablecoin-market-report-418578</link>
+                <guid isPermaLink="false">2c2061d2-c606-569c-adf4-efc950fc0653</guid>
+        <pubDate>Wed, 14 Oct 2026 15:47:18 +0000</pubDate>
+            <description><![CDATA[<p>BODY-TEXT-MUST-NOT-LEAK</p>]]></description>            <dc:creator><![CDATA[Yogita Khatri]]></dc:creator>
+        		<category domain="https://www.theblock.co/category/crypto-ecosystems"><![CDATA[Crypto Ecosystems]]></category>
+		<category domain="https://www.theblock.co/category/defi"><![CDATA[DeFi]]></category>
+		<category domain="https://www.theblock.co/category/equities"><![CDATA[Equities]]></category>
+		<category domain="https://www.theblock.co/category/markets"><![CDATA[Markets]]></category>
+		<category domain="https://www.theblock.co/category/stablecoins"><![CDATA[Stablecoins]]></category>
+		<category domain="https://www.theblock.co/category/token-projects"><![CDATA[Token Projects]]></category>
+		<category domain="https://www.theblock.co/category/web3"><![CDATA[Web3]]></category>
+		<category domain="tag"><![CDATA[Analyst Reports]]></category>
+		<category domain="tag"><![CDATA[Tether]]></category>
+		<category domain="tag"><![CDATA[USDC]]></category>
+		<category domain="https://www.theblock.co/">News</category>
+                </item>
+<item>
+        <title><![CDATA[StarkWare launches OffMarket to let Polymarket users trade more privately]]></title>
+        <link>https://www.theblock.co/news/ecosystems/2026-10-14-starkware-launches-offmarket-to-let-polymarket-users-trade-more-privately-418567</link>
+                <guid isPermaLink="false">6cddcb2f-e349-5284-9f7b-fcf238749580</guid>
+        <pubDate>Wed, 14 Oct 2026 15:00:00 +0000</pubDate>
+            <description><![CDATA[<p>BODY-TEXT-MUST-NOT-LEAK</p>]]></description>            <dc:creator><![CDATA[James Hunt]]></dc:creator>
+        		<category domain="https://www.theblock.co/category/crypto-ecosystems"><![CDATA[Crypto Ecosystems]]></category>
+		<category domain="https://www.theblock.co/category/defi"><![CDATA[DeFi]]></category>
+		<category domain="tag"><![CDATA[exclusive]]></category>
+		<category domain="https://www.theblock.co/">News</category>
+                </item>
+<item>
+        <title><![CDATA[Strive buys $235 million in bitcoin as warrant exercises yield $369 million]]></title>
+        <link>https://www.theblock.co/news/business/2026-10-14-strive-buys-235-million-in-bitcoin-warrant-yield-369-million-418556</link>
+                <guid isPermaLink="false">67d8d40b-87c8-5b20-82f7-2a0debf0fc37</guid>
+        <pubDate>Wed, 14 Oct 2026 14:32:39 +0000</pubDate>
+            <description><![CDATA[<p>BODY-TEXT-MUST-NOT-LEAK</p>]]></description>            <dc:creator><![CDATA[Brian Danga]]></dc:creator>
+        		<category domain="https://www.theblock.co/category/companies"><![CDATA[Companies]]></category>
+		<category domain="https://www.theblock.co/category/markets"><![CDATA[Markets]]></category>
+		<category domain="https://www.theblock.co/">News</category>
+                </item>
+<item>
+        <title><![CDATA[BNY, Citadel Securities complete Treasury repo in first use of tokenized assets on major triparty platform]]></title>
+        <link>https://www.theblock.co/news/business/2026-10-14-bny-citadel-securities-complete-treasury-repo-in-first-use-of-tokenized-assets-on-major-triparty-platform-418534</link>
+                <guid isPermaLink="false">4ba36bfd-ffba-5f6d-9c61-36c894551d24</guid>
+        <pubDate>Wed, 14 Oct 2026 13:21:37 +0000</pubDate>
+            <description><![CDATA[<p>BODY-TEXT-MUST-NOT-LEAK</p>]]></description>            <dc:creator><![CDATA[Brian Danga]]></dc:creator>
+        		<category domain="https://www.theblock.co/category/companies"><![CDATA[Companies]]></category>
+		<category domain="https://www.theblock.co/">News</category>
+                </item>
+</channel>
+</rss>

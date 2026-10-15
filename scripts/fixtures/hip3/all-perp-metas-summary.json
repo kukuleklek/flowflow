@@ -1,0 +1,68 @@
+{
+ "capturedAt": "2026-10-15T07:37:00Z",
+ "request": {
+  "method": "POST",
+  "url": "https://api.hyperliquid.xyz/info",
+  "body": {
+   "type": "allPerpMetas"
+  }
+ },
+ "note": "TRIMMED to a summary per entry (full answer 92 KB). Entry i is the dex at perpDexs index i (0 = main).",
+ "response": [
+  {
+   "universeSize": 234,
+   "first": "BTC",
+   "collateralToken": 0
+  },
+  {
+   "universeSize": 135,
+   "first": "xyz:XYZ100",
+   "collateralToken": 0
+  },
+  {
+   "universeSize": 16,
+   "first": "flx:TSLA",
+   "collateralToken": 360
+  },
+  {
+   "universeSize": 15,
+   "first": "vntl:SPACEX",
+   "collateralToken": 360
+  },
+  {
+   "universeSize": 25,
+   "first": "hyna:BTC",
+   "collateralToken": 235
+  },
+  {
+   "universeSize": 23,
+   "first": "km:US500",
+   "collateralToken": 360
+  },
+  {
+   "universeSize": 1,
+   "first": "abcd:USA500",
+   "collateralToken": 0
+  },
+  {
+   "universeSize": 17,
+   "first": "cash:USA500",
+   "collateralToken": 268
+  },
+  {
+   "universeSize": 38,
+   "first": "para:TOTAL2",
+   "collateralToken": 0
+  },
+  {
+   "universeSize": 24,
+   "first": "mkts:US500",
+   "collateralToken": 0
+  },
+  {
+   "universeSize": 13,
+   "first": "io:OAI",
+   "collateralToken": 0
+  }
+ ]
+}

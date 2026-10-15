@@ -1,0 +1,30 @@
+{
+ "capturedAt": "2026-10-15T07:37:00Z",
+ "request": {
+  "method": "POST",
+  "url": "https://api.hyperliquid.xyz/info",
+  "body": {
+   "type": "activeAssetData",
+   "user": "0x0000000000000000000000000000000000000001",
+   "coin": "xyz:TSLA"
+  }
+ },
+ "note": "Never-used address: default leverage cross 20x, availableToTrade 0.",
+ "response": {
+  "user": "0x0000000000000000000000000000000000000001",
+  "coin": "xyz:TSLA",
+  "leverage": {
+   "type": "cross",
+   "value": 20
+  },
+  "maxTradeSzs": [
+   "0.0",
+   "0.0"
+  ],
+  "availableToTrade": [
+   "0.0",
+   "0.0"
+  ],
+  "markPx": "362.6"
+ }
+}

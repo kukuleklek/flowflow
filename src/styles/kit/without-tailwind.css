@@ -1,0 +1,113 @@
+/* ═══════════════════════════════════════════════════════════════════════════════════════════════════════════
+ * ui kit · react/motion/without-tailwind.css
+ *
+ * The React motion components keep the exact class names of the source app: the t-* motion classes (css/motion.css)
+ * plus a few Tailwind v4 utilities for layout and colour (tabular-nums, sr-only, flow-root, bg-brand, text-success…).
+ *
+ *   Tailwind v4 app with css/tailwind-v4.css (the token → utility mapping)  →  you do not need this file.
+ *   Any other React app (plain CSS, CSS modules, Tailwind v3, styled-components…)  →  import it once:
+ *     css/tokens.css → css/base.css (optional) → react/motion/without-tailwind.css → css/motion.css
+ *   (the same order base.css asks for: @layer base declared before @layer components).
+ *
+ * It gives exactly those utilities the values Tailwind v4 would, scoped to the components' own markup. Every rule is
+ * zero-specificity (:where) inside @layer base, so any class you pass in `className` and any of your own unlayered
+ * CSS still wins, and importing it in a Tailwind app as well is harmless (Tailwind's utilities layer outranks base).
+ * No rule here sets a property that a t-* rule in css/motion.css also sets, so the two never fight.
+ * Colours read the kit tokens: --brand, --success, --muted, --muted-foreground, --ring.
+ * ═══════════════════════════════════════════════════════════════════════════════════════════════════════════ */
+
+@layer base {
+  /* AnimatedNumber: steady digit widths (the first, static render has no t-* class, hence the bare utility). */
+  :where(.tabular-nums) {
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* AutoHeight: the measured inner box contains its children's margins, so the height it reports is exact. */
+  :where(.t-resize > .flow-root) {
+    display: flow-root;
+  }
+
+  /* CountBadge: the accessible label next to a bare number. */
+  :where(.t-badge .sr-only) {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+    border-width: 0;
+  }
+
+  /* Accordion header button: full-width row, title left, chevron right (Tailwind: flex w-full items-center
+     justify-between gap-3 text-left outline-none focus-visible:ring-3 focus-visible:ring-ring/50), plus the
+     button reset Tailwind's preflight would apply. */
+  :where(.t-acc-head) {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    text-align: left;
+    outline-style: none;
+    margin: 0;
+    padding: 0;
+    border: 0 solid;
+    border-radius: 0;
+    background-color: transparent;
+    font: inherit;
+    letter-spacing: inherit;
+    color: inherit;
+  }
+  :where(.t-acc-head:focus-visible) {
+    box-shadow: 0 0 0 3px color-mix(in oklab, var(--ring, currentColor) 50%, transparent);
+  }
+  :where(.t-acc-head > span:first-child) {
+    min-width: 0;
+    flex: 1;
+  }
+  :where(.t-acc-chevron) {
+    flex-shrink: 0;
+    color: var(--muted-foreground);
+  }
+
+  /* IndeterminateBar: slim track (h-1 w-full overflow-hidden rounded-full bg-muted) and its sliding third
+     (h-full w-1/3 rounded-full bg-brand). */
+  :where([role="progressbar"]:has(> .t-indeterminate)) {
+    height: 0.25rem;
+    width: 100%;
+    overflow: hidden;
+    border-radius: calc(infinity * 1px);
+    background-color: var(--muted);
+  }
+  :where([role="progressbar"] > .t-indeterminate) {
+    height: 100%;
+    width: calc(1 / 3 * 100%);
+    border-radius: calc(infinity * 1px);
+    background-color: var(--brand);
+  }
+
+  /* SuccessCheck: shrink-0 text-success (the SVG paints with currentColor). */
+  :where(.t-success-check) {
+    flex-shrink: 0;
+    color: var(--success);
+  }
+
+  /* UpdatingDot: inline-block size-1.5 shrink-0 rounded-full bg-brand transition-opacity
+     duration-(--duration-quick) ease-(--ease-in-out); hidden (opacity-0) while idle. */
+  :where(span[data-updating]) {
+    display: inline-block;
+    width: 0.375rem;
+    height: 0.375rem;
+    flex-shrink: 0;
+    border-radius: calc(infinity * 1px);
+    background-color: var(--brand);
+    transition-property: opacity;
+    transition-duration: var(--duration-quick);
+    transition-timing-function: var(--ease-in-out);
+  }
+  :where(span[data-updating="false"]) {
+    opacity: 0;
+  }
+}

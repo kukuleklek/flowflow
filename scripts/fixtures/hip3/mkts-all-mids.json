@@ -1,0 +1,38 @@
+{
+ "capturedAt": "2026-10-15T07:37:00Z",
+ "request": {
+  "method": "POST",
+  "url": "https://api.hyperliquid.xyz/info",
+  "body": {
+   "type": "allMids",
+   "dex": "mkts"
+  }
+ },
+ "note": "Unedited.",
+ "response": {
+  "mkts:AAPL": "292.11",
+  "mkts:BABA": "116.54",
+  "mkts:BMNR": "15.749",
+  "mkts:BVIV": "40.816",
+  "mkts:EUR": "1.1612",
+  "mkts:GLDMINE": "73.889",
+  "mkts:GOLD": "4348.8",
+  "mkts:GOOGL": "358.55",
+  "mkts:JPN225": "56942.0",
+  "mkts:MU": "1080.7",
+  "mkts:NVDA": "211.07",
+  "mkts:PLTR": "130.51",
+  "mkts:RTX": "181.52",
+  "mkts:SEMI": "543.11",
+  "mkts:SILVER": "70.451",
+  "mkts:SMALL2000": "272.28",
+  "mkts:TENCENT": "465.0",
+  "mkts:TSLA": "386.5",
+  "mkts:US500": "767.03",
+  "mkts:USBOND": "79.756",
+  "mkts:USENERGY": "58.247",
+  "mkts:USOIL": "114.1",
+  "mkts:USTECH": "720.135",
+  "mkts:XIAOMI": "26.311"
+ }
+}

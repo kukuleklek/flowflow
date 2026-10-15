@@ -1,0 +1,41 @@
+{
+ "_source": "live POST /v0/quote, dry:true, dry-arb-to-hc-10, captured 2026-10-15T07:01:07.460Z; recipient = refundTo = a random address generated for the capture (0xa1581fb128e573fef727dd9fc2630d0d695a1956), replaced by the tests",
+ "status": 201,
+ "answer": {
+  "quote": {
+   "amountIn": "10000000",
+   "amountInFormatted": "10.0",
+   "amountInUsd": "9.997000000000",
+   "minAmountIn": "10000000",
+   "amountOut": "968470000",
+   "amountOutFormatted": "9.6847",
+   "amountOutUsd": "9.681794590000",
+   "minAmountOut": "958475300",
+   "timeEstimate": 35,
+   "refundFee": "5300",
+   "withdrawFee": "31530000"
+  },
+  "quoteRequest": {
+   "dry": true,
+   "depositMode": "SIMPLE",
+   "swapType": "EXACT_INPUT",
+   "slippageTolerance": 100,
+   "originAsset": "nep141:arb-0xaf88d065e77c8cc2239327c5edb3a432268e5831.omft.near",
+   "depositType": "ORIGIN_CHAIN",
+   "destinationAsset": "1cs_v1:hypercore:hip1:0x6d1e7cde53ba9467b783cb7c530ce054",
+   "amount": "10000000",
+   "refundTo": "0xa1581fb128e573fef727dd9fc2630d0d695a1956",
+   "refundType": "ORIGIN_CHAIN",
+   "recipient": "0xa1581fb128e573fef727dd9fc2630d0d695a1956",
+   "recipientType": "DESTINATION_CHAIN",
+   "deadline": "2026-10-15T08:01:07.000Z",
+   "confidentiality": "public",
+   "quoteWaitingTimeMs": 0,
+   "insured": false,
+   "appFees": []
+  },
+  "signature": "ed25519:3aGKco2vi6mJXRbC9kmKFNcCfW2aVTwnScwCNapRVX6mifNgSfQF88vbf1hwE4mVgZs5pnZ13cFE5XhkunEz6PUY",
+  "timestamp": "2026-10-15T07:01:09.773Z",
+  "correlationId": "bb178e2b-9f9b-4d52-bc86-4f9121a6688b"
+ }
+}

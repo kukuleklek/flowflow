@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="819" height="819" viewBox="0 0 819 819" fill="none">
+  <title>USELESS</title>
+  <defs>
+    <path id="letter" d="M211.5 232H390.5V253.5C366 255.8 356.5 269.5 356.5 305V466C356.5 532.5 379 560.5 428.5 560.5C487 560.5 511.5 537.5 511.5 467V318C511.5 285.5 503 274 477 269.5V232H605.5V253.5C579 256 570.5 270 570.5 305.5V461C570.5 563 522 609 413 609C301.5 609 246 572 246 476.5V322C246 288 238 274 211.5 269.5Z"/>
+  </defs>
+  <g>
+    <circle id="gold-disc" cx="409.5" cy="409.5" r="409.5" fill="#f8b622"/>
+    <ellipse id="cream-ring" cx="410" cy="411.5" rx="344.5" ry="342.5" stroke="#fcf0d0" stroke-width="40"/>
+    <use id="cast-shadow" href="#letter" transform="translate(-22 36)" fill="#d49a16" fill-opacity="0.47"/>
+    <use id="letter-depth" href="#letter" transform="translate(0 13)" fill="#edd39e"/>
+    <use id="letter-face" href="#letter" fill="#fef1d6"/>
+    <path id="left-bevel" d="M211.5 251C248 253 259 269 259 311V473C259 563 303 597 403 609C296 606 246 568 246 476.5V322C246 288 238 274 211.5 269.5Z" fill="#ecd29d"/>
+    <path id="inner-bevel" d="M477 251C513 255 524 273 524 313V466C524 518 511 542 477 551C501 536 511.5 511 511.5 467V318C511.5 285.5 503 274 477 269.5Z" fill="#ecd29d"/>
+  </g>
+</svg>

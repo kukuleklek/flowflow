@@ -1,0 +1,156 @@
+/* FlowFlow base, fenced by html.df like the kit layer. Light theme only. Every duration and easing is a kit or
+   revamp token, never a literal, so reduced motion and re-timing apply everywhere.
+   CASCADE: kit/motion.css lands in Tailwind's components layer AFTER this file. A rule here that must beat a kit class
+   uses two classes (.t-tabs.ff-seg). Tailwind utilities come last: they beat single-class rules here and in the kit,
+   but lose to the two-class rules, so never put a property a component sets with a utility into a two-class rule. */
+html.df { font-family: var(--font-geist-sans); -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+html.df body { margin: 0; background-color: var(--background); color: var(--foreground); font-family: var(--font-geist-sans); font-size: 14px; line-height: 1.5; text-wrap: pretty; }
+:where(html.df) :is(h1, h2) { letter-spacing: -0.02em; }
+html.df .font-mono { font-variant-ligatures: none; }
+:where(html.df) :is(a, button, summary, input, select, textarea, [tabindex], [role='tab']):focus-visible { outline: 2px solid var(--ring); outline-offset: 2px; }
+html.df input::-webkit-outer-spin-button, html.df input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+
+/* Numbers: Geist with steady tabular digits. Mono is for addresses, pairs and meta only. */
+.num { font-family: var(--font-geist-sans); font-variant-numeric: tabular-nums; }
+.addr { font-family: var(--font-geist-mono); font-variant-ligatures: none; }
+/* Cents and decimals of a display figure, one step quieter (4.6:1, AA at any size). */
+.num-dim { color: rgb(var(--ink-dim-rgb)); }
+
+.no-scrollbar { scrollbar-width: none; }
+.no-scrollbar::-webkit-scrollbar { display: none; }
+
+/* A phone-size hit area around a small visual control (chips, presets, switch, TP/SL chips). The parent row of a
+   scrolling chip strip needs py-1.5 so the extension is not clipped. */
+.ff-hit { position: relative; }
+.ff-hit::after { content: ""; position: absolute; left: 50%; top: 50%; width: max(100%, 44px); height: max(100%, 44px); transform: translate(-50%, -50%); }
+
+/* Right-edge fade on a horizontally scrolling strip (phone stat strips). Alpha mask only. */
+.ff-fade-r { -webkit-mask-image: linear-gradient(to right, #000 calc(100% - 28px), transparent); mask-image: linear-gradient(to right, #000 calc(100% - 28px), transparent); }
+
+/* Press: buttons dip to the kit's press scale. Two classes on purpose: call sites pair ff-press with Tailwind's
+   transition-colors, whose transition-property list has no transform and would make the press snap. */
+.ff-press.ff-press { transition: transform var(--duration-quick) var(--ease-out), background-color var(--duration-quick) var(--ease-out), color var(--duration-quick) var(--ease-out), border-color var(--duration-quick) var(--ease-out), opacity var(--duration-quick) var(--ease-out), box-shadow var(--duration-quick) var(--ease-out); }
+.ff-press:not(:disabled):not([aria-haspopup]):active { transform: scale(var(--scale-medium)); }
+/* Kept for old call sites; new code uses the shadow-edge utility. */
+.ff-lime-edge { box-shadow: var(--shadow-edge); }
+
+/* ── Segmented control (value pickers ONLY: trade side, leverage, close fraction, deposit token) ────────────────
+   Segmented track: muted track, ONE travelling white pill with a hairline ring, 340ms on the sheet curve, and the
+   label colour flips instantly at 55ms (when the pill's leading edge crosses the midline). */
+.t-tabs.ff-seg { --tabs-bar-bg: rgb(var(--muted-rgb)); --tabs-pill-bg: rgb(var(--card-rgb)); --tabs-dur: var(--duration-pill); --tabs-ease: var(--ease-sheet); padding: 2px; gap: 0; border-radius: var(--radius-lg); }
+.ff-seg > .t-tabs-pill { border-radius: var(--radius-md); box-shadow: 0 0 0 1px rgb(var(--border-rgb)); }
+.ff-seg > .t-tab { border-radius: var(--radius-md); transition: color 0ms linear var(--pill-label-delay); }
+.ff-seg > .t-tab[data-tone="long"][aria-selected="true"] { color: rgb(var(--success-rgb)); }
+.ff-seg > .t-tab[data-tone="short"][aria-selected="true"] { color: rgb(var(--destructive-rgb)); }
+
+/* ── Underline tabs (view switchers: nav, filters, intervals, Positions/Orders/History) ────────────────────────
+   No track. The kit pill becomes an invisible box; its ::after is ONE 2px ink bar that slides with it.
+   Tune per instance with Tailwind arbitrary properties: [--line-bottom:-1px] puts the bar on the row's rule,
+   [--line-inset:12px] sets how far the bar is inset from the label box. */
+.t-tabs.ff-line { --tabs-bar-bg: transparent; --tabs-pill-bg: transparent; --tabs-dur: var(--duration-pill); --tabs-ease: var(--ease-sheet); padding: 0; gap: 0; border-radius: 0; }
+.ff-line > .t-tab { border-radius: 0; transition: color var(--duration-quick) var(--ease-out); }
+.ff-line > .t-tabs-pill { border-radius: 0; background: transparent; }
+.ff-line > .t-tabs-pill::after { content: ""; position: absolute; left: var(--line-inset, 10px); right: var(--line-inset, 10px); bottom: var(--line-bottom, 0px); height: 2px; border-radius: 2px; background: rgb(var(--foreground-rgb)); }
+/* Bottom nav: a 28px bar on the nav's top rule, centred over the active item. */
+.ff-line.ff-bar-top > .t-tabs-pill::after { top: -1px; bottom: auto; left: 50%; right: auto; width: 28px; margin-left: -14px; }
+/* Title tabs (Perps 80 · Watchlist 2): colour only, no bar. */
+.ff-line.ff-title > .t-tabs-pill { display: none; }
+
+/* Toast (transitions.dev 22 with the kit's toast tokens). */
+.ff-toast { opacity: 0; transform: translateY(var(--toast-distance)) scale(var(--toast-scale)); filter: blur(var(--toast-blur));
+  transition: opacity var(--toast-open) var(--toast-ease), transform var(--toast-open) var(--toast-ease), filter var(--toast-open) var(--toast-ease); }
+.ff-toast.is-open { opacity: 1; transform: none; filter: none; }
+.ff-toast.is-closing { opacity: 0; transform: translateY(var(--toast-distance)) scale(var(--toast-scale)); filter: blur(var(--toast-blur));
+  transition-duration: var(--toast-close); }
+/* Phones: while the trade sheet is open the stack moves to the top, over the dimmed page, so a fill toast never
+   covers the sheet's own receipt or its liquidation price. */
+@media (max-width: 767px) { body:has(.ff-sheet.is-open) .ff-toast-host { top: calc(env(safe-area-inset-top) + 12px); bottom: auto; } }
+
+/* Phone sheet. It slides up 400ms on the sheet curve and closes in 250ms (Sheet's CLOSE_MS). */
+.ff-scrim { opacity: 0; transition: opacity var(--duration-fast) var(--ease-smooth-out); }
+.ff-scrim.is-open { opacity: 1; }
+.ff-sheet { transform: translateY(100%); transition: transform var(--duration-fast) var(--ease-sheet); }
+.ff-sheet.is-open { transform: none; transition-duration: var(--duration-slow); }
+
+/* Margin slider: 4px rail, OLIVE fill to --pct, 14px ink thumb with a 2px white collar.
+   The 25/50/75 ticks are spans in the markup (TradeForm). */
+.ff-range { -webkit-appearance: none; appearance: none; width: 100%; height: 28px; background: transparent; cursor: pointer; }
+.ff-range::-webkit-slider-runnable-track { height: 4px; border-radius: 999px;
+  background: linear-gradient(to right, rgb(var(--brand-rgb)) var(--pct, 0%), rgb(var(--input-rgb)) var(--pct, 0%)); }
+.ff-range::-moz-range-track { height: 4px; border-radius: 999px; background: rgb(var(--input-rgb)); }
+.ff-range::-moz-range-progress { height: 4px; border-radius: 999px; background: rgb(var(--brand-rgb)); }
+.ff-range::-webkit-slider-thumb { -webkit-appearance: none; width: 14px; height: 14px; margin-top: -5px; border: 0; border-radius: 999px;
+  background: rgb(var(--foreground-rgb)); box-shadow: 0 0 0 2px rgb(var(--card-rgb)), 0 1px 3px rgb(9 9 11 / 0.25); transition: transform var(--duration-quick) var(--ease-out); }
+.ff-range:active::-webkit-slider-thumb { transform: scale(1.15); }
+.ff-range::-moz-range-thumb { width: 14px; height: 14px; border: 0; border-radius: 999px; background: rgb(var(--foreground-rgb));
+  box-shadow: 0 0 0 2px rgb(var(--card-rgb)), 0 1px 3px rgb(9 9 11 / 0.25); }
+.ff-range:disabled { opacity: 0.45; cursor: not-allowed; }
+
+/* The Agent quote timer: a 2px ink rule across the card's top edge that drains linearly, one step per second. */
+.ff-quote-rule { transform-origin: left center; transition: transform 1000ms linear; }
+.ff-quote-rule[data-reset="true"] { transition: none; }
+
+/* Streaming text (transitions.dev 30): each word resolves out of a small blur, one every --ff-stream-gap. */
+:root { --ff-stream-gap: 28ms; }
+.ff-word { display: inline-block; animation: t-swap-in var(--duration-fast) var(--ease-in-out) backwards; animation-delay: calc(var(--w, 0) * var(--ff-stream-gap)); }
+
+.ff-spin { animation: ff-spin var(--spinner-dur) linear infinite; }
+@keyframes ff-spin { to { transform: rotate(360deg); } }
+
+/* A card that shakes on a failed order (the kit's input shake, applied to a whole card). */
+.ff-shake.is-shaking { animation: t-input-shake calc(var(--shake-dur-a) * 2 + var(--shake-dur-b) * 2) var(--ease-linear); }
+
+/* Agent send button = the FlowFlow mark (USER-REQUESTS A3). data-state: quiet (empty composer), ready (text), busy
+   (the Agent is working: the two waves sway in counter-phase). The svg fills the button; the colours change over
+   the kit's quick fade so quiet → ready reads as the mark switching on, not a swap. */
+.ff-send > svg { display: block; width: 100%; height: 100%; }
+.ff-send .tile { fill: rgb(var(--muted-rgb)); transition: fill var(--duration-quick) var(--ease-out); }
+.ff-send .w1, .ff-send .w2 { fill: none; stroke-width: 5; stroke-linecap: round; stroke: rgb(var(--muted-foreground-rgb) / 0.45); transition: stroke var(--duration-quick) var(--ease-out); }
+.ff-send:is([data-state="ready"], [data-state="busy"]) .tile { fill: rgb(var(--foreground-rgb)); }
+.ff-send:is([data-state="ready"], [data-state="busy"]) .w1 { stroke: rgb(var(--brand-solid-rgb)); }
+.ff-send:is([data-state="ready"], [data-state="busy"]) .w2 { stroke: rgb(var(--background-rgb)); }
+.ff-send[data-state="busy"] :is(.w1, .w2) { animation: ff-sway 1200ms var(--ease-in-out) infinite; }
+.ff-send[data-state="busy"] .w2 { animation-delay: -600ms; }
+@keyframes ff-sway { 0%, 100% { transform: translateX(-3px); } 50% { transform: translateX(3px); } }
+
+/* ── Page transitions (USER-REQUESTS B1, B6) ───────────────────────────────────────────────────────────────────
+   AppShell's <main> is the stage. The new page renders in flow (its root carries .t-enter, so its sections rise in
+   with the kit stagger). The previous page stays mounted for --page-exit-dur inside .ff-page-exit: an overlay that
+   takes no layout space (absolute, inert, no pointer events) and plays the exit — opacity, a hair of scale, a small
+   blur. Set --exit-top on the layer to minus the scroll offset you are about to reset (style={{"--exit-top": "-640px"}})
+   so the old page stays where the eye left it while the window jumps to the top. The stage clips only while a layer
+   exists, so a tall old page never adds a scrollbar. The exiting copy never replays its own entrances. */
+:root { --page-exit-dur: var(--duration-quick); }
+.ff-stage { position: relative; }
+.ff-stage:has(> .ff-page-exit) { overflow: clip; }
+.ff-page-exit { position: absolute; left: 0; right: 0; top: var(--exit-top, 0px); z-index: 1; pointer-events: none;
+  transform-origin: 50% calc(var(--exit-top, 0px) * -1 + 50vh);
+  animation: ff-page-exit var(--page-exit-dur) var(--ease-smooth-out) forwards; }
+.ff-page-exit :is(.t-enter > *, .t-rise, .t-swap-in, .t-materialize, .ff-word) { animation: none !important; }
+/* A leaving page that holds a position:fixed layer (the phone trade bar, an open sheet) fades only: a transform or
+   filter on the layer would become that bar's containing block, and the bar would jump up for the whole exit. */
+.ff-page-exit:has(.fixed) { animation-name: ff-fade-out; }
+@keyframes ff-page-exit { from { opacity: 1; transform: none; filter: blur(0); } to { opacity: 0; transform: scale(var(--scale-tiny)); filter: blur(var(--blur-small)); } }
+@keyframes ff-fade-out { from { opacity: 1; } to { opacity: 0; } }
+
+.ff-up { color: rgb(var(--success-rgb)); }
+.ff-down { color: rgb(var(--destructive-rgb)); }
+
+@media (prefers-reduced-motion: reduce) {
+  .ff-toast, .ff-toast.is-closing { transform: none !important; filter: none !important; transition: opacity var(--rm-fade-dur) var(--ease-in-out) !important; }
+  .ff-sheet { transform: none !important; opacity: 0; transition: opacity var(--rm-fade-dur) var(--ease-in-out) !important; }
+  .ff-sheet.is-open { opacity: 1; }
+  .ff-press:not(:disabled):not([aria-haspopup]):active { transform: none; }
+  .ff-seg > .t-tab { transition-delay: 0ms !important; }
+  .ff-spin { animation-duration: 2s; }
+  .ff-send .w1, .ff-send .w2 { animation: none !important; }
+  .ff-page-exit { animation: ff-fade-out var(--rm-fade-dur) var(--ease-in-out) forwards !important; }
+}
+
+/* ── Signing-in view (AppShell SignInVeil) ─────────────────────────────────────────────────────────────────────
+   Rises in over the kit's fast duration and fades out quickly; it is never drawn over an open sheet (the sheet
+   holds its own sign-in states). The mark is the send button's recipe (.ff-send[data-state="busy"]): the waves flow. */
+.ff-veil { animation: t-swap-in var(--duration-fast) var(--ease-out) both; transition: opacity 200ms var(--ease-out); }
+.ff-veil.is-closing { opacity: 0; }
+body:has(.ff-sheet.is-open) .ff-veil { display: none; }
+@media (prefers-reduced-motion: reduce) { .ff-veil { animation: none; } }

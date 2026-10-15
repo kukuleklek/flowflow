@@ -1,0 +1,10 @@
+/* Order matters: kit tokens, the kit's non-Tailwind-v4 utilities, the kit motion, then the FlowFlow design
+   tokens, which override the kit's colour values with the RGB triplets Tailwind 3 needs. */
+@import './styles/kit/tokens.css';
+@import './styles/kit/without-tailwind.css';
+@import './styles/kit/motion.css';
+@import './styles/theme-tokens.css';
+@import './styles/app.css';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;

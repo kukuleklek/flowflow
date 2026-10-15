@@ -1,0 +1,19 @@
+<!doctype html>
+<!-- DEV ONLY. The Agent pass-2 cards on their own, for screenshots: open /src/agent/ui/pass2-fixtures.html on a dev
+     server (npx vite). Not an entry of the build (vite.config.js has no input but index.html), and its script renders
+     nothing unless import.meta.env.DEV. Nothing on it signs or sends: every action is a local stand-in. -->
+<html lang="en" class="df">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="robots" content="noindex" />
+    <title>Agent pass 2 fixtures (dev)</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="./pass2Fixtures.jsx"></script>
+  </body>
+</html>

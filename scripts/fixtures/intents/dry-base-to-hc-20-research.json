@@ -1,0 +1,47 @@
+{
+ "_source": "live POST /v0/quote dry:true Base USDC -> perps, 20 USDC, captured 2026-10-15T06:39Z by the research track (plan-private/q-base2hc.json), unedited: carries the service-injected 1 bp platform fee in appFees",
+ "status": 201,
+ "user": "0x4ce903f1a091c69303b34538018bb6fc37bc9746",
+ "answer": {
+  "quote": {
+   "amountIn": "20000000",
+   "amountInFormatted": "20.0",
+   "amountInUsd": "19.994700000000",
+   "minAmountIn": "20000000",
+   "amountOut": "1968086000",
+   "amountOutFormatted": "19.68086",
+   "amountOutUsd": "19.675644572100",
+   "minAmountOut": "1948095100",
+   "timeEstimate": 45,
+   "refundFee": "2400",
+   "withdrawFee": "31530000"
+  },
+  "quoteRequest": {
+   "dry": true,
+   "depositMode": "SIMPLE",
+   "swapType": "EXACT_INPUT",
+   "slippageTolerance": 100,
+   "originAsset": "nep141:base-0x833589fcd6edb6e08f4c7c32d4f71b54bda02913.omft.near",
+   "depositType": "ORIGIN_CHAIN",
+   "destinationAsset": "1cs_v1:hypercore:hip1:0x6d1e7cde53ba9467b783cb7c530ce054",
+   "amount": "20000000",
+   "refundTo": "0x4ce903f1a091c69303b34538018bb6fc37bc9746",
+   "refundType": "ORIGIN_CHAIN",
+   "recipient": "0x4ce903f1a091c69303b34538018bb6fc37bc9746",
+   "recipientType": "DESTINATION_CHAIN",
+   "deadline": "2026-10-15T07:08:59.000Z",
+   "confidentiality": "public",
+   "quoteWaitingTimeMs": 0,
+   "insured": false,
+   "appFees": [
+    {
+     "recipient": "5880ad2b362620fadf759cbceb1cd5737ce8c6ed7fb8e9942881e6731f9247dd",
+     "fee": 1
+    }
+   ]
+  },
+  "signature": "ed25519:4smmsKFUfR6zggh9SvQfLCCVrjzQw8zWipWmN4BYhHKmeoPsfWNBReqKAeqQFJArguWWXcLfezSrJJ9NxnYt1hK7",
+  "timestamp": "2026-10-15T06:39:01.789Z",
+  "correlationId": "e51785c6-36f2-4081-8aee-9e0e9d1a3d9a"
+ }
+}

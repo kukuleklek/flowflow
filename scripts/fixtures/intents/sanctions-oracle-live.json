@@ -1,0 +1,8 @@
+{
+ "_source": "live read-only eth_call isSanctioned(address) (selector 0xdf592f7d) to the Chainalysis sanctions oracle 0x40C57923924B5c5c5455c48D93317139ADDaC8fb, 2026-10-15 ~07:00Z, on https://arb1.arbitrum.io/rpc and https://ethereum-rpc.publicnode.com (both answered the same). The listed address is the Ronin-exploit address on the OFAC SDN list (Lazarus Group, April 2022); the other is a random address generated for the capture.",
+ "oracle": "0x40C57923924B5c5c5455c48D93317139ADDaC8fb",
+ "answers": [
+  { "address": "0x098B716B8Aaf21512996dC57EB0615e2383E2f96", "result": "0x0000000000000000000000000000000000000000000000000000000000000001" },
+  { "address": "0x4ce903f1a091c69303b34538018bb6fc37bc9746", "result": "0x0000000000000000000000000000000000000000000000000000000000000000" }
+ ]
+}

@@ -1,0 +1,1386 @@
+{
+  "version": 1,
+  "source": "https://app.hyperliquid.xyz/coins/{NAME}.svg",
+  "dexes": [
+    "main",
+    "xyz"
+  ],
+  "fetchedAt": "2026-09-22T03:56:58.072Z",
+  "updatedAt": "2026-09-23T15:56:00.783Z",
+  "coins": {
+    "0G": {
+      "file": "0G.svg",
+      "v": "fcdb493433",
+      "bytes": 1057
+    },
+    "2Z": {
+      "file": "2Z.svg",
+      "v": "41e67d90ff",
+      "bytes": 4332
+    },
+    "AAVE": {
+      "file": "AAVE.svg",
+      "v": "7169cdc23c",
+      "bytes": 1493
+    },
+    "ACE": {
+      "file": "ACE.svg",
+      "v": "4114ff1620",
+      "bytes": 827
+    },
+    "ADA": {
+      "file": "ADA.svg",
+      "v": "5c85eff43a",
+      "bytes": 5557
+    },
+    "AERO": {
+      "file": "AERO.svg",
+      "v": "5b3ae6c809",
+      "bytes": 481512
+    },
+    "AIXBT": {
+      "file": "AIXBT.svg",
+      "v": "895d5a006a",
+      "bytes": 107466
+    },
+    "ALGO": {
+      "file": "ALGO.svg",
+      "v": "01c4d0b0a8",
+      "bytes": 874
+    },
+    "ALT": {
+      "file": "ALT.svg",
+      "v": "658d5424c5",
+      "bytes": 3145
+    },
+    "ANIME": {
+      "file": "ANIME.svg",
+      "v": "bf0afb9e77",
+      "bytes": 98728
+    },
+    "APE": {
+      "file": "APE.svg",
+      "v": "13e7797993",
+      "bytes": 20093
+    },
+    "APEX": {
+      "file": "APEX.svg",
+      "v": "9f52e8862e",
+      "bytes": 2677
+    },
+    "APT": {
+      "file": "APT.svg",
+      "v": "cd9f4a072f",
+      "bytes": 1431
+    },
+    "AR": {
+      "file": "AR.svg",
+      "v": "4940286b73",
+      "bytes": 1364
+    },
+    "ARB": {
+      "file": "ARB.svg",
+      "v": "7c89a7b519",
+      "bytes": 1938
+    },
+    "ASTER": {
+      "file": "ASTER.svg",
+      "v": "3a9f41152b",
+      "bytes": 53282
+    },
+    "ATOM": {
+      "file": "ATOM.svg",
+      "v": "062882f3fb",
+      "bytes": 2061
+    },
+    "AVAX": {
+      "file": "AVAX.svg",
+      "v": "efef237c35",
+      "bytes": 1293
+    },
+    "AVNT": {
+      "file": "AVNT.svg",
+      "v": "40fb1ef495",
+      "bytes": 22102
+    },
+    "AXS": {
+      "file": "AXS.svg",
+      "v": "162de493eb",
+      "bytes": 1401
+    },
+    "AZTEC": {
+      "file": "AZTEC.svg",
+      "v": "b483359773",
+      "bytes": 533
+    },
+    "BABY": {
+      "file": "BABY.svg",
+      "v": "7ef717950f",
+      "bytes": 8174
+    },
+    "BANANA": {
+      "file": "BANANA.svg",
+      "v": "e9f20d802c",
+      "bytes": 88229
+    },
+    "BCH": {
+      "file": "BCH.svg",
+      "v": "53d4114cd5",
+      "bytes": 1064
+    },
+    "BERA": {
+      "file": "BERA.svg",
+      "v": "b3a4925369",
+      "bytes": 5827
+    },
+    "BIGTIME": {
+      "file": "BIGTIME.svg",
+      "v": "da698c1f88",
+      "bytes": 2001
+    },
+    "BIO": {
+      "file": "BIO.svg",
+      "v": "22af21b52b",
+      "bytes": 2642
+    },
+    "BLUR": {
+      "file": "BLUR.svg",
+      "v": "c8a85a61b2",
+      "bytes": 84938
+    },
+    "BNB": {
+      "file": "BNB.svg",
+      "v": "d510543ae4",
+      "bytes": 1116
+    },
+    "BOME": {
+      "file": "BOME.svg",
+      "v": "4194f067df",
+      "bytes": 6725
+    },
+    "BRETT": {
+      "file": "BRETT.svg",
+      "v": "d6c3aeb0b7",
+      "bytes": 460295
+    },
+    "BSV": {
+      "file": "BSV.svg",
+      "v": "907602c1fd",
+      "bytes": 1014
+    },
+    "BTC": {
+      "file": "BTC.svg",
+      "v": "45ea9984b7",
+      "bytes": 1532
+    },
+    "CAKE": {
+      "file": "CAKE.svg",
+      "v": "af3e043e47",
+      "bytes": 1801
+    },
+    "CASHCAT": {
+      "file": "CASHCAT.svg",
+      "v": "3f96adaa0e",
+      "bytes": 92745
+    },
+    "CC": {
+      "file": "CC.svg",
+      "v": "470d118734",
+      "bytes": 30391
+    },
+    "CELO": {
+      "file": "CELO.svg",
+      "v": "1640e817ef",
+      "bytes": 681
+    },
+    "CFX": {
+      "file": "CFX.svg",
+      "v": "0196e1bbe1",
+      "bytes": 666
+    },
+    "CHIP": {
+      "file": "CHIP.svg",
+      "v": "3a237f8489",
+      "bytes": 2303
+    },
+    "COMP": {
+      "file": "COMP.svg",
+      "v": "11b0350198",
+      "bytes": 1248
+    },
+    "CRV": {
+      "file": "CRV.svg",
+      "v": "ea1b726b0d",
+      "bytes": 208702
+    },
+    "DASH": {
+      "file": "DASH.svg",
+      "v": "5bbc5fb7fa",
+      "bytes": 726
+    },
+    "DOGE": {
+      "file": "DOGE.svg",
+      "v": "6390118506",
+      "bytes": 56741
+    },
+    "DOT": {
+      "file": "DOT.svg",
+      "v": "eeb8fe4368",
+      "bytes": 1055
+    },
+    "DYDX": {
+      "file": "DYDX.svg",
+      "v": "6077aac9fc",
+      "bytes": 1213
+    },
+    "DYM": {
+      "file": "DYM.svg",
+      "v": "1103c7a03e",
+      "bytes": 4175
+    },
+    "EIGEN": {
+      "file": "EIGEN.svg",
+      "v": "c06b67e09c",
+      "bytes": 1100
+    },
+    "ENA": {
+      "file": "ENA.svg",
+      "v": "58ca7c8426",
+      "bytes": 1754
+    },
+    "ENS": {
+      "file": "ENS.svg",
+      "v": "b463e95c51",
+      "bytes": 3346
+    },
+    "ETC": {
+      "file": "ETC.svg",
+      "v": "986fd7165c",
+      "bytes": 955
+    },
+    "ETH": {
+      "file": "ETH.svg",
+      "v": "1186309d94",
+      "bytes": 3493
+    },
+    "ETHFI": {
+      "file": "ETHFI.svg",
+      "v": "e972b65856",
+      "bytes": 3519
+    },
+    "FARTCOIN": {
+      "file": "FARTCOIN.svg",
+      "v": "1db8c284aa",
+      "bytes": 34074
+    },
+    "FET": {
+      "file": "FET.svg",
+      "v": "ea4c3b8070",
+      "bytes": 561
+    },
+    "FIL": {
+      "file": "FIL.svg",
+      "v": "869a81e323",
+      "bytes": 1634
+    },
+    "FOGO": {
+      "file": "FOGO.svg",
+      "v": "3f4deef0a4",
+      "bytes": 1303
+    },
+    "GALA": {
+      "file": "GALA.svg",
+      "v": "b00c4723b2",
+      "bytes": 4106
+    },
+    "GAS": {
+      "file": "GAS.svg",
+      "v": "ed69f7d2c8",
+      "bytes": 520
+    },
+    "GMT": {
+      "file": "GMT.svg",
+      "v": "e26654ad76",
+      "bytes": 12594
+    },
+    "GMX": {
+      "file": "GMX.svg",
+      "v": "0d226a1815",
+      "bytes": 722
+    },
+    "GOAT": {
+      "file": "GOAT.png",
+      "v": "9eb3efb09b",
+      "bytes": 16971,
+      "raster": {
+        "px": 128,
+        "svgBytes": 620683
+      }
+    },
+    "GRAM": {
+      "file": "GRAM.svg",
+      "v": "f49a652597",
+      "bytes": 1140
+    },
+    "GRASS": {
+      "file": "GRASS.svg",
+      "v": "9d3ab8dd58",
+      "bytes": 2212
+    },
+    "GRIFFAIN": {
+      "file": "GRIFFAIN.svg",
+      "v": "1fa7445763",
+      "bytes": 3878
+    },
+    "HBAR": {
+      "file": "HBAR.svg",
+      "v": "9a7aed41ec",
+      "bytes": 513
+    },
+    "HEMI": {
+      "file": "HEMI.svg",
+      "v": "6c5bec2191",
+      "bytes": 587
+    },
+    "HMSTR": {
+      "file": "HMSTR.png",
+      "v": "15234dd73b",
+      "bytes": 36963,
+      "raster": {
+        "px": 128,
+        "svgBytes": 3106172
+      }
+    },
+    "HYPE": {
+      "file": "HYPE.svg",
+      "v": "4ef1f539cd",
+      "bytes": 497
+    },
+    "HYPER": {
+      "file": "HYPER.svg",
+      "v": "8bf18e53b6",
+      "bytes": 43494
+    },
+    "ICP": {
+      "file": "ICP.svg",
+      "v": "cf8e56ad55",
+      "bytes": 6976
+    },
+    "IMX": {
+      "file": "IMX.svg",
+      "v": "1daab368e6",
+      "bytes": 978
+    },
+    "INIT": {
+      "file": "INIT.svg",
+      "v": "5af9a79938",
+      "bytes": 20559
+    },
+    "INJ": {
+      "file": "INJ.svg",
+      "v": "e6c14c5543",
+      "bytes": 1729
+    },
+    "IO": {
+      "file": "IO.svg",
+      "v": "b98fec0860",
+      "bytes": 533
+    },
+    "IOTA": {
+      "file": "IOTA.svg",
+      "v": "6d7a53de06",
+      "bytes": 12681
+    },
+    "JTO": {
+      "file": "JTO.svg",
+      "v": "5f976d78f6",
+      "bytes": 5762
+    },
+    "JUP": {
+      "file": "JUP.svg",
+      "v": "cef8ca9171",
+      "bytes": 4800
+    },
+    "KAITO": {
+      "file": "KAITO.svg",
+      "v": "4903bdfe5f",
+      "bytes": 2209
+    },
+    "KAS": {
+      "file": "KAS.svg",
+      "v": "ce341c520e",
+      "bytes": 1109
+    },
+    "kBONK": {
+      "file": "BONK.svg",
+      "v": "261599f251",
+      "bytes": 164775
+    },
+    "kFLOKI": {
+      "file": "FLOKI.svg",
+      "v": "bb46b5d343",
+      "bytes": 9032
+    },
+    "kLUNC": {
+      "file": "LUNC.svg",
+      "v": "864c90faed",
+      "bytes": 2220
+    },
+    "kNEIRO": {
+      "file": "NEIRO.png",
+      "v": "99419f6ff5",
+      "bytes": 20908,
+      "raster": {
+        "px": 128,
+        "svgBytes": 1039564
+      }
+    },
+    "kPEPE": {
+      "file": "PEPE.svg",
+      "v": "308d0c7db4",
+      "bytes": 102881
+    },
+    "kSHIB": {
+      "file": "SHIB.svg",
+      "v": "e1718d8327",
+      "bytes": 9894
+    },
+    "LAYER": {
+      "file": "LAYER.svg",
+      "v": "65c6da10eb",
+      "bytes": 5268
+    },
+    "LDO": {
+      "file": "LDO.svg",
+      "v": "cf22dac513",
+      "bytes": 4545
+    },
+    "LINEA": {
+      "file": "LINEA.svg",
+      "v": "ef8775279f",
+      "bytes": 688
+    },
+    "LINK": {
+      "file": "LINK.svg",
+      "v": "1133d76bf0",
+      "bytes": 422
+    },
+    "LIT": {
+      "file": "LIT.svg",
+      "v": "dca420add5",
+      "bytes": 572
+    },
+    "LTC": {
+      "file": "LTC.svg",
+      "v": "2f4a752cc4",
+      "bytes": 441
+    },
+    "MANTA": {
+      "file": "MANTA.svg",
+      "v": "51eded8a89",
+      "bytes": 3248
+    },
+    "ME": {
+      "file": "ME.svg",
+      "v": "60c0dce701",
+      "bytes": 2135
+    },
+    "MEGA": {
+      "file": "MEGA.svg",
+      "v": "02419b220e",
+      "bytes": 1467
+    },
+    "MELANIA": {
+      "file": "MELANIA.svg",
+      "v": "3d358cf8ef",
+      "bytes": 288449
+    },
+    "MEME": {
+      "file": "MEME.svg",
+      "v": "4553de6be1",
+      "bytes": 10101
+    },
+    "MERL": {
+      "file": "MERL.svg",
+      "v": "ffa74d57da",
+      "bytes": 2365
+    },
+    "MET": {
+      "file": "MET.svg",
+      "v": "ddd17da8a7",
+      "bytes": 2163
+    },
+    "MINA": {
+      "file": "MINA.svg",
+      "v": "12e1514c19",
+      "bytes": 1241
+    },
+    "MNT": {
+      "file": "MNT.svg",
+      "v": "160a6f7f6f",
+      "bytes": 40236
+    },
+    "MON": {
+      "file": "MON.svg",
+      "v": "9e043f1283",
+      "bytes": 509
+    },
+    "MOODENG": {
+      "file": "MOODENG.svg",
+      "v": "2aa8f09054",
+      "bytes": 273457
+    },
+    "MORPHO": {
+      "file": "MORPHO.svg",
+      "v": "35c74f92cf",
+      "bytes": 2108
+    },
+    "MOVE": {
+      "file": "MOVE.svg",
+      "v": "bf2e42ddd0",
+      "bytes": 2861
+    },
+    "NEAR": {
+      "file": "NEAR.svg",
+      "v": "6b7ba2fef6",
+      "bytes": 825
+    },
+    "NEO": {
+      "file": "NEO.svg",
+      "v": "61ae6e24f2",
+      "bytes": 280
+    },
+    "NIL": {
+      "file": "NIL.svg",
+      "v": "02d94d808f",
+      "bytes": 335
+    },
+    "NOT": {
+      "file": "NOT.svg",
+      "v": "81a440ccc5",
+      "bytes": 3653
+    },
+    "NXPC": {
+      "file": "NXPC.svg",
+      "v": "a793072987",
+      "bytes": 133779
+    },
+    "ONDO": {
+      "file": "ONDO.svg",
+      "v": "ee512442a4",
+      "bytes": 1515
+    },
+    "OP": {
+      "file": "OP.svg",
+      "v": "2a6c739c63",
+      "bytes": 1265
+    },
+    "ORDI": {
+      "file": "ORDI.svg",
+      "v": "97c2f45ab5",
+      "bytes": 2796
+    },
+    "PAXG": {
+      "file": "PAXG.svg",
+      "v": "4053435fdb",
+      "bytes": 2009
+    },
+    "PENDLE": {
+      "file": "PENDLE.svg",
+      "v": "04d5ab37e6",
+      "bytes": 505
+    },
+    "PENGU": {
+      "file": "PENGU.svg",
+      "v": "5a458b5359",
+      "bytes": 51127
+    },
+    "PNUT": {
+      "file": "PNUT.svg",
+      "v": "412c9223ee",
+      "bytes": 414350
+    },
+    "POL": {
+      "file": "POL.svg",
+      "v": "3835bc459b",
+      "bytes": 1716
+    },
+    "POLYX": {
+      "file": "POLYX.svg",
+      "v": "1a2bb22666",
+      "bytes": 1583
+    },
+    "PONS": {
+      "file": "PONS.svg",
+      "v": "afd2a7560e",
+      "bytes": 57861
+    },
+    "POPCAT": {
+      "file": "POPCAT.svg",
+      "v": "a27b6afc07",
+      "bytes": 61492
+    },
+    "PROVE": {
+      "file": "PROVE.svg",
+      "v": "0ab19b5045",
+      "bytes": 717
+    },
+    "PUMP": {
+      "file": "PUMP.svg",
+      "v": "72eb837382",
+      "bytes": 43980
+    },
+    "PURR": {
+      "file": "PURR.svg",
+      "v": "b205a45064",
+      "bytes": 25245
+    },
+    "PYTH": {
+      "file": "PYTH.svg",
+      "v": "ffed9bb231",
+      "bytes": 2299
+    },
+    "RENDER": {
+      "file": "RENDER.svg",
+      "v": "a8cfba9df6",
+      "bytes": 1582
+    },
+    "RESOLV": {
+      "file": "RESOLV.svg",
+      "v": "32554d0199",
+      "bytes": 5193
+    },
+    "REZ": {
+      "file": "REZ.svg",
+      "v": "c3d2cd4b55",
+      "bytes": 364
+    },
+    "RSR": {
+      "file": "RSR.svg",
+      "v": "7ca3575565",
+      "bytes": 1371
+    },
+    "RUNE": {
+      "file": "RUNE.svg",
+      "v": "66f26beb27",
+      "bytes": 765
+    },
+    "S": {
+      "file": "S.svg",
+      "v": "24ef02b06b",
+      "bytes": 1525
+    },
+    "SAGA": {
+      "file": "SAGA.svg",
+      "v": "bdfd701af0",
+      "bytes": 2411
+    },
+    "SAND": {
+      "file": "SAND.svg",
+      "v": "b8ad141f56",
+      "bytes": 811
+    },
+    "SEI": {
+      "file": "SEI.svg",
+      "v": "61760aa3ca",
+      "bytes": 1721
+    },
+    "SKR": {
+      "file": "SKR.svg",
+      "v": "986d294920",
+      "bytes": 2207
+    },
+    "SKY": {
+      "file": "SKY.svg",
+      "v": "947903f6e0",
+      "bytes": 6228
+    },
+    "SNX": {
+      "file": "SNX.svg",
+      "v": "2ba7293b61",
+      "bytes": 1757
+    },
+    "SOL": {
+      "file": "SOL.svg",
+      "v": "1e33a43cac",
+      "bytes": 1639
+    },
+    "SOPH": {
+      "file": "SOPH.svg",
+      "v": "eca991175c",
+      "bytes": 1994
+    },
+    "SPX": {
+      "file": "SPX.svg",
+      "v": "544e93df7e",
+      "bytes": 120336
+    },
+    "STABLE": {
+      "file": "STABLE.svg",
+      "v": "0531f02d8f",
+      "bytes": 1030
+    },
+    "STBL": {
+      "file": "STBL.svg",
+      "v": "9e4198a66c",
+      "bytes": 764
+    },
+    "STRK": {
+      "file": "STRK.svg",
+      "v": "5dd3595969",
+      "bytes": 3418
+    },
+    "STX": {
+      "file": "STX.svg",
+      "v": "74e735840f",
+      "bytes": 551
+    },
+    "SUI": {
+      "file": "SUI.svg",
+      "v": "4c92293254",
+      "bytes": 983
+    },
+    "SUPER": {
+      "file": "SUPER.svg",
+      "v": "62e645b902",
+      "bytes": 21200
+    },
+    "SUSHI": {
+      "file": "SUSHI.svg",
+      "v": "f00e806f3c",
+      "bytes": 3997
+    },
+    "SYRUP": {
+      "file": "SYRUP.svg",
+      "v": "6a070e239a",
+      "bytes": 811
+    },
+    "TAO": {
+      "file": "TAO.svg",
+      "v": "f2b67eef1e",
+      "bytes": 1016
+    },
+    "TIA": {
+      "file": "TIA.svg",
+      "v": "795389b642",
+      "bytes": 12159
+    },
+    "TNSR": {
+      "file": "TNSR.svg",
+      "v": "ce3273c721",
+      "bytes": 2857
+    },
+    "TRB": {
+      "file": "TRB.svg",
+      "v": "e37f3e6e64",
+      "bytes": 856
+    },
+    "TRUMP": {
+      "file": "TRUMP.svg",
+      "v": "b7cc915fb7",
+      "bytes": 160430
+    },
+    "TRX": {
+      "file": "TRX.svg",
+      "v": "2b0f27a6d1",
+      "bytes": 2521
+    },
+    "TURBO": {
+      "file": "TURBO.svg",
+      "v": "5e02248320",
+      "bytes": 39201
+    },
+    "UMA": {
+      "file": "UMA.svg",
+      "v": "d4dc3efcab",
+      "bytes": 5291
+    },
+    "UNI": {
+      "file": "UNI.svg",
+      "v": "ce9e28fc06",
+      "bytes": 4588
+    },
+    "USELESS": {
+      "file": "USELESS.svg",
+      "v": "1a5aeab1f8",
+      "bytes": 1266
+    },
+    "USUAL": {
+      "file": "USUAL.svg",
+      "v": "17792f76ef",
+      "bytes": 292512
+    },
+    "VIRTUAL": {
+      "file": "VIRTUAL.svg",
+      "v": "0e65ebada9",
+      "bytes": 2000
+    },
+    "VVV": {
+      "file": "VVV.svg",
+      "v": "39cb3e5b86",
+      "bytes": 8793
+    },
+    "W": {
+      "file": "W.svg",
+      "v": "76a12fa228",
+      "bytes": 758
+    },
+    "WCT": {
+      "file": "WCT.svg",
+      "v": "e68666a2c2",
+      "bytes": 11398
+    },
+    "WIF": {
+      "file": "WIF.svg",
+      "v": "5b095ecc48",
+      "bytes": 82948
+    },
+    "WLD": {
+      "file": "WLD.svg",
+      "v": "55c3afd659",
+      "bytes": 3626
+    },
+    "WLFI": {
+      "file": "WLFI.svg",
+      "v": "5d415ce4cc",
+      "bytes": 2324
+    },
+    "XAI": {
+      "file": "XAI.svg",
+      "v": "246f4dfbb1",
+      "bytes": 6208
+    },
+    "XLM": {
+      "file": "XLM.svg",
+      "v": "8ef1b7dc4a",
+      "bytes": 729
+    },
+    "XMR": {
+      "file": "XMR.svg",
+      "v": "e5a56142e3",
+      "bytes": 1037
+    },
+    "XPL": {
+      "file": "XPL.svg",
+      "v": "7b5ec3788b",
+      "bytes": 6536
+    },
+    "XRP": {
+      "file": "XRP.svg",
+      "v": "7070b94594",
+      "bytes": 502
+    },
+    "xyz:AAOI": {
+      "file": "xyz-AAOI.svg",
+      "v": "386412197a",
+      "bytes": 1288
+    },
+    "xyz:AAPL": {
+      "file": "xyz-AAPL.svg",
+      "v": "a792691f67",
+      "bytes": 1253
+    },
+    "xyz:AMAT": {
+      "file": "xyz-AMAT.svg",
+      "v": "fe922085f4",
+      "bytes": 1169
+    },
+    "xyz:AMD": {
+      "file": "xyz-AMD.svg",
+      "v": "7143fcad3c",
+      "bytes": 526
+    },
+    "xyz:AMZN": {
+      "file": "xyz-AMZN.svg",
+      "v": "d23e467aa7",
+      "bytes": 1927
+    },
+    "xyz:ASML": {
+      "file": "xyz-ASML.svg",
+      "v": "d07a8c4b9a",
+      "bytes": 2180
+    },
+    "xyz:BABA": {
+      "file": "xyz-BABA.svg",
+      "v": "c449fdb948",
+      "bytes": 2960
+    },
+    "xyz:BB": {
+      "file": "xyz-BB.svg",
+      "v": "8b8f1861e2",
+      "bytes": 2238
+    },
+    "xyz:BMNR": {
+      "file": "xyz-BMNR.svg",
+      "v": "c422498887",
+      "bytes": 175560
+    },
+    "xyz:BRENTOIL": {
+      "file": "xyz-BRENTOIL.svg",
+      "v": "2a3bef0c26",
+      "bytes": 697
+    },
+    "xyz:BX": {
+      "file": "xyz-BX.svg",
+      "v": "1c900b2366",
+      "bytes": 1083
+    },
+    "xyz:CBRS": {
+      "file": "xyz-CBRS.svg",
+      "v": "8b0d899475",
+      "bytes": 24978
+    },
+    "xyz:CL": {
+      "file": "xyz-CL.svg",
+      "v": "a5d392705e",
+      "bytes": 837
+    },
+    "xyz:COIN": {
+      "file": "xyz-COIN.svg",
+      "v": "1cdb3cfa00",
+      "bytes": 561
+    },
+    "xyz:COST": {
+      "file": "xyz-COST.svg",
+      "v": "e836b55e6b",
+      "bytes": 584
+    },
+    "xyz:CRCL": {
+      "file": "xyz-CRCL.svg",
+      "v": "de06b8303a",
+      "bytes": 3076
+    },
+    "xyz:CRWD": {
+      "file": "xyz-CRWD.svg",
+      "v": "5c35d5c642",
+      "bytes": 6052
+    },
+    "xyz:CRWV": {
+      "file": "xyz-CRWV.svg",
+      "v": "6118144c0f",
+      "bytes": 2084
+    },
+    "xyz:CXMT": {
+      "file": "xyz-CXMT.svg",
+      "v": "5bf263b90e",
+      "bytes": 8286
+    },
+    "xyz:DELL": {
+      "file": "xyz-DELL.svg",
+      "v": "176bf510d4",
+      "bytes": 1200
+    },
+    "xyz:DKNG": {
+      "file": "xyz-DKNG.svg",
+      "v": "0a144096d3",
+      "bytes": 2447
+    },
+    "xyz:DRAM": {
+      "file": "xyz-DRAM.svg",
+      "v": "9ddea90de4",
+      "bytes": 1984
+    },
+    "xyz:EUR": {
+      "file": "xyz-EUR.svg",
+      "v": "2b781f3667",
+      "bytes": 1864
+    },
+    "xyz:EWJ": {
+      "file": "xyz-EWJ.svg",
+      "v": "91ea8008b7",
+      "bytes": 1236
+    },
+    "xyz:EWY": {
+      "file": "xyz-EWY.svg",
+      "v": "f2edf3fe0b",
+      "bytes": 745
+    },
+    "xyz:EWZ": {
+      "file": "xyz-EWZ.svg",
+      "v": "e34c6a8321",
+      "bytes": 781
+    },
+    "xyz:GBP": {
+      "file": "xyz-GBP.svg",
+      "v": "322080580f",
+      "bytes": 1024
+    },
+    "xyz:GEV": {
+      "file": "xyz-GEV.svg",
+      "v": "e7c6264d53",
+      "bytes": 5849
+    },
+    "xyz:GME": {
+      "file": "xyz-GME.svg",
+      "v": "0847838354",
+      "bytes": 2823
+    },
+    "xyz:GOLD": {
+      "file": "xyz-GOLD.svg",
+      "v": "37ae359aee",
+      "bytes": 2019
+    },
+    "xyz:GOOGL": {
+      "file": "xyz-GOOGL.svg",
+      "v": "fbd339c4c0",
+      "bytes": 12738
+    },
+    "xyz:HIMS": {
+      "file": "xyz-HIMS.svg",
+      "v": "94a0ef9ccc",
+      "bytes": 4886
+    },
+    "xyz:HOOD": {
+      "file": "xyz-HOOD.svg",
+      "v": "3a5a0f2522",
+      "bytes": 1362
+    },
+    "xyz:HYUNDAI": {
+      "file": "xyz-HYUNDAI.svg",
+      "v": "93b5589a36",
+      "bytes": 2551
+    },
+    "xyz:IBM": {
+      "file": "xyz-IBM.svg",
+      "v": "a147f2beb7",
+      "bytes": 3082
+    },
+    "xyz:INTC": {
+      "file": "xyz-INTC.svg",
+      "v": "c3e1cd6736",
+      "bytes": 4577
+    },
+    "xyz:IREN": {
+      "file": "xyz-IREN.svg",
+      "v": "a6509b0253",
+      "bytes": 2859
+    },
+    "xyz:JP225": {
+      "file": "xyz-JP225.svg",
+      "v": "9f5be79d64",
+      "bytes": 874
+    },
+    "xyz:JPY": {
+      "file": "xyz-JPY.svg",
+      "v": "76cebad43d",
+      "bytes": 1030
+    },
+    "xyz:KIOXIA": {
+      "file": "xyz-KIOXIA.svg",
+      "v": "25e7017fd3",
+      "bytes": 8047
+    },
+    "xyz:KORU": {
+      "file": "xyz-KORU.svg",
+      "v": "6ff773615b",
+      "bytes": 6876
+    },
+    "xyz:KR200": {
+      "file": "xyz-KR200.svg",
+      "v": "a63c66dd5d",
+      "bytes": 80221
+    },
+    "xyz:LITE": {
+      "file": "xyz-LITE.svg",
+      "v": "81ee85fc57",
+      "bytes": 2080
+    },
+    "xyz:LLY": {
+      "file": "xyz-LLY.svg",
+      "v": "f56de296fb",
+      "bytes": 4074
+    },
+    "xyz:LYTE": {
+      "file": "xyz-LYTE.svg",
+      "v": "de0b859571",
+      "bytes": 731
+    },
+    "xyz:MAGS": {
+      "file": "xyz-MAGS.svg",
+      "v": "ed64c7c577",
+      "bytes": 2978
+    },
+    "xyz:META": {
+      "file": "xyz-META.svg",
+      "v": "61be0d4411",
+      "bytes": 372672
+    },
+    "xyz:MINIMAX": {
+      "file": "xyz-MINIMAX.svg",
+      "v": "626aee7e80",
+      "bytes": 4576
+    },
+    "xyz:MRVL": {
+      "file": "xyz-MRVL.svg",
+      "v": "6cebf72516",
+      "bytes": 999
+    },
+    "xyz:MSFT": {
+      "file": "xyz-MSFT.svg",
+      "v": "050832e295",
+      "bytes": 604
+    },
+    "xyz:MSTR": {
+      "file": "xyz-MSTR.svg",
+      "v": "a628ecf488",
+      "bytes": 996
+    },
+    "xyz:MU": {
+      "file": "xyz-MU.svg",
+      "v": "97261ebbf0",
+      "bytes": 1256
+    },
+    "xyz:NBIS": {
+      "file": "xyz-NBIS.svg",
+      "v": "d08a30e8e8",
+      "bytes": 809
+    },
+    "xyz:NCLD": {
+      "file": "xyz-NCLD.svg",
+      "v": "ac7ddffb29",
+      "bytes": 1701
+    },
+    "xyz:NET": {
+      "file": "xyz-NET.svg",
+      "v": "37fb6d425f",
+      "bytes": 1482
+    },
+    "xyz:NFLX": {
+      "file": "xyz-NFLX.svg",
+      "v": "dad79bb36c",
+      "bytes": 4774
+    },
+    "xyz:NOK": {
+      "file": "xyz-NOK.svg",
+      "v": "3284c4479e",
+      "bytes": 2026
+    },
+    "xyz:NOW": {
+      "file": "xyz-NOW.svg",
+      "v": "824a2c6b93",
+      "bytes": 1089
+    },
+    "xyz:NVDA": {
+      "file": "xyz-NVDA.svg",
+      "v": "2f9e12d724",
+      "bytes": 1647
+    },
+    "xyz:ORCL": {
+      "file": "xyz-ORCL.svg",
+      "v": "ccf58c2f20",
+      "bytes": 865
+    },
+    "xyz:PALLADIUM": {
+      "file": "xyz-PALLADIUM.svg",
+      "v": "11c1a1e77c",
+      "bytes": 1841
+    },
+    "xyz:PLATINUM": {
+      "file": "xyz-PLATINUM.svg",
+      "v": "4ca19171bf",
+      "bytes": 1623
+    },
+    "xyz:PLTR": {
+      "file": "xyz-PLTR.svg",
+      "v": "46f55997ce",
+      "bytes": 858
+    },
+    "xyz:QNT": {
+      "file": "xyz-QNT.svg",
+      "v": "6dedd5b82b",
+      "bytes": 936
+    },
+    "xyz:RDDT": {
+      "file": "xyz-RDDT.svg",
+      "v": "e4e69f9f24",
+      "bytes": 6252
+    },
+    "xyz:RIVN": {
+      "file": "xyz-RIVN.svg",
+      "v": "6d17e0c623",
+      "bytes": 2937
+    },
+    "xyz:RKLB": {
+      "file": "xyz-RKLB.svg",
+      "v": "f285810930",
+      "bytes": 1007
+    },
+    "xyz:SHAZ": {
+      "file": "xyz-SHAZ.svg",
+      "v": "3c289400fb",
+      "bytes": 463
+    },
+    "xyz:SILVER": {
+      "file": "xyz-SILVER.svg",
+      "v": "8ebead9b39",
+      "bytes": 1573
+    },
+    "xyz:SKHX": {
+      "file": "xyz-SKHX.svg",
+      "v": "7ef9ad9366",
+      "bytes": 1988
+    },
+    "xyz:SKHY": {
+      "file": "xyz-SKHY.svg",
+      "v": "7ef9ad9366",
+      "bytes": 1988
+    },
+    "xyz:SMH": {
+      "file": "xyz-SMH.svg",
+      "v": "5bab58110b",
+      "bytes": 1172
+    },
+    "xyz:SMSN": {
+      "file": "xyz-SMSN.svg",
+      "v": "87898f5805",
+      "bytes": 922
+    },
+    "xyz:SNDK": {
+      "file": "xyz-SNDK.svg",
+      "v": "822b7159f8",
+      "bytes": 578
+    },
+    "xyz:SNXX": {
+      "file": "xyz-SNXX.svg",
+      "v": "822b7159f8",
+      "bytes": 578
+    },
+    "xyz:SOFTBANK": {
+      "file": "xyz-SOFTBANK.svg",
+      "v": "a83d1feb4a",
+      "bytes": 536
+    },
+    "xyz:SOXL": {
+      "file": "xyz-SOXL.svg",
+      "v": "272f317b1a",
+      "bytes": 2467
+    },
+    "xyz:SP500": {
+      "file": "xyz-SP500.svg",
+      "v": "e1db17e553",
+      "bytes": 7077
+    },
+    "xyz:SPCX": {
+      "file": "xyz-SPCX.svg",
+      "v": "8931e0f00e",
+      "bytes": 1172
+    },
+    "xyz:STRC": {
+      "file": "xyz-STRC.svg",
+      "v": "eee13d8816",
+      "bytes": 4071
+    },
+    "xyz:TSLA": {
+      "file": "xyz-TSLA.svg",
+      "v": "7baed8299f",
+      "bytes": 880
+    },
+    "xyz:TSM": {
+      "file": "xyz-TSM.svg",
+      "v": "df664445ca",
+      "bytes": 40840
+    },
+    "xyz:UNITREE": {
+      "file": "xyz-UNITREE.svg",
+      "v": "ff41bd39b7",
+      "bytes": 183643
+    },
+    "xyz:USAR": {
+      "file": "xyz-USAR.svg",
+      "v": "222cf534d2",
+      "bytes": 30734
+    },
+    "xyz:WDC": {
+      "file": "xyz-WDC.svg",
+      "v": "522d4cac38",
+      "bytes": 2145
+    },
+    "xyz:XLE": {
+      "file": "xyz-XLE.svg",
+      "v": "6cd27b3c7e",
+      "bytes": 4964
+    },
+    "xyz:XYZ100": {
+      "file": "xyz-XYZ100.svg",
+      "v": "c0baf0a5e3",
+      "bytes": 1375
+    },
+    "xyz:ZHIPU": {
+      "file": "xyz-ZHIPU.svg",
+      "v": "388fac2bc6",
+      "bytes": 1188
+    },
+    "xyz:ZM": {
+      "file": "xyz-ZM.svg",
+      "v": "f600c172d0",
+      "bytes": 588
+    },
+    "YGG": {
+      "file": "YGG.svg",
+      "v": "1a51a55837",
+      "bytes": 14408
+    },
+    "ZEC": {
+      "file": "ZEC.svg",
+      "v": "cff0cbd805",
+      "bytes": 1427
+    },
+    "ZEN": {
+      "file": "ZEN.svg",
+      "v": "09daf321b8",
+      "bytes": 217206
+    },
+    "ZETA": {
+      "file": "ZETA.svg",
+      "v": "341f260a97",
+      "bytes": 464
+    },
+    "ZK": {
+      "file": "ZK.svg",
+      "v": "95038fb44d",
+      "bytes": 412
+    },
+    "ZORA": {
+      "file": "ZORA.svg",
+      "v": "49fd62c39c",
+      "bytes": 89157
+    },
+    "ZRO": {
+      "file": "ZRO.svg",
+      "v": "98610772c1",
+      "bytes": 1380
+    }
+  },
+  "missing": {
+    "PEOPLE": "text/html",
+    "xyz:ARM": "text/html",
+    "xyz:AVGO": "text/html",
+    "xyz:BE": "text/html",
+    "xyz:BIRD": "text/html",
+    "xyz:BOT": "text/html",
+    "xyz:COPPER": "text/html",
+    "xyz:CVX": "text/html",
+    "xyz:EBAY": "text/html",
+    "xyz:EWT": "text/html",
+    "xyz:GIGADEV": "text/html",
+    "xyz:KSTR": "text/html",
+    "xyz:MRNA": "text/html",
+    "xyz:NATGAS": "text/html",
+    "xyz:PURRDAT": "text/html",
+    "xyz:QCOM": "text/html",
+    "xyz:SHEIN": "text/html",
+    "xyz:TLT": "text/html",
+    "xyz:URNM": "text/html",
+    "xyz:XBI": "text/html"
+  },
+  "refused": {},
+  "totals": {
+    "files": 266,
+    "bytes": 6128597,
+    "largest": {
+      "coin": "AERO",
+      "file": "AERO.svg",
+      "bytes": 481512
+    }
+  }
+}

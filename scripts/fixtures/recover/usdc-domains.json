@@ -1,0 +1,43 @@
+{
+ "at": "2026-10-15T09:08:54.191Z",
+ "chains": {
+  "137": {
+   "rpc": "https://polygon-bor-rpc.publicnode.com",
+   "usdc": "0x3c499c542cef5e3811e1192ce70d8cc03d5c3359",
+   "name": "USD Coin",
+   "version": "2",
+   "symbol": "USDC",
+   "decimals": 6,
+   "domainSeparator": "0xcaa2ce1a5703ccbe253a34eb3166df60a705c561b44b192061e28f2a985be2ca",
+   "computed": "0xcaa2ce1a5703ccbe253a34eb3166df60a705c561b44b192061e28f2a985be2ca",
+   "match": true,
+   "block": "95566674",
+   "codeBytes": {
+    "0xccc88a9d1b4ed6b0eaba998850414b24f1c315be": 7746,
+    "0x5567954cd026cebfe486062cb75848e0f1c12e58": 13884,
+    "0x4cd00e387622c35bddb9b4c962c136462338bc31": 8628,
+    "0xb92fe925dc43a0ecde6c8b1a2709c170ec4fff4f": 4720,
+    "0x0729e2a4716d9f7dd17858d5d504426d228697f7": 7185
+   }
+  },
+  "8453": {
+   "rpc": "https://mainnet.base.org",
+   "usdc": "0x833589fcd6edb6e08f4c7c32d4f71b54bda02913",
+   "name": "USD Coin",
+   "version": "2",
+   "symbol": "USDC",
+   "decimals": 6,
+   "domainSeparator": "0x02fa7265e7c5d81118673727957699e4d68f74cd74b7db77da710fe8a2c7834f",
+   "computed": "0x02fa7265e7c5d81118673727957699e4d68f74cd74b7db77da710fe8a2c7834f",
+   "match": true,
+   "block": "52632993",
+   "codeBytes": {
+    "0xccc88a9d1b4ed6b0eaba998850414b24f1c315be": 7746,
+    "0x5567954cd026cebfe486062cb75848e0f1c12e58": 13884,
+    "0x4cd00e387622c35bddb9b4c962c136462338bc31": 8628,
+    "0xb92fe925dc43a0ecde6c8b1a2709c170ec4fff4f": 4720,
+    "0x0729e2a4716d9f7dd17858d5d504426d228697f7": 7185
+   }
+  }
+ }
+}

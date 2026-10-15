@@ -1,0 +1,44 @@
+{
+ "_source": "the ONE live non-dry answer (POST /v0/quote dry:false, perps -> Arbitrum USDC, 20 USDC, random recipient and refundTo, nothing sent to it), captured 2026-10-15T06:45Z by the research track (plan-private/raw/live_hl2arb.json), unedited",
+ "status": 201,
+ "answer": {
+  "quote": {
+   "amountIn": "2000000000",
+   "amountInFormatted": "20.0",
+   "amountInUsd": "19.994560000000",
+   "minAmountIn": "2000000000",
+   "amountOut": "19794700",
+   "amountOutFormatted": "19.7947",
+   "amountOutUsd": "19.789315841600",
+   "minAmountOut": "19596753",
+   "timeEstimate": 34,
+   "refundFee": "31530000",
+   "withdrawFee": "5300",
+   "deadline": "2026-10-18T07:45:10.000Z",
+   "timeWhenInactive": "2026-10-18T07:45:10.000Z",
+   "depositAddress": "0xD991E062BFac9d04C0bC667f7071d3697C752E0E"
+  },
+  "quoteRequest": {
+   "dry": false,
+   "depositMode": "SIMPLE",
+   "swapType": "EXACT_INPUT",
+   "slippageTolerance": 100,
+   "originAsset": "1cs_v1:hypercore:hip1:0x6d1e7cde53ba9467b783cb7c530ce054",
+   "depositType": "ORIGIN_CHAIN",
+   "destinationAsset": "nep141:arb-0xaf88d065e77c8cc2239327c5edb3a432268e5831.omft.near",
+   "amount": "2000000000",
+   "refundTo": "0xd071d8b3d230766552d533ae640cb852e45d1f92",
+   "refundType": "ORIGIN_CHAIN",
+   "recipient": "0xe9c313b7a15cd1a72bed7a2127cf63eeeede5ab9",
+   "recipientType": "DESTINATION_CHAIN",
+   "deadline": "2026-10-15T07:45:10.000Z",
+   "confidentiality": "public",
+   "quoteWaitingTimeMs": 0,
+   "insured": false,
+   "appFees": []
+  },
+  "signature": "ed25519:1mvtR5tRLcF5tBU3AmXkMZKUARGG5CiiU2miApRCE267Gua4cFvH6fbhnxFNx58b3DNjhXQKcbgyfSxhrizc6G9",
+  "timestamp": "2026-10-15T06:45:10.708Z",
+  "correlationId": "884aab70-c3ee-44f6-bc59-6fd444de4070"
+ }
+}

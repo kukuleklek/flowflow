@@ -1,0 +1,10 @@
+{
+ "_source": "live POST /v0/quote dry:true Base USDC -> perps at 2026-10-15T07:01:07.460Z: refused twice (the flakiness R-fit notes)",
+ "status": 400,
+ "answer": {
+  "message": "Quoting for this pair is not available",
+  "correlationId": "a1450b83-1212-47f0-aebe-67e091d2b9f1",
+  "timestamp": "2026-10-15T07:01:27.175Z",
+  "path": "/v0/quote"
+ }
+}

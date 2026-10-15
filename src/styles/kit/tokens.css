@@ -1,0 +1,105 @@
+/* ═══════════════════════════════════════════════════════════════════════════════════════════════════════════
+ * ui kit · tokens.css — colour + radius tokens
+ *
+ * Plain CSS, no build step. Every value is copied from the source app's apps/web/src/app/globals.css (design v2):
+ * neutral zinc surfaces, dark-first, ONE accent used sparingly (active nav, links, small badges, focus rings).
+ * Status colours (--destructive / --warning / --info / --success) carry meaning only.
+ *
+ *   Light theme  → :root
+ *   Dark theme   → .dark                  (class on <html>, e.g. next-themes attribute="class")
+ *                  [data-theme="dark"]    (attribute setups, e.g. next-themes attribute="data-theme")
+ *
+ * the source app itself defaults to dark (next-themes defaultTheme="dark", enableSystem). For a no-JS app that should
+ * follow the OS instead, copy the dark block into
+ *   @media (prefers-color-scheme: dark) { :root:not(.light):not([data-theme="light"]) { … } }
+ *
+ * Token names are the shadcn/ui names, so shadcn components work unchanged; tailwind-v4.css maps them to
+ * Tailwind utilities (bg-background, text-brand, ring-ring, …). Plain CSS reads them as var(--brand) etc.
+ *
+ * ── THE ACCENT IS THE ONE THING TO SWAP ──────────────────────────────────────────────────────────────────
+ * Set --brand-hue (one number, OKLCH hue in degrees) on :root. --brand, --brand-foreground, --ring,
+ * --sidebar-ring, --glow and (dark) --sidebar-primary are derived from it at the exact lightness / chroma the source app
+ * ships, so contrast stays where it was. 152 is the source app's green; DO NOT ship it as another app's brand: pick
+ * your own hue. Examples: 250 blue · 285 violet · 25 red · 60 orange · 200 teal.
+ * If your brand is a fixed colour (a hex from a style guide), override the family lines in the two ACCENT
+ * blocks below with full colours instead, and re-check the contrast rule.
+ *
+ * ── CONTRAST RULE (WCAG AA, keep it when you swap) ──────────────────────────────────────────────────────
+ *   · --brand on --background            ≥ 4.5:1 in both themes (the source app: 5.4:1 light, 12.5:1 dark)
+ *   · --brand-foreground on --brand      ≥ 4.5:1 (filled accent buttons / badges)
+ *   · --muted-foreground on --card       ≥ 4.5:1 (6.9:1 light, 7.8:1 dark)
+ *   · status text on its own 10–20 % tint (badges, notices, a wrong-network pill) ≥ 4.5:1 in both themes:
+ *     light --destructive / --warning are dark enough for that, dark --destructive is light enough.
+ *   · --ring is a non-text indicator: ≥ 3:1 against the surface it sits on.
+ * OKLCH lightness drives contrast, so a hue-only swap at the shipped L/C stays AA: every hue checked between
+ * 25° and 330° kept ≥ 5.5:1 (light) and ≥ 10:1 (dark) after sRGB gamut mapping. A swap that changes
+ * lightness or chroma, or a hex brand colour, must be re-checked with a contrast checker.
+ * ═══════════════════════════════════════════════════════════════════════════════════════════════════════════ */
+
+:root {
+  /* ══ ACCENT (light) — swap --brand-hue, or override these lines with full colours ═════════════════════ */
+  --brand-hue: 123; /* lime */
+  --brand: oklch(0.5 0.13 var(--brand-hue)); /* links, active nav, small badges, the accent dot */
+  --brand-foreground: oklch(0.985 0 0); /* text/icons on a filled --brand surface */
+  --ring: oklch(0.55 0.15 var(--brand-hue)); /* focus rings */
+  --sidebar-ring: oklch(0.55 0.15 var(--brand-hue));
+  --glow: transparent; /* landing glow: off in light */
+  /* --success is the accent's twin in the source app (same green). It is a STATUS colour: if your accent is not
+     green, leave it green (success must still read as success). If your accent is green, you may set it to
+     var(--brand). */
+  --success: oklch(0.5 0.13 152);
+  /* ══ end ACCENT ═══════════════════════════════════════════════════════════════════════════════════════ */
+
+  color-scheme: light; /* next-themes sets this on <html> in the source app; kept here for setups without it */
+
+  /* Surfaces + text (neutral zinc) */
+  --background: oklch(0.985 0.001 286.375);
+  --foreground: oklch(0.141 0.005 285.823);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.141 0.005 285.823);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.141 0.005 285.823);
+  --primary: oklch(0.21 0.006 285.885);
+  --primary-foreground: oklch(0.985 0 0);
+  --secondary: oklch(0.967 0.001 286.375);
+  --secondary-foreground: oklch(0.21 0.006 285.885);
+  --muted: oklch(0.955 0.002 286.375);
+  --muted-foreground: oklch(0.47 0.016 285.938);
+  --accent: oklch(0.955 0.002 286.375); /* shadcn "accent" = neutral hover surface, NOT the brand accent */
+  --accent-foreground: oklch(0.21 0.006 285.885);
+  --border: oklch(0.915 0.004 286.32);
+  --input: oklch(0.9 0.004 286.32);
+
+  /* Status (meaning only) */
+  --destructive: oklch(0.47 0.2 27.325);
+  --warning: oklch(0.5 0.12 65);
+  --info: oklch(0.5 0.13 245);
+
+  /* Charts (neutral ramp) */
+  --chart-1: oklch(0.87 0 0);
+  --chart-2: oklch(0.556 0 0);
+  --chart-3: oklch(0.439 0 0);
+  --chart-4: oklch(0.371 0 0);
+  --chart-5: oklch(0.269 0 0);
+
+  /* Sidebar (shadcn sidebar component) */
+  --sidebar: oklch(0.985 0 0);
+  --sidebar-foreground: oklch(0.141 0.005 285.823);
+  --sidebar-primary: oklch(0.21 0.006 285.885);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.945 0.002 286.375);
+  --sidebar-accent-foreground: oklch(0.21 0.006 285.885);
+  --sidebar-border: oklch(0.915 0.004 286.32);
+
+  /* Radius: one base, the scale derives from it (same multipliers as the source app's Tailwind @theme).
+     Cards in the source app use --radius-xl / --radius-2xl, buttons --radius-lg, the sign-in card rounded-2xl. */
+  --radius: 0.625rem;
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+}
+

@@ -1,0 +1,41 @@
+{
+ "_source": "live POST /v0/quote, dry:true, dry-arb-to-arb-25, captured 2026-10-15T07:01:07.460Z; recipient = refundTo = a random address generated for the capture (0xa1581fb128e573fef727dd9fc2630d0d695a1956), replaced by the tests",
+ "status": 201,
+ "answer": {
+  "quote": {
+   "amountIn": "25000000",
+   "amountInFormatted": "25.0",
+   "amountInUsd": "24.992500000000",
+   "minAmountIn": "25000000",
+   "amountOut": "24994700",
+   "amountOutFormatted": "24.9947",
+   "amountOutUsd": "24.987201590000",
+   "minAmountOut": "24744753",
+   "timeEstimate": 24,
+   "refundFee": "5300",
+   "withdrawFee": "5300"
+  },
+  "quoteRequest": {
+   "dry": true,
+   "depositMode": "SIMPLE",
+   "swapType": "EXACT_INPUT",
+   "slippageTolerance": 100,
+   "originAsset": "nep141:arb-0xaf88d065e77c8cc2239327c5edb3a432268e5831.omft.near",
+   "depositType": "ORIGIN_CHAIN",
+   "destinationAsset": "nep141:arb-0xaf88d065e77c8cc2239327c5edb3a432268e5831.omft.near",
+   "amount": "25000000",
+   "refundTo": "0xa1581fb128e573fef727dd9fc2630d0d695a1956",
+   "refundType": "ORIGIN_CHAIN",
+   "recipient": "0xa1581fb128e573fef727dd9fc2630d0d695a1956",
+   "recipientType": "DESTINATION_CHAIN",
+   "deadline": "2026-10-15T08:01:07.000Z",
+   "confidentiality": "public",
+   "quoteWaitingTimeMs": 0,
+   "insured": false,
+   "appFees": []
+  },
+  "signature": "ed25519:S8sAxxcvUNvyjzCp8LvjqCWcrLWi9UwNGYetxLvENXKR5WHiCyRGEP3F3gUe1Ag1zbUdJLGJAeR9E69YrQKr1zy",
+  "timestamp": "2026-10-15T07:01:08.878Z",
+  "correlationId": "98704a44-40ae-486a-a3ca-5e718a2fd2fe"
+ }
+}

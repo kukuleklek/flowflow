@@ -1,0 +1,182 @@
+{
+ "_source": "live POST https://1click.chaindefuser.com/v0/quote, dry:true only (a guard refused anything else), 2026-10-15 09:08\u201309:45Z; recipient = refundTo = a random address. EVERY pair was refused, Arbitrum \u2192 perps included (it quoted at 07:01Z): a service-wide outage of keyless quoting, not an origin-specific refusal. No dry quote of Avalanche or Polygon USDC has been verified yet.",
+ "answers": {
+  "dry-arb-to-hc-10": {
+   "status": 400,
+   "answer": {
+    "message": "Quoting for this pair is not available",
+    "correlationId": "effc8005-3dc3-4f65-9319-9edad38b34dc",
+    "timestamp": "2026-10-15T09:08:07.755Z",
+    "path": "/v0/quote"
+   }
+  },
+  "dry-arb-to-hc-20": {
+   "status": 400,
+   "answer": {
+    "message": "Quoting for this pair is not available",
+    "correlationId": "950caacc-531c-4f4a-a4dc-daebd24d7bb1",
+    "timestamp": "2026-10-15T09:08:08.893Z",
+    "path": "/v0/quote"
+   }
+  },
+  "dry-avax-to-arb-20": {
+   "status": 400,
+   "answer": {
+    "message": "Quoting for this pair is not available",
+    "correlationId": "4a9501e1-4f4d-4dd2-b65d-eeed5339f9c7",
+    "timestamp": "2026-10-15T09:08:16.553Z",
+    "path": "/v0/quote"
+   }
+  },
+  "dry-avax-to-hc-10": {
+   "status": 400,
+   "answer": {
+    "message": "Quoting for this pair is not available",
+    "correlationId": "8451fa85-5ef5-4907-a86e-034bb42bf23f",
+    "timestamp": "2026-10-15T09:08:10.006Z",
+    "path": "/v0/quote"
+   }
+  },
+  "dry-avax-to-hc-20": {
+   "status": 400,
+   "answer": {
+    "message": "Quoting for this pair is not available",
+    "correlationId": "e1f51b90-aa4a-4000-a086-754cfa4fcaa5",
+    "timestamp": "2026-10-15T09:08:11.087Z",
+    "path": "/v0/quote"
+   }
+  },
+  "dry-base-to-arb-20": {
+   "status": 400,
+   "answer": {
+    "message": "Quoting for this pair is not available",
+    "correlationId": "cec3521e-b96a-4ce5-8dc6-aa6e19577916",
+    "timestamp": "2026-10-15T09:08:18.715Z",
+    "path": "/v0/quote"
+   }
+  },
+  "dry-base-to-hc-10": {
+   "status": 400,
+   "answer": {
+    "message": "Quoting for this pair is not available",
+    "correlationId": "82238cc6-fd14-4bd9-94a5-431f453a5be4",
+    "timestamp": "2026-10-15T09:08:12.196Z",
+    "path": "/v0/quote"
+   }
+  },
+  "dry-base-to-hc-20": {
+   "status": 400,
+   "answer": {
+    "message": "Quoting for this pair is not available",
+    "correlationId": "145979f3-c769-4e4b-b16a-5c34c3c9eea0",
+    "timestamp": "2026-10-15T09:08:13.285Z",
+    "path": "/v0/quote"
+   }
+  },
+  "dry-pol-to-arb-20": {
+   "status": 400,
+   "answer": {
+    "message": "Quoting for this pair is not available",
+    "correlationId": "120b6653-d0bd-48c0-8b0f-511ae45f53fc",
+    "timestamp": "2026-10-15T09:08:17.645Z",
+    "path": "/v0/quote"
+   }
+  },
+  "dry-pol-to-hc-10": {
+   "status": 400,
+   "answer": {
+    "message": "Quoting for this pair is not available",
+    "correlationId": "73b6aa4c-d08f-46af-adef-2e6ca4320397",
+    "timestamp": "2026-10-15T09:08:14.378Z",
+    "path": "/v0/quote"
+   }
+  },
+  "dry-pol-to-hc-20": {
+   "status": 400,
+   "answer": {
+    "message": "Quoting for this pair is not available",
+    "correlationId": "5165f600-8984-4de4-9a16-40a61989b179",
+    "timestamp": "2026-10-15T09:08:15.463Z",
+    "path": "/v0/quote"
+   }
+  }
+ },
+ "retries": [
+  {
+   "at": "09:08:34",
+   "status": 400
+  },
+  {
+   "at": "09:10:35",
+   "status": 400
+  },
+  {
+   "at": "09:12:36",
+   "status": 400
+  },
+  {
+   "at": "09:14:36",
+   "status": 400
+  },
+  {
+   "at": "09:16:37",
+   "status": 400
+  },
+  {
+   "at": "09:18:38",
+   "status": 400
+  },
+  {
+   "at": "09:20:39",
+   "status": 400
+  },
+  {
+   "at": "09:22:39",
+   "status": 400
+  },
+  {
+   "at": "09:24:40",
+   "status": 400
+  },
+  {
+   "at": "09:26:41",
+   "status": 400
+  },
+  {
+   "at": "09:28:42",
+   "status": 400
+  },
+  {
+   "at": "09:30:43",
+   "status": 400
+  },
+  {
+   "at": "09:32:43",
+   "status": 400
+  },
+  {
+   "at": "09:34:44",
+   "status": 400
+  },
+  {
+   "at": "09:36:45",
+   "status": 400
+  },
+  {
+   "at": "09:38:45",
+   "status": 400
+  },
+  {
+   "at": "09:40:46",
+   "status": 400
+  },
+  {
+   "at": "09:42:47",
+   "status": 400
+  },
+  {
+   "at": "09:44:48",
+   "status": 400
+  }
+ ]
+}

@@ -1,0 +1,60 @@
+:root {
+  --background-rgb: 250 250 251; --foreground-rgb: 9 9 11; --card-rgb: 255 255 255; --popover-rgb: 255 255 255;
+  --muted-rgb: 240 240 241; --accent-rgb: 240 240 241; --secondary-rgb: 244 244 245; --muted-foreground-rgb: 90 90 100;
+  --border-rgb: 226 226 229; --input-rgb: 222 222 224; --sidebar-rgb: 250 250 250; --ring-rgb: 99 125 0;
+  --brand-rgb: 86 110 0; --brand-foreground-rgb: 250 250 250;
+  --brand-solid-rgb: 204 255 0; --brand-solid-foreground-rgb: 10 13 0; --brand-hover-rgb: 190 238 0;
+  --success-rgb: 5 119 59; --warning-rgb: 142 83 0; --destructive-rgb: 173 0 14; --info-rgb: 0 104 165;
+  --status-foreground-rgb: 250 250 250;
+  --success-container-rgb: 230 241 235; --warning-container-rgb: 244 238 229; --destructive-container-rgb: 247 229 231;
+  --muted-text-floor: 0.9; --text-floor: 0.6;
+  --font-geist-sans: 'Geist', ui-sans-serif, system-ui, sans-serif, 'Apple Symbols', 'Segoe UI Symbol', 'Apple Color Emoji', 'Segoe UI Emoji', 'Noto Color Emoji';
+  --font-geist-mono: 'Geist Mono', ui-monospace, SFMono-Regular, 'Roboto Mono', Menlo, Monaco, 'Liberation Mono', 'DejaVu Sans Mono', 'Courier New', monospace;
+}
+:root {
+  --background: rgb(var(--background-rgb)); --foreground: rgb(var(--foreground-rgb));
+  --card: rgb(var(--card-rgb)); --card-foreground: var(--foreground);
+  --popover: rgb(var(--popover-rgb)); --popover-foreground: var(--foreground);
+  --primary: var(--foreground); --primary-foreground: var(--background);
+  --secondary: rgb(var(--secondary-rgb)); --secondary-foreground: var(--foreground);
+  --muted: rgb(var(--muted-rgb)); --muted-foreground: rgb(var(--muted-foreground-rgb));
+  --accent: rgb(var(--accent-rgb)); --accent-foreground: var(--foreground);
+  --border: rgb(var(--border-rgb)); --input: rgb(var(--input-rgb)); --ring: rgb(var(--ring-rgb));
+  --brand: rgb(var(--brand-rgb)); --brand-foreground: rgb(var(--brand-foreground-rgb));
+  --success: rgb(var(--success-rgb)); --warning: rgb(var(--warning-rgb));
+  --destructive: rgb(var(--destructive-rgb)); --info: rgb(var(--info-rgb));
+  --sidebar: rgb(var(--sidebar-rgb)); --sidebar-primary: var(--brand); --sidebar-primary-foreground: var(--brand-foreground); --sidebar-ring: var(--ring);
+  --glow: transparent;
+}
+
+/* ── FlowFlow revamp tokens (additive; every existing token above keeps working) ───────────────────────── */
+:root {
+  /* tertiary ink: display cents, rank indexes. #71717A = 4.6:1 on #FAFAFB, so it is AA even at small sizes */
+  --ink-dim-rgb: 113 113 122;
+  /* 6.5% ink: row rules inside lists and cards. Band rules use --border (#E2E2E5). */
+  --hairline: rgb(var(--foreground-rgb) / 0.065);
+  /* row hover wash */
+  --hover-wash: rgb(var(--foreground-rgb) / 0.022);
+
+  /* depth: flat by default; ring = a border, float = things that really float */
+  --shadow-ring: 0 0 0 1px rgb(var(--border-rgb));
+  --shadow-float: 0 0 0 1px rgb(var(--border-rgb)), 0 12px 40px -12px rgb(9 9 11 / 0.18);
+  --shadow-edge: inset 0 0 0 1px rgb(0 0 0 / 0.1);          /* the lime CTA edge */
+  --focus-halo: 0 0 0 3px rgb(var(--ring-rgb) / 0.18);       /* focused input halo, outside the olive ring */
+
+  /* motion additions (segmented tab / sheet curve). Everything else stays on kit tokens. */
+  --ease-sheet: cubic-bezier(0.32, 0.72, 0, 1);
+  --duration-pill: 340ms;
+  --pill-label-delay: 55ms;   /* the label flips colour when the pill's leading edge crosses the midline */
+
+  /* layout */
+  --gutter: 16px;
+  --content-max: 1360px;      /* = 1312px of content + 2 × 24px gutter */
+  --rail-w: 360px;            /* home/agent index column */
+  --aside-w: 384px;           /* trade aside */
+  --header-h: 56px;
+  --nav-h: 64px;              /* phone bottom nav, before safe area */
+}
+@media (min-width: 768px) {
+  :root { --gutter: 24px; }
+}

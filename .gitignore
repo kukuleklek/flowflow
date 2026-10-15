@@ -1,0 +1,14 @@
+node_modules/
+dist/
+.vercel/
+.env
+.env.*
+!.env.example
+.DS_Store
+*.log
+# Private UI kits must never be committed: only the CSS/React copied into src/ is part of the app.
+kits/
+.claude/skills/
+
+# Secrets the owner keeps beside the code (tokens, notes)
+*.rtf

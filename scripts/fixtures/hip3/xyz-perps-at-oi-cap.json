@@ -1,0 +1,13 @@
+{
+ "capturedAt": "2026-10-15T07:37:00Z",
+ "request": {
+  "method": "POST",
+  "url": "https://api.hyperliquid.xyz/info",
+  "body": {
+   "type": "perpsAtOpenInterestCap",
+   "dex": "xyz"
+  }
+ },
+ "note": "Unedited. Empty: no xyz market at its cap at capture time.",
+ "response": []
+}

@@ -1,0 +1,12 @@
+# What `vercel deploy` must never upload: secrets beside the code, private UI kits, local tooling.
+*.rtf
+.env
+.env.*
+!.env.example
+.claude
+kits
+node_modules
+dist
+scripts
+*.log
+.DS_Store

@@ -1,0 +1,12 @@
+{
+ "_source": "live GET /v0/status for a made-up address at 2026-10-15T07:01:07.460Z",
+ "status": 404,
+ "address": "0xecdfdf3403a8791715f05cced3a7cc2a5d2cc3b5",
+ "answer": {
+  "message": "Deposit address 0xecdfdf3403a8791715f05cced3a7cc2a5d2cc3b5 not found",
+  "error": "Not Found",
+  "statusCode": 404,
+  "timestamp": "2026-10-15T07:01:10.227Z",
+  "path": "/v0/status?depositAddress=0xecdfdf3403a8791715f05cced3a7cc2a5d2cc3b5"
+ }
+}

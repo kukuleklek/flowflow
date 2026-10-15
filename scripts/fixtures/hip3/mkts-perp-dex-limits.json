@@ -1,0 +1,39 @@
+{
+ "capturedAt": "2026-10-15T07:37:00Z",
+ "request": {
+  "method": "POST",
+  "url": "https://api.hyperliquid.xyz/info",
+  "body": {
+   "type": "perpDexLimits",
+   "dex": "mkts"
+  }
+ },
+ "note": "Unedited.",
+ "response": {
+  "totalOiCap": "100000000.0",
+  "oiSzCapPerPerp": "10000000000.0",
+  "maxTransferNtl": "300000000.0",
+  "coinToOiCap": [
+   [
+    "mkts:BVIV",
+    "2000000.0"
+   ],
+   [
+    "mkts:SMALL2000",
+    "10000000.0"
+   ],
+   [
+    "mkts:US500",
+    "25000000.0"
+   ],
+   [
+    "mkts:USBOND",
+    "10000000.0"
+   ],
+   [
+    "mkts:USTECH",
+    "30000000.0"
+   ]
+  ]
+ }
+}

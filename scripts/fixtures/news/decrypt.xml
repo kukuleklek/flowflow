@@ -1,0 +1,146 @@
+<?xml version='1.0' encoding='utf-8' ?>
+<rss
+  version="2.0"
+  xmlns:content="http://purl.org/rss/1.0/modules/content/"
+  xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+  xmlns:dc="http://purl.org/dc/elements/1.1/"
+  xmlns:atom="http://www.w3.org/2005/Atom"
+  xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+  xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+  xmlns:media="http://search.yahoo.com/mrss/"
+  xmlns:snf="http://www.smartnews.be/snf"
+>
+  <channel>
+    <title>Decrypt</title>
+    <description>Feed</description>
+    <language>en</language>
+    
+    <atom:link
+      href="https://decrypt.co/feed"
+      rel="self"
+      type="application/rss+xml"
+    />
+    
+    
+      
+        <link>https://decrypt.co/feed</link>
+      
+    
+    
+      <copyright>Decrypt Media</copyright>
+    
+    
+    
+    
+      <lastBuildDate>Wed, 14 Oct 2026 21:46:04 +0000</lastBuildDate>
+    
+    
+      <sy:updatePeriod>hourly</sy:updatePeriod>
+    
+    
+      <sy:updateFrequency>1</sy:updateFrequency>
+    
+    
+    
+    
+    
+      <item>
+  <title>Godfather of AI and 400 Scientists Want AI Models Cut Off From the Internet</title>
+  <link>https://decrypt.co/380998/scientists-want-ai-cut-off-from-internet</link>
+  <pubDate>Wed, 14 Oct 2026 21:46:04 +0000</pubDate>
+    <description><![CDATA[<p>BODY-TEXT-MUST-NOT-LEAK</p>]]></description>
+  <dc:creator>Jose Antonio Lanz</dc:creator>
+    <guid isPermaLink="false">https://decrypt.co/?p=380998</guid>
+      <category>Artificial Intelligence</category>
+</item>
+<item>
+  <title>Developer Who Cloned Photoshop With AI Just Did the Same to Microsoft Office</title>
+  <link>https://decrypt.co/380991/developer-cloned-photoshop-ai-just-did-same-microsoft-office</link>
+  <pubDate>Wed, 14 Oct 2026 21:16:03 +0000</pubDate>
+    <description><![CDATA[<p>BODY-TEXT-MUST-NOT-LEAK</p>]]></description>
+  <dc:creator>Jose Antonio Lanz</dc:creator>
+    <guid isPermaLink="false">https://decrypt.co/?p=380991</guid>
+      <category>Artificial Intelligence</category>
+</item>
+<item>
+  <title>AI Agents Made 138 Million Crypto Payments in a Year. Most Were Tiny</title>
+  <link>https://decrypt.co/380989/ai-agents-138-million-crypto-payments-one-year</link>
+  <pubDate>Wed, 14 Oct 2026 20:16:05 +0000</pubDate>
+    <description><![CDATA[<p>BODY-TEXT-MUST-NOT-LEAK</p>]]></description>
+  <dc:creator>Decrypt Staff</dc:creator>
+    <guid isPermaLink="false">https://decrypt.co/?p=380989</guid>
+      <category>Artificial Intelligence</category>
+</item>
+<item>
+  <title>Russia&#39;s Biggest Bank Sberbank Wins Approval to Trade Bitcoin</title>
+  <link>https://decrypt.co/380981/sberbank-russia-bank-trade-crypto-bitcoin</link>
+  <pubDate>Wed, 14 Oct 2026 19:46:03 +0000</pubDate>
+    <description><![CDATA[<p>BODY-TEXT-MUST-NOT-LEAK</p>]]></description>
+  <dc:creator>Jose Antonio Lanz</dc:creator>
+    <guid isPermaLink="false">https://decrypt.co/?p=380981</guid>
+      <category></category>
+      <category>Coins</category>
+</item>
+<item>
+  <title>Solana Sets a Date for Its Next Major Upgrade</title>
+  <link>https://decrypt.co/380974/solana-alpenglow-upgrade-date</link>
+  <pubDate>Wed, 14 Oct 2026 19:16:04 +0000</pubDate>
+    <description><![CDATA[<p>BODY-TEXT-MUST-NOT-LEAK</p>]]></description>
+  <dc:creator>Jose Antonio Lanz</dc:creator>
+    <guid isPermaLink="false">https://decrypt.co/?p=380974</guid>
+      <category></category>
+      <category>Technology</category>
+</item>
+<item>
+  <title>Standard Chartered Opens Bitcoin and Ethereum Trading to Wealthy UAE Clients</title>
+  <link>https://decrypt.co/380967/standard-chartered-bitcoin-ethereum-trading</link>
+  <pubDate>Wed, 14 Oct 2026 17:46:05 +0000</pubDate>
+    <description><![CDATA[<p>BODY-TEXT-MUST-NOT-LEAK</p>]]></description>
+  <dc:creator>Jose Antonio Lanz</dc:creator>
+    <guid isPermaLink="false">https://decrypt.co/?p=380967</guid>
+      <category></category>
+      <category></category>
+      <category>Business</category>
+</item>
+<item>
+  <title>&#39;It Can Take Years&#39;: Coinbase Presses for Bitcoin Quantum Migration to Start Now</title>
+  <link>https://decrypt.co/380963/coinbase-bitcoin-quantum-migration-start-now</link>
+  <pubDate>Wed, 14 Oct 2026 16:15:19 +0000</pubDate>
+    <description><![CDATA[<p>BODY-TEXT-MUST-NOT-LEAK</p>]]></description>
+  <dc:creator>Decrypt Staff</dc:creator>
+    <guid isPermaLink="false">https://decrypt.co/?p=380963</guid>
+      <category></category>
+      <category>Technology</category>
+</item>
+<item>
+  <title>Bitcoin Falls as Hot Inflation Puts a Fed Hike Back on the Table</title>
+  <link>https://decrypt.co/380950/bitcoin-falls-hot-inflation-fed-hike-odds</link>
+  <pubDate>Wed, 14 Oct 2026 14:51:44 +0000</pubDate>
+    <description><![CDATA[<p>BODY-TEXT-MUST-NOT-LEAK</p>]]></description>
+  <dc:creator>Jose Antonio Lanz</dc:creator>
+    <guid isPermaLink="false">https://decrypt.co/?p=380950</guid>
+      <category></category>
+      <category>Markets</category>
+</item>
+<item>
+  <title>Hex Founder Richard Heart Detained in Istanbul on Interpol Red Notice: Report</title>
+  <link>https://decrypt.co/380948/hex-founder-richard-heart-detained-in-istanbul-on-interpol-red-notice-report</link>
+  <pubDate>Wed, 14 Oct 2026 14:03:20 +0000</pubDate>
+    <description><![CDATA[<p>BODY-TEXT-MUST-NOT-LEAK</p>]]></description>
+  <dc:creator>Decrypt Agent</dc:creator>
+    <guid isPermaLink="false">https://decrypt.co/?p=380948</guid>
+      <category>Law and Order</category>
+</item>
+<item>
+  <title>Ledger Asks Resellers in Seven Asian Markets to Pull Devices After Suspected $86M Drain</title>
+  <link>https://decrypt.co/380940/ledger-asks-resellers-in-seven-asian-markets-to-pull-devices-after-suspected-86m-drain</link>
+  <pubDate>Wed, 14 Oct 2026 13:47:44 +0000</pubDate>
+    <description><![CDATA[<p>BODY-TEXT-MUST-NOT-LEAK</p>]]></description>
+  <dc:creator>Decrypt Agent</dc:creator>
+    <guid isPermaLink="false">https://decrypt.co/?p=380940</guid>
+      <category></category>
+      <category></category>
+      <category>Technology</category>
+</item>
+</channel>
+</rss>

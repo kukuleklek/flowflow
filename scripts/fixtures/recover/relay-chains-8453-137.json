@@ -1,0 +1,63 @@
+{
+ "source": "GET https://api.relay.link/chains, 2026-10-15T09:08:40.555Z, the 8453/137/42161/43114 entries",
+ "answer": [
+  {
+   "id": 137,
+   "name": "polygon",
+   "depositEnabled": true,
+   "disabled": false,
+   "vmType": "evm",
+   "contracts": {
+    "multicall3": "0xca11bde05977b3631167028862be2a173976ca11",
+    "multicaller": "0x0000000000002Bdbf1Bf3279983603Ec279CC6dF",
+    "onlyOwnerMulticaller": "0xb90ed4c123843cbfd66b11411ee7694ef37e6e72",
+    "relayReceiver": "0xa5f565650890fba1824ee0f21ebbbf660a179934",
+    "erc20Router": "0xb92fe925dc43a0ecde6c8b1a2709c170ec4fff4f",
+    "approvalProxy": "0xccc88a9d1b4ed6b0eaba998850414b24f1c315be",
+    "v3": {
+     "erc20Router": "0xb92fe925dc43a0ecde6c8b1a2709c170ec4fff4f",
+     "approvalProxy": "0xccc88a9d1b4ed6b0eaba998850414b24f1c315be"
+    },
+    "v3.2": {
+     "erc20Router": "0x0729e2a4716d9f7dd17858d5d504426d228697f7",
+     "approvalProxy": "0x5567954cd026cebfe486062cb75848e0f1c12e58"
+    }
+   },
+   "protocol": {
+    "v2": {
+     "chainId": "polygon",
+     "depository": "0x4cd00e387622c35bddb9b4c962c136462338bc31"
+    }
+   }
+  },
+  {
+   "id": 8453,
+   "name": "base",
+   "depositEnabled": true,
+   "disabled": false,
+   "vmType": "evm",
+   "contracts": {
+    "multicall3": "0xca11bde05977b3631167028862be2a173976ca11",
+    "multicaller": "0x0000000000002bdbf1bf3279983603ec279cc6df",
+    "onlyOwnerMulticaller": "0xb90ed4c123843cbfd66b11411ee7694ef37e6e72",
+    "relayReceiver": "0xa5f565650890fba1824ee0f21ebbbf660a179934",
+    "erc20Router": "0xb92fe925dc43a0ecde6c8b1a2709c170ec4fff4f",
+    "approvalProxy": "0xccc88a9d1b4ed6b0eaba998850414b24f1c315be",
+    "v3": {
+     "erc20Router": "0xb92fe925dc43a0ecde6c8b1a2709c170ec4fff4f",
+     "approvalProxy": "0xccc88a9d1b4ed6b0eaba998850414b24f1c315be"
+    },
+    "v3.2": {
+     "erc20Router": "0x0729e2a4716d9f7dd17858d5d504426d228697f7",
+     "approvalProxy": "0x5567954cd026cebfe486062cb75848e0f1c12e58"
+    }
+   },
+   "protocol": {
+    "v2": {
+     "chainId": "base",
+     "depository": "0x4cd00e387622c35bddb9b4c962c136462338bc31"
+    }
+   }
+  }
+ ]
+}

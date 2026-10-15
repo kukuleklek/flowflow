@@ -1,0 +1,84 @@
+{
+ "capturedAt": "2026-09-23T00:00:00Z",
+ "request": {
+  "method": "POST",
+  "url": "https://api.hyperliquid.xyz/info",
+  "body": {
+   "type": "perpDexs"
+  }
+ },
+ "note": "A real mainnet answer, read-only. Entry 0 is null: the main dex. Each entry is TRIMMED to the identifying fields (name, fullName, deployer, oracleUpdater, feeRecipient); the per-asset caps and multipliers are dropped. THE ORDER IS THE POINT: a HIP-3 asset id is 100000 + this index * 10000 + the coin's index in that dex's universe.",
+ "response": [
+  null,
+  {
+   "name": "xyz",
+   "fullName": "XYZ",
+   "deployer": "0x88806a71d74ad0a510b350545c9ae490912f0888",
+   "oracleUpdater": null,
+   "feeRecipient": "0x83ffcfb1f2ad843c474b2e28df86c721cb869d3a"
+  },
+  {
+   "name": "flx",
+   "fullName": "Felix Exchange",
+   "deployer": "0x2fab552502a6d45920d5741a2f3ebf4c35536352",
+   "oracleUpdater": "0x94757f8dcb4bf73b850195660e959d1105cfedd5",
+   "feeRecipient": "0xe2872b5ae7dcbba40cc4510d08c8bbea95b42d43"
+  },
+  {
+   "name": "vntl",
+   "fullName": "Ventuals",
+   "deployer": "0x8888888192a4a0593c13532ba48449fc24c3beda",
+   "oracleUpdater": null,
+   "feeRecipient": "0x5afe865300895b96d20132a8d9fa8e7829334b52"
+  },
+  {
+   "name": "hyna",
+   "fullName": "HyENA",
+   "deployer": "0x53e655101ea361537124ef814ad4e654b54d0637",
+   "oracleUpdater": "0xaab93501e78f5105e265a1eafda10ce6530de17e",
+   "feeRecipient": null
+  },
+  {
+   "name": "km",
+   "fullName": "Markets by Kinetiq",
+   "deployer": "0x71f0019cc7fa79e4f42587fb7b9a817d8d2429ec",
+   "oracleUpdater": null,
+   "feeRecipient": "0xbcd4071d023bf2aae484d724c130b5af6f0ca0d2"
+  },
+  {
+   "name": "abcd",
+   "fullName": "ABCDEx",
+   "deployer": "0x372c7f69d0ecc14f73f89bd8a7dfb41bdf29857c",
+   "oracleUpdater": null,
+   "feeRecipient": null
+  },
+  {
+   "name": "cash",
+   "fullName": "dreamcash",
+   "deployer": "0xffa8198c62adb1e811629bd54c9b646d726deef7",
+   "oracleUpdater": null,
+   "feeRecipient": "0xaa7f0d3da989dae8fd166345a3ce21509f8c8bb4"
+  },
+  {
+   "name": "para",
+   "fullName": "Paragon",
+   "deployer": "0x8888888c43cbb7e1c4132542e46831bffd866ed3",
+   "oracleUpdater": "0x8888888c43cbb7e1c4132542e46831bffd866ed3",
+   "feeRecipient": "0x1770f43c71b8b2977771b73ca4c4cbe0c20412ed"
+  },
+  {
+   "name": "mkts",
+   "fullName": "Markets By Kinetiq",
+   "deployer": "0x71f0019cc7fa79e4f42587fb7b9a817d8d2429ec",
+   "oracleUpdater": null,
+   "feeRecipient": "0xbcd4071d023bf2aae484d724c130b5af6f0ca0d2"
+  },
+  {
+   "name": "io",
+   "fullName": "EntropyIO",
+   "deployer": "0x320c8988e3d1b5198f335802d7bfd2728a8fcac6",
+   "oracleUpdater": "0x94757f8dcb4bf73b850195660e959d1105cfedd5",
+   "feeRecipient": null
+  }
+ ]
+}

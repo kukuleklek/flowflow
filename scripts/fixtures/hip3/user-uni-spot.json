@@ -1,0 +1,50 @@
+{
+ "capturedAt": "2026-10-15T07:37:00Z",
+ "request": {
+  "method": "POST",
+  "url": "https://api.hyperliquid.xyz/info",
+  "body": {
+   "type": "spotClearinghouseState",
+   "user": "0x000000000000000000000000000000000000a11c"
+  }
+ },
+ "note": "Address REDACTED. USDC total/hold in spot: hold equals the xyz totalMarginUsed.",
+ "response": {
+  "balances": [
+   {
+    "coin": "USDC",
+    "token": 0,
+    "total": "115420.173756",
+    "hold": "19963.113978",
+    "entryNtl": "0.0"
+   },
+   {
+    "coin": "USDE",
+    "token": 235,
+    "total": "0.0",
+    "hold": "0.0",
+    "entryNtl": "0.0"
+   },
+   {
+    "coin": "USDT0",
+    "token": 268,
+    "total": "0.0",
+    "hold": "0.0",
+    "entryNtl": "0.0"
+   },
+   {
+    "coin": "USDH",
+    "token": 360,
+    "total": "0.0",
+    "hold": "0.0",
+    "entryNtl": "0.0"
+   }
+  ],
+  "tokenToAvailableAfterMaintenance": [
+   [
+    0,
+    "109466.027998"
+   ]
+  ]
+ }
+}

@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/"
+  xmlns:foaf="http://xmlns.com/foaf/0.1/" xmlns:og="http://ogp.me/ns#"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:schema="http://schema.org/"
+  xmlns:sioc="http://rdfs.org/sioc/ns#" xmlns:sioct="http://rdfs.org/sioc/types#"
+  xmlns:skos="http://www.w3.org/2004/02/skos/core#" xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+  xmlns:nasdaq="http://nasdaq.com/reference/feeds/1.0" version="2.0" xml:base="https://www.nasdaq.com/feed/rssoutbound">
+ <channel>
+  <title>TSLA Feed</title>
+  <link>https://www.nasdaq.com/feed/rssoutbound</link>
+  <description>Feed</description>
+  <language>en</language>
+  <item>
+   <title>The 1 Thing I'd Want Elon Musk to Answer on Tesla's Oct. 21 Call</title>
+   <link>https://www.nasdaq.com/articles/1-thing-id-want-elon-musk-answer-teslas-oct-21-call</link>
+   <description><![CDATA[<p>BODY-TEXT-MUST-NOT-LEAK</p>]]></description>
+   <pubDate>Thu, 15 Oct 2026 08:04:02 +0000</pubDate>
+   <guid isPermaLink="true">https://www.nasdaq.com/articles/1-thing-id-want-elon-musk-answer-teslas-oct-21-call?time=1792051442</guid>
+   <dc:creator>The Motley Fool</dc:creator>
+   <category>Markets</category>
+   <nasdaq:tickers>TSLA,TSLA</nasdaq:tickers>
+  </item>
+<item>
+   <title>Stocks Sharply Lower on Inflation Woes and Slumping Chipmakers</title>
+   <link>https://www.nasdaq.com/articles/stocks-sharply-lower-inflation-woes-and-slumping-chipmakers</link>
+   <description><![CDATA[<p>BODY-TEXT-MUST-NOT-LEAK</p>]]></description>
+   <pubDate>Thu, 15 Oct 2026 03:47:41 +0000</pubDate>
+   <guid isPermaLink="true">https://www.nasdaq.com/articles/stocks-sharply-lower-inflation-woes-and-slumping-chipmakers?time=1792036061</guid>
+   <dc:creator>Barchart</dc:creator>
+   <category>Stocks</category>
+   <nasdaq:tickers>MSTR,GOOGL,AAPL,SNDK,GLXY,LITE,AMGN,COIN,PFE,STT,TSLA,STX,WDC,AMD,SPY,META,UHS,HCA,CAH,QQQ,IREN,FTNT,ZS,CNC,MCHP,PGR,HPE,HOOD,MRVL,AMAT,CVS,MRK,UNH,MSFT,BMNR,NTAP,S,LRCX,LLY,DIA,DELL,PANW,MARA,NVDA,HUM,LQDA,CRWD,BAC,CI,VRTX,OKTA,INTC,SOXX,RIOT,GILD,NET,REGN,AMZN</nasdaq:tickers>
+  </item>
+<item>
+   <title>Tesla's Elon Musk Might Have Gone Back on His Word, but It's Working in China</title>
+   <link>https://www.nasdaq.com/articles/teslas-elon-musk-might-have-gone-back-his-word-its-working-china</link>
+   <description><![CDATA[<p>BODY-TEXT-MUST-NOT-LEAK</p>]]></description>
+   <pubDate>Wed, 14 Oct 2026 23:05:00 +0000</pubDate>
+   <guid isPermaLink="true">https://www.nasdaq.com/articles/teslas-elon-musk-might-have-gone-back-his-word-its-working-china?time=1792019100</guid>
+   <dc:creator>The Motley Fool</dc:creator>
+   <category>Markets</category>
+   <nasdaq:tickers>TSLA,TSLA</nasdaq:tickers>
+  </item>
+<item>
+   <title>SpaceX Stock Looks Expensive. Here's the Valuation Case for and Against.</title>
+   <link>https://www.nasdaq.com/articles/spacex-stock-looks-expensive-heres-valuation-case-and-against</link>
+   <description><![CDATA[<p>BODY-TEXT-MUST-NOT-LEAK</p>]]></description>
+   <pubDate>Wed, 14 Oct 2026 22:50:00 +0000</pubDate>
+   <guid isPermaLink="true">https://www.nasdaq.com/articles/spacex-stock-looks-expensive-heres-valuation-case-and-against?time=1792018200</guid>
+   <dc:creator>The Motley Fool</dc:creator>
+   <category>Markets</category>
+   <nasdaq:tickers>TSLA,NVDA,PLTR</nasdaq:tickers>
+  </item>
+<item>
+   <title>Tesla Just Launched the Cybercab in Austin. Here's How Many People Can Actually Hail One.</title>
+   <link>https://www.nasdaq.com/articles/tesla-just-launched-cybercab-austin-heres-how-many-people-can-actually-hail-one</link>
+   <description><![CDATA[<p>BODY-TEXT-MUST-NOT-LEAK</p>]]></description>
+   <pubDate>Wed, 14 Oct 2026 20:20:00 +0000</pubDate>
+   <guid isPermaLink="true">https://www.nasdaq.com/articles/tesla-just-launched-cybercab-austin-heres-how-many-people-can-actually-hail-one?time=1792009200</guid>
+   <dc:creator>The Motley Fool</dc:creator>
+   <category>Markets</category>
+   <nasdaq:tickers>TSLA,TSLA</nasdaq:tickers>
+  </item>
+<item>
+   <title>Earnings Preview: Tesla (TSLA) Q3 Earnings Expected to Decline</title>
+   <link>https://www.nasdaq.com/articles/earnings-preview-tesla-tsla-q3-earnings-expected-decline</link>
+   <description><![CDATA[<p>BODY-TEXT-MUST-NOT-LEAK</p>]]></description>
+   <pubDate>Wed, 14 Oct 2026 13:00:13 +0000</pubDate>
+   <guid isPermaLink="true">https://www.nasdaq.com/articles/earnings-preview-tesla-tsla-q3-earnings-expected-decline?time=1791982813</guid>
+   <dc:creator>Zacks</dc:creator>
+   <category>Technology</category>
+   <nasdaq:tickers>TSLA,GM</nasdaq:tickers>
+  </item>
+<item>
+   <title>Grab These ETFs to Capitalize on the Physical AI Wave</title>
+   <link>https://www.nasdaq.com/articles/grab-these-etfs-capitalize-physical-ai-wave</link>
+   <description><![CDATA[<p>BODY-TEXT-MUST-NOT-LEAK</p>]]></description>
+   <pubDate>Wed, 14 Oct 2026 12:09:00 +0000</pubDate>
+   <guid isPermaLink="true">https://www.nasdaq.com/articles/grab-these-etfs-capitalize-physical-ai-wave?time=1791979740</guid>
+   <dc:creator>Zacks</dc:creator>
+   <category>Technology</category>
+   <nasdaq:tickers>NVDA,TSLA,BOTZ,RRX,KOID,WDRN</nasdaq:tickers>
+  </item>
+<item>
+   <title>Tesla to Post Q3 Earnings: Will Automotive Margins Play a Spoilsport? </title>
+   <link>https://www.nasdaq.com/articles/tesla-post-q3-earnings-will-automotive-margins-play-spoilsport</link>
+   <description><![CDATA[<p>BODY-TEXT-MUST-NOT-LEAK</p>]]></description>
+   <pubDate>Wed, 14 Oct 2026 11:12:00 +0000</pubDate>
+   <guid isPermaLink="true">https://www.nasdaq.com/articles/tesla-post-q3-earnings-will-automotive-margins-play-spoilsport?time=1791976320</guid>
+   <dc:creator>Zacks</dc:creator>
+   <category>Stocks</category>
+   <nasdaq:tickers>TSLA,LEA,GTX,RIVN</nasdaq:tickers>
+  </item>
+<item>
+   <title>Why Wall Street Is Cautious About Tesla, and Why I'm Not Worried</title>
+   <link>https://www.nasdaq.com/articles/why-wall-street-cautious-about-tesla-and-why-im-not-worried</link>
+   <description><![CDATA[<p>BODY-TEXT-MUST-NOT-LEAK</p>]]></description>
+   <pubDate>Wed, 14 Oct 2026 10:36:00 +0000</pubDate>
+   <guid isPermaLink="true">https://www.nasdaq.com/articles/why-wall-street-cautious-about-tesla-and-why-im-not-worried?time=1791974160</guid>
+   <dc:creator>The Motley Fool</dc:creator>
+   <category>Markets</category>
+   <nasdaq:tickers>TSLA,TSLA</nasdaq:tickers>
+  </item>
+<item>
+   <title>Tech Stocks Are Crushing the Market, but There's a Sneaky (and Dangerous) Risk for S&amp;P 500 Investors</title>
+   <link>https://www.nasdaq.com/articles/tech-stocks-are-crushing-market-theres-sneaky-and-dangerous-risk-sp-500-investors</link>
+   <description><![CDATA[<p>BODY-TEXT-MUST-NOT-LEAK</p>]]></description>
+   <pubDate>Tue, 13 Oct 2026 17:13:36 +0000</pubDate>
+   <guid isPermaLink="true">https://www.nasdaq.com/articles/tech-stocks-are-crushing-market-theres-sneaky-and-dangerous-risk-sp-500-investors?time=1791911616</guid>
+   <dc:creator>The Motley Fool</dc:creator>
+   <category>Markets</category>
+   <nasdaq:tickers>RSP,RSP,META,MSFT,GOOGL,AAPL,TSLA,AMZN,NVDA,AVGO,QQQ,MU,GOOG</nasdaq:tickers>
+  </item>
+<item>
+   <title>Tesla's Robotaxi Lands in Paris—But Europe's Real Fight Is Over Cheap EVs</title>
+   <link>https://www.nasdaq.com/articles/teslas-robotaxi-lands-paris-europes-real-fight-over-cheap-evs</link>
+   <description><![CDATA[<p>BODY-TEXT-MUST-NOT-LEAK</p>]]></description>
+   <pubDate>Tue, 13 Oct 2026 16:15:00 +0000</pubDate>
+   <guid isPermaLink="true">https://www.nasdaq.com/articles/teslas-robotaxi-lands-paris-europes-real-fight-over-cheap-evs?time=1791908100</guid>
+   <dc:creator>MarketBeat</dc:creator>
+   <category>Options,Stocks</category>
+   <nasdaq:tickers>TSLA,TSLA,STLA</nasdaq:tickers>
+   <nasdaq:partnerlink url="https://www.marketbeat.com/">Stock Market News from MarketBeat</nasdaq:partnerlink>
+   <nasdaq:partnerlink url="https://www.earlybirdpublishing.com/">MarketBeat's Pre-Market Newsletter</nasdaq:partnerlink>
+   <nasdaq:partnerlink url="https://www.dividendstocks.com/">Dividend Investing Tools</nasdaq:partnerlink>
+  </item>
+<item>
+   <title>Tesla Gears Up to Report Q3 Earnings: Here's What to Expect </title>
+   <link>https://www.nasdaq.com/articles/tesla-gears-report-q3-earnings-heres-what-expect</link>
+   <description><![CDATA[<p>BODY-TEXT-MUST-NOT-LEAK</p>]]></description>
+   <pubDate>Tue, 13 Oct 2026 12:58:00 +0000</pubDate>
+   <guid isPermaLink="true">https://www.nasdaq.com/articles/tesla-gears-report-q3-earnings-heres-what-expect?time=1791896280</guid>
+   <dc:creator>Zacks</dc:creator>
+   <category>Stocks</category>
+   <nasdaq:tickers>TSLA,LEA,GTX,RIVN</nasdaq:tickers>
+  </item>
+</channel>
+</rss>

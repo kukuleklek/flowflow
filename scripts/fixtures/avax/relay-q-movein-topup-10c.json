@@ -1,0 +1,72 @@
+{
+ "source": "READ-ONLY POST https://api.relay.link/quote/v2, 1337 USDC(Perps) 10 \u2192 43114 USDC with topupGas $0.10, user 0x\u2026dEaD, 2026-10-15 (plan-avax/relay-raw/q6-plain-topup10c.json); body + details only",
+ "body": {
+  "user": "0x000000000000000000000000000000000000dEaD",
+  "recipient": "0x000000000000000000000000000000000000dEaD",
+  "refundTo": "0x000000000000000000000000000000000000dEaD",
+  "originChainId": 1337,
+  "originCurrency": "0x00000000000000000000000000000000",
+  "destinationChainId": 43114,
+  "destinationCurrency": "0xb97ef9ef8734c71904d8002f8b6bc66dd9c48a6e",
+  "amount": "1000000000",
+  "tradeType": "EXACT_INPUT",
+  "topupGas": true,
+  "topupGasAmount": "100000"
+ },
+ "details": {
+  "operation": "swap",
+  "sender": "0x000000000000000000000000000000000000dEaD",
+  "recipient": "0x000000000000000000000000000000000000dEaD",
+  "currencyIn": {
+   "currency": {
+    "chainId": 1337,
+    "address": "0x00000000000000000000000000000000",
+    "symbol": "USDC",
+    "name": "USDC (Perps)",
+    "decimals": 8,
+    "metadata": {
+     "logoURI": "https://ethereum-optimism.github.io/data/USDC/logo.png",
+     "verified": true
+    }
+   },
+   "amount": "1000000000",
+   "amountFormatted": "10.0",
+   "amountUsd": "9.998650",
+   "minimumAmount": "1000000000"
+  },
+  "currencyOut": {
+   "currency": {
+    "chainId": 43114,
+    "address": "0xb97ef9ef8734c71904d8002f8b6bc66dd9c48a6e",
+    "symbol": "USDC",
+    "name": "USD Coin",
+    "decimals": 6,
+    "metadata": {
+     "logoURI": "https://ethereum-optimism.github.io/data/USDC/logo.png",
+     "verified": true
+    }
+   },
+   "amount": "9856861",
+   "amountFormatted": "9.856861",
+   "amountUsd": "9.855653",
+   "minimumAmount": "9659724"
+  },
+  "currencyGasTopup": {
+   "currency": {
+    "chainId": 43114,
+    "address": "0x0000000000000000000000000000000000000000",
+    "symbol": "AVAX",
+    "name": "Avax",
+    "decimals": 18,
+    "metadata": {
+     "logoURI": "https://raw.githubusercontent.com/Uniswap/assets/master/blockchains/avalanchec/assets/0xB31f66AA3C1e785363F0875A1B74E27b85FD66c7/logo.png",
+     "verified": true
+    }
+   },
+   "amount": "10385424928488560",
+   "amountFormatted": "0.01038542492848856",
+   "amountUsd": "0.099770",
+   "minimumAmount": "10385424928488560"
+  }
+ }
+}

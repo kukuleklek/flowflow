@@ -1,0 +1,1390 @@
+/* ═══════════════════════════════════════════════════════════════════════════════════════════════════════════
+ * ui kit · motion.css — every motion token, keyframe and t-* class the source app ships
+ *
+ * PRIVATE KIT — FOR THE OWNER'S OWN APPS ONLY. The t-* transitions below are adapted from transitions.dev
+ * (© Jakub Antalik / Transitions.dev). Its licence lets you (and any coding agent working for you) use, copy and
+ * modify them in unlimited products of your own. It does NOT allow repackaging, reselling or publishing the
+ * collection as a transitions library, motion pack or animation kit. So: copy this file into your own apps;
+ * never publish it on its own (npm, a public repo of snippets, a template marketplace "motion kit", …).
+ * Full terms: https://transitions.dev/terms.html
+ *
+ * Source: the source app apps/web/src/app/globals.css ("MOTION" block, scope-v2 "Transitions" + "Motion v2"). Values,
+ * selectors and class names are unchanged (comments added, long values re-wrapped). Only two things differ:
+ *   · `.dark` rules also match `[data-theme="dark"]`;
+ *   · a plain-CSS stand-in for Tailwind's `animate-spin` (see "Spinner" at the end of @layer components).
+ *
+ * Needs tokens.css (the motion rules read --muted, --foreground, --card, --brand, --glow, --background).
+ *
+ * Rules:
+ *   · Rules never hardcode a duration or easing: they read a token, or a snippet variable that is itself a token
+ *     where the usage matches (transitions.dev "refine": map by usage, not by number).
+ *   · Animated properties: transform / translate / scale / opacity / filter only, plus width/height for card resize
+ *     and grid rows for the accordion (as the snippets ship them).
+ *   · Every block keeps its prefers-reduced-motion guard (DQ-24: movement becomes a --rm-fade-dur opacity
+ *     cross-fade; movement-only effects stay static). The global guard at the end is a safety net.
+ *
+ * WHY `@layer components` (keep it):
+ *   1. Tailwind v4 apps: the t-* rules land in Tailwind's own components layer, BELOW utilities, so a utility on
+ *      the same element still wins — the source app's Radix menus rely on that (`origin-(--radix-…-transform-origin)`
+ *      beats `.t-dropdown { transform-origin: top left }`).
+ *   2. Every app: !important declarations in a layer beat unlayered !important ones, so the per-snippet
+ *      reduced-motion cross-fades below win over the unlayered safety net at the end (fade, not hard cut).
+ *   In a plain-CSS app the layer simply ranks below your own unlayered CSS. If one of your resets overrides a
+ *   t-* rule, put that reset in an earlier layer (e.g. `@layer reset, components;`).
+ *
+ * Tailwind-only variables: the source app also points Tailwind's bare `transition*` utilities and `animate-spin` at these
+ * tokens (--default-transition-duration, --default-transition-timing-function, --animate-spin). They live in
+ * tailwind-v4.css (@theme inline), not here, so this file never changes Tailwind's defaults on its own.
+ * ═══════════════════════════════════════════════════════════════════════════════════════════════════════════ */
+
+:root {
+  /* ── Motion tokens — shared scale (transitions.dev _root.css, universal block) ── */
+  /* Durations */
+  --duration-stagger: 40ms; /* per-item stagger offset */
+  --duration-micro: 80ms; /* tooltip/path delay, shake segment, large stagger */
+  --duration-quick: 150ms; /* modal/dropdown close, text swap, tooltip appear */
+  --duration-fast: 250ms; /* icon swap, dropdown/modal open, tabs sliding, page slide */
+  --duration-medium: 350ms; /* panel close, toast close */
+  --duration-slow: 400ms; /* panel open, skeleton content reveal, input clear */
+  --duration-very-slow: 500ms; /* emphasis moments, badge appear, text reveal, success check */
+  --rm-fade-dur: var(--duration-quick); /* prefers-reduced-motion: every movement becomes this opacity fade */
+  /* Easings */
+  --ease-smooth-out: cubic-bezier(0.22, 1, 0.36, 1); /* modal/dropdown/panel open + close, page slide, resize, position change */
+  --ease-in-out: ease-in-out; /* icon swap, text swap, text reveal, skeleton reveal */
+  --ease-out: ease-out; /* tooltip open / close */
+  --ease-linear: linear; /* shimmer, skeleton pulse, spinner */
+  --ease-bounce: cubic-bezier(0.34, 1.36, 0.64, 1); /* badge pop open */
+  --ease-bounce-strong: cubic-bezier(0.34, 3.85, 0.64, 1); /* bouncy hover-out (avatar return) */
+  /* Distances */
+  --distance-micro: 4px; /* text swap */
+  --distance-small: 6px; /* error shake (small segment) */
+  --distance-base: 8px; /* badge diagonal reveal, page slide, error shake (large segment) */
+  --distance-medium: 12px; /* text reveal */
+  --distance-large: 30px; /* check badge appear */
+  /* Scales */
+  --scale-large: 0.96; /* modal open / close */
+  --scale-medium: 0.97; /* dropdown open; the source app button press */
+  --scale-small: 0.98; /* tooltip open */
+  --scale-tiny: 0.99; /* dropdown close; the source app card press */
+  /* Blur */
+  --blur-small: 2px; /* panel reveal, icon swap, text swap, skeleton reveal, number pop-in */
+  --blur-medium: 3px; /* page slide, text reveal */
+  --blur-large: 8px; /* success check open */
+
+  /* ── the source app semantic motion values with no matching token usage (kept, named, never inlined) ── */
+  --spinner-dur: 1000ms; /* one spinner revolution (Tailwind animate-spin) */
+  --skeleton-shimmer-dur: 1400ms; /* owner spec: low-contrast shimmer, 1.2–1.5 s per cycle */
+  --progress-indeterminate-dur: 1400ms; /* slim bar under long scans */
+  --exit-dur: var(--duration-medium); /* a list row that was removed fades out (panel/toast close clock) */
+
+  /* ── Snippet variables (only the transitions used here; token where usage matches) ── */
+  /* 01 Card resize */
+  --resize-dur: 300ms;
+  --resize-ease: var(--ease-smooth-out);
+  /* 02 Number pop-in */
+  --digit-dur: 500ms;
+  --digit-distance: 8px;
+  --digit-stagger: 70ms;
+  --digit-blur: var(--blur-small);
+  --digit-ease: cubic-bezier(0.34, 1.45, 0.64, 1);
+  --digit-dir-x: 0;
+  --digit-dir-y: 1;
+  /* 03 Notification badge */
+  --badge-slide-dur: 260ms;
+  --badge-pop-dur: var(--duration-very-slow);
+  --badge-pop-close-dur: 180ms;
+  --badge-fade-dur: var(--duration-slow);
+  --badge-fade-close-dur: 180ms;
+  --badge-blur: 2px;
+  --badge-offset-x: -8.2px;
+  --badge-offset-y: 12.4px;
+  --badge-slide-ease: var(--ease-smooth-out);
+  --badge-pop-ease: var(--ease-bounce);
+  --badge-close-ease: cubic-bezier(0.4, 0, 0.2, 1);
+  /* 04 Text states swap */
+  --text-swap-dur: var(--duration-quick);
+  --text-swap-translate-y: var(--distance-micro);
+  --text-swap-blur: var(--blur-small);
+  --text-swap-ease: var(--ease-in-out);
+  /* 05 Menu dropdown */
+  --dropdown-open-dur: var(--duration-fast);
+  --dropdown-close-dur: var(--duration-quick);
+  --dropdown-pre-scale: var(--scale-medium);
+  --dropdown-closing-scale: var(--scale-tiny);
+  --dropdown-ease: var(--ease-smooth-out);
+  /* 06 Modal open / close */
+  --modal-open-dur: var(--duration-fast);
+  --modal-close-dur: var(--duration-quick);
+  --modal-scale: var(--scale-large);
+  --modal-scale-close: var(--scale-large);
+  --modal-ease: var(--ease-smooth-out);
+  /* 08 Page side-by-side */
+  --page-slide-dur: var(--duration-fast);
+  --page-fade-dur: var(--duration-fast);
+  --page-slide-distance: var(--distance-base);
+  --page-blur: var(--blur-medium);
+  --page-slide-ease: var(--ease-smooth-out);
+  --page-fade-ease: var(--ease-smooth-out);
+  /* 09 Icon swap */
+  --icon-swap-dur: var(--duration-fast);
+  --icon-swap-blur: var(--blur-small);
+  --icon-swap-start-scale: 0.25;
+  --icon-swap-ease: var(--ease-in-out);
+  /* 10 Success check */
+  --check-opacity-dur: var(--duration-very-slow);
+  --check-rotate-dur: var(--duration-very-slow);
+  --check-rotate-from: 80deg;
+  --check-bob-dur: var(--duration-very-slow);
+  --check-y-amount: 40px;
+  --check-blur-dur: var(--duration-very-slow);
+  --check-blur-from: 10px;
+  --check-path-dur: var(--duration-very-slow);
+  --check-path-delay: var(--duration-micro);
+  --check-ease-out: var(--ease-smooth-out);
+  --check-ease-opacity: var(--ease-smooth-out);
+  --check-ease-rotate: var(--ease-smooth-out);
+  --check-ease-bob: cubic-bezier(0.34, 1.35, 0.64, 1);
+  --check-ease-path: var(--ease-smooth-out);
+  /* 12 Error state shake */
+  --shake-distance: var(--distance-small);
+  --shake-overshoot: var(--distance-micro);
+  --shake-dur-a: var(--duration-micro);
+  --shake-dur-b: 60ms;
+  --shake-ease: var(--ease-smooth-out);
+  --revert-dur: 280ms;
+  /* 14 Skeleton loader and reveal */
+  --reveal-dur: var(--duration-slow);
+  --reveal-blur: var(--blur-small);
+  --reveal-ease: var(--ease-in-out);
+  /* 15 Shimmer text (colours follow the theme) */
+  --shimmer-dur: 2000ms;
+  --shimmer-base: var(--muted-foreground);
+  --shimmer-highlight: var(--foreground);
+  --shimmer-band: 400%;
+  --shimmer-ease: var(--ease-linear);
+  /* 16 Tabs sliding (colours follow the theme) */
+  --tabs-dur: var(--duration-fast);
+  --tabs-ease: var(--ease-smooth-out);
+  --tabs-text-muted: var(--muted-foreground);
+  --tabs-text-active: var(--foreground);
+  --tabs-bar-bg: var(--muted);
+  --tabs-pill-bg: var(--background);
+  /* 17 Tooltip open/close */
+  --tt-in-dur: var(--duration-quick);
+  --tt-out-dur: 50ms;
+  --tt-scale: var(--scale-small);
+  --tt-delay: var(--duration-micro);
+  --tt-in-ease: var(--ease-out);
+  --tt-out-ease: var(--ease-out);
+  /* 18 Texts reveal */
+  --stagger-dur: var(--duration-very-slow);
+  --stagger-distance: var(--distance-medium);
+  --stagger-stagger: var(--duration-stagger);
+  --stagger-blur: var(--blur-medium);
+  --stagger-ease: var(--ease-smooth-out);
+  /* 21 Accordion expand */
+  --acc-expand: 250ms;
+  --acc-collapse: 250ms;
+  --acc-chevron: 250ms;
+  --acc-ease: var(--ease-smooth-out);
+  /* 22 Toast open / close */
+  --toast-open: 350ms;
+  --toast-close: 250ms;
+  --toast-distance: 16px;
+  --toast-blur: 2px;
+  --toast-scale: 0.97;
+  --toast-ease: var(--ease-smooth-out);
+  /* 27 Toggle */
+  --toggle-dur: 350ms;
+  --toggle-travel: 14.66px;
+  --toggle-ov1: 1px;
+  --toggle-ov2: 0px;
+  --toggle-track: 0ms;
+  --toggle-ease: cubic-bezier(0.34, 1.35, 0.64, 1);
+}
+/* 16 Tabs sliding, dark theme: the bar is a translucent card, the pill is the muted surface. */
+.dark,
+[data-theme="dark"] {
+  --tabs-bar-bg: color-mix(in oklch, var(--card) 60%, transparent);
+  --tabs-pill-bg: var(--muted);
+}
+
+/* ── Skeleton shimmer (the source app, owner spec; replaces transitions.dev 14's pulse) ──────────────────────────
+   Low contrast, one sweep per --skeleton-shimmer-dur, no pulsing (scope-v2 "Motion & loading").
+   Unlayered in the source, kept unlayered: it beats a utility background on the same placeholder. */
+@keyframes skeleton-shimmer {
+  from {
+    background-position: 150% 0;
+  }
+  to {
+    background-position: -50% 0;
+  }
+}
+.skeleton-shimmer {
+  background-color: var(--muted);
+  background-image: linear-gradient(
+    90deg,
+    transparent 0%,
+    color-mix(in oklch, var(--foreground) 5%, transparent) 50%,
+    transparent 100%
+  );
+  background-size: 200% 100%;
+  background-repeat: no-repeat;
+  animation: skeleton-shimmer var(--skeleton-shimmer-dur) var(--ease-linear) infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .skeleton-shimmer {
+    animation: none;
+  }
+}
+
+/* ── Wordmark dot blink (the source app owner decision; OPTIONAL pattern) ──────────────────────────────────────────
+   An accent-coloured period after a wordmark blinks like a live cursor: opacity 1 → 0.2 → 1 over 1.2 s, with a very
+   soft glow at full opacity. Static under reduced motion. Use it only with YOUR app's own wordmark, never the source app's.
+   Markup: <span class="wordmark">name<span class="wordmark-dot" style="color: var(--brand)">.</span></span> */
+:root {
+  --dot-blink-dur: 1200ms; /* owner spec: one blink per 1.2 s */
+}
+@keyframes t-dot-blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.2;
+  }
+}
+.wordmark-dot {
+  text-shadow: 0 0 0.35em color-mix(in oklch, var(--brand) 55%, transparent);
+  animation: t-dot-blink var(--dot-blink-dur) var(--ease-in-out) infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .wordmark-dot {
+    animation: none !important;
+  }
+}
+
+/* ── Landing glow (the source app) ────────────────────────────────────────────────────────────────────────────────
+   A very subtle accent glow behind the centre column (dark theme; --glow is transparent in light). the source app puts it on
+   an aria-hidden, pointer-events:none layer: absolute, -top-24 (6rem), centred, h 640px, w min(1100px, 100vw), z -1. */
+.landing-glow {
+  background: radial-gradient(closest-side, var(--glow), transparent);
+}
+
+@layer components {
+  /* Radix Presence keeps a closing popup mounted only while a CSS *animation* runs. The t-* surfaces below animate
+     with transitions (interruptible, they reverse from the current value), so their closed state also runs this
+     no-op animation for exactly the close duration: Radix unmounts when it ends. */
+  /* DQ-24 (scope-v2 "Reduced motion"): under prefers-reduced-motion every movement becomes this short opacity
+     cross-fade. Movement-only effects (shake, shimmer, spinners, number pop, tilt, pill slide) stay static. */
+  @keyframes t-rm-fade {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes t-presence-hold {
+    from,
+    to {
+      visibility: visible;
+    }
+  }
+
+  /* ── 01 Card resize ─────────────────────────────────────────────────────────── */
+  /* transitions.dev 01 as shipped + the source app: [data-resizing] clip (set by the AutoHeight component). */
+  .t-resize {
+    transition:
+      width var(--resize-dur) var(--resize-ease),
+      height var(--resize-dur) var(--resize-ease);
+    will-change: width, height;
+  }
+  /* the source app: clip only while the height tweens, so focus rings are never clipped at rest. */
+  .t-resize[data-resizing] {
+    overflow: hidden;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .t-resize {
+      transition: none !important;
+    }
+  }
+
+  /* ── 02 Number pop-in ───────────────────────────────────────────────────────── */
+  /* transitions.dev 02 as shipped + the source app: .t-digit[data-space]. */
+  @keyframes t-digit-pop-in {
+    0% {
+      transform: translate(
+        calc(var(--digit-distance) * var(--digit-dir-x)),
+        calc(var(--digit-distance) * var(--digit-dir-y))
+      );
+      opacity: 0;
+      filter: blur(var(--digit-blur));
+    }
+    100% {
+      transform: translate(0, 0);
+      opacity: 1;
+      filter: blur(0);
+    }
+  }
+  .t-digit-group {
+    display: inline-flex;
+    align-items: baseline;
+  }
+  .t-digit {
+    display: inline-block;
+    will-change: transform, opacity, filter;
+  }
+  .t-digit-group.is-animating .t-digit {
+    animation: t-digit-pop-in var(--digit-dur) var(--digit-ease) both;
+  }
+  .t-digit-group.is-animating .t-digit[data-stagger="1"] {
+    animation-delay: var(--digit-stagger);
+  }
+  .t-digit-group.is-animating .t-digit[data-stagger="2"] {
+    animation-delay: calc(var(--digit-stagger) * 2);
+  }
+  /* the source app: spaces keep their width inside the inline-flex group. */
+  .t-digit[data-space] {
+    white-space: pre;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .t-digit-group .t-digit {
+      animation: none !important;
+    }
+  }
+
+  /* ── 03 Notification badge ──────────────────────────────────────────────────── */
+  /* transitions.dev 03 + the source app: .t-badge--inline variant; reduced motion cross-fades instead of a hard cut. */
+  @keyframes t-badge-slide-in {
+    from {
+      transform: translate(var(--badge-offset-x), var(--badge-offset-y));
+    }
+    to {
+      transform: translate(0, 0);
+    }
+  }
+  .t-badge {
+    position: absolute;
+    top: -6px;
+    right: -8px;
+    pointer-events: none;
+    will-change: transform;
+  }
+  /* the source app: inline variant (count pills in rows) keeps the snippet's motion, sits in the text flow. */
+  .t-badge.t-badge--inline {
+    position: relative;
+    top: auto;
+    right: auto;
+    display: inline-flex;
+  }
+  .t-badge[data-open="true"] {
+    animation: t-badge-slide-in var(--badge-slide-dur) var(--badge-slide-ease);
+  }
+  .t-badge-dot {
+    display: block;
+    transform-origin: center;
+    transform: scale(1);
+    opacity: 1;
+    filter: blur(0);
+    transition:
+      transform var(--badge-pop-dur) var(--badge-pop-ease),
+      opacity var(--badge-fade-dur) var(--badge-pop-ease),
+      filter var(--badge-pop-dur) var(--badge-pop-ease);
+    will-change: transform, opacity, filter;
+  }
+  .t-badge[data-open="false"] .t-badge-dot {
+    transform: scale(0);
+    opacity: 0;
+    filter: blur(var(--badge-blur));
+    transition:
+      transform var(--badge-pop-close-dur) var(--badge-close-ease),
+      opacity var(--badge-fade-close-dur) var(--badge-close-ease),
+      filter var(--badge-pop-close-dur) var(--badge-close-ease);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .t-badge {
+      animation: none !important;
+    }
+    /* DQ-24: the badge cross-fades in and out instead of popping. */
+    .t-badge-dot,
+    .t-badge[data-open="false"] .t-badge-dot {
+      transform: none !important;
+      filter: none !important;
+      transition: opacity var(--rm-fade-dur) var(--ease-in-out) !important;
+    }
+  }
+
+  /* ── 04 Text states swap ────────────────────────────────────────────────────── */
+  /* transitions.dev 04 as shipped; reduced motion cross-fades instead of a hard cut. */
+  .t-text-swap {
+    display: inline-block;
+    transform: translateY(0);
+    filter: blur(0);
+    opacity: 1;
+    transition:
+      transform var(--text-swap-dur) var(--text-swap-ease),
+      filter var(--text-swap-dur) var(--text-swap-ease),
+      opacity var(--text-swap-dur) var(--text-swap-ease);
+    will-change: transform, filter, opacity;
+  }
+  .t-text-swap.is-exit {
+    transform: translateY(calc(var(--text-swap-translate-y) * -1));
+    filter: blur(var(--text-swap-blur));
+    opacity: 0;
+  }
+  .t-text-swap.is-enter-start {
+    transform: translateY(var(--text-swap-translate-y));
+    filter: blur(var(--text-swap-blur));
+    opacity: 0;
+    transition: none;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .t-text-swap {
+      transition: opacity var(--rm-fade-dur) var(--ease-in-out) !important;
+      transform: none !important;
+      filter: none !important;
+    }
+  }
+
+  /* ── 05 Menu dropdown ───────────────────────────────────────────────────────── */
+  /* transitions.dev 05 (.is-open / .is-closing / data-origin) + the source app: Radix adapter ([data-state], @starting-style,
+     t-presence-hold); reduced motion cross-fades. */
+  .t-dropdown {
+    transform-origin: top left;
+    transform: scale(var(--dropdown-pre-scale));
+    opacity: 0;
+    pointer-events: none;
+    transition:
+      transform var(--dropdown-open-dur) var(--dropdown-ease),
+      opacity var(--dropdown-open-dur) var(--dropdown-ease);
+    will-change: transform, opacity;
+  }
+  .t-dropdown[data-origin="top-right"] {
+    transform-origin: top right;
+  }
+  .t-dropdown[data-origin="top-center"] {
+    transform-origin: top center;
+  }
+  .t-dropdown[data-origin="bottom-left"] {
+    transform-origin: bottom left;
+  }
+  .t-dropdown[data-origin="bottom-center"] {
+    transform-origin: bottom center;
+  }
+  .t-dropdown[data-origin="bottom-right"] {
+    transform-origin: bottom right;
+  }
+  .t-dropdown.is-open {
+    transform: scale(1);
+    opacity: 1;
+    pointer-events: auto;
+  }
+  .t-dropdown.is-closing {
+    transform: scale(var(--dropdown-closing-scale));
+    opacity: 0;
+    pointer-events: none;
+    transition:
+      transform var(--dropdown-close-dur) var(--dropdown-ease),
+      opacity var(--dropdown-close-dur) var(--dropdown-ease);
+  }
+  /* Radix adapter: [data-state=open] is .is-open (entering from the pre-open scale via @starting-style), and
+     [data-state=closed] is .is-closing. The transform-origin comes from Radix's measured trigger origin
+     (--radix-*-content-transform-origin, set by the component's origin-(…) utility), so menus grow from their trigger.
+     Without Tailwind, set it yourself on the content element:
+       transform-origin: var(--radix-dropdown-menu-content-transform-origin);   (or …-popover-… / …-select-…) */
+  .t-dropdown[data-state="open"] {
+    transform: scale(1);
+    opacity: 1;
+    pointer-events: auto;
+  }
+  @starting-style {
+    .t-dropdown[data-state="open"] {
+      transform: scale(var(--dropdown-pre-scale));
+      opacity: 0;
+    }
+  }
+  .t-dropdown[data-state="closed"] {
+    transform: scale(var(--dropdown-closing-scale));
+    opacity: 0;
+    pointer-events: none;
+    transition:
+      transform var(--dropdown-close-dur) var(--dropdown-ease),
+      opacity var(--dropdown-close-dur) var(--dropdown-ease);
+    animation: t-presence-hold var(--dropdown-close-dur) var(--ease-linear);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .t-dropdown {
+      transition: opacity var(--rm-fade-dur) var(--ease-in-out) !important;
+    }
+  }
+
+  /* ── 06 Modal open / close ──────────────────────────────────────────────────── */
+  /* transitions.dev 06 (.is-open / .is-closing) + the source app: Radix adapter, .t-modal-scrim; reduced motion cross-fades. */
+  .t-modal {
+    transform-origin: center;
+    transform: scale(var(--modal-scale));
+    opacity: 0;
+    pointer-events: none;
+    transition:
+      transform var(--modal-open-dur) var(--modal-ease),
+      opacity var(--modal-open-dur) var(--modal-ease);
+    will-change: transform, opacity;
+  }
+  .t-modal.is-open {
+    transform: scale(1);
+    opacity: 1;
+    pointer-events: auto;
+  }
+  .t-modal.is-closing {
+    transform: scale(var(--modal-scale-close));
+    opacity: 0;
+    pointer-events: none;
+    transition:
+      transform var(--modal-close-dur) var(--modal-ease),
+      opacity var(--modal-close-dur) var(--modal-ease);
+  }
+  /* Radix adapter (same mapping as the dropdown). The dialog stays interruptible: Escape / outside click / Close
+     work at any point, and a re-open mid-close reverses from the current frame. */
+  .t-modal[data-state="open"] {
+    transform: scale(1);
+    opacity: 1;
+    pointer-events: auto;
+  }
+  @starting-style {
+    .t-modal[data-state="open"] {
+      transform: scale(var(--modal-scale));
+      opacity: 0;
+    }
+  }
+  .t-modal[data-state="closed"] {
+    transform: scale(var(--modal-scale-close));
+    opacity: 0;
+    pointer-events: none;
+    transition:
+      transform var(--modal-close-dur) var(--modal-ease),
+      opacity var(--modal-close-dur) var(--modal-ease);
+    animation: t-presence-hold var(--modal-close-dur) var(--ease-linear);
+  }
+  /* the source app: the scrim fades on the modal's clocks. */
+  .t-modal-scrim {
+    opacity: 1;
+    transition: opacity var(--modal-open-dur) var(--modal-ease);
+  }
+  @starting-style {
+    .t-modal-scrim[data-state="open"] {
+      opacity: 0;
+    }
+  }
+  .t-modal-scrim[data-state="closed"] {
+    opacity: 0;
+    transition: opacity var(--modal-close-dur) var(--modal-ease);
+    animation: t-presence-hold var(--modal-close-dur) var(--ease-linear);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .t-modal,
+    .t-modal-scrim {
+      transition: opacity var(--rm-fade-dur) var(--ease-in-out) !important;
+    }
+  }
+
+  /* ── 08 Page side-by-side (wizard steps) ─────────────────────────────────────
+     transitions.dev 08's values (slide distance, fade, cross-blur, clock), re-composed by the source app as an entrance.
+     The snippet stacks two absolutely-positioned pages; a wizard has five steps of different heights, so the source app
+     plays the same page motion as an entrance on the step that becomes active: it slides in from the side it
+     lives on (forward: from the right, back: from the left) with the snippet's fade + cross-blur. */
+  @keyframes t-page-enter {
+    from {
+      opacity: 0;
+      transform: translateX(var(--t-page-from-x, 0px));
+      filter: blur(var(--page-blur));
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+      filter: blur(0);
+    }
+  }
+  /* backwards fill: the from-state holds during any delay, and nothing (no transform / filter) lingers after. */
+  .t-page {
+    animation: t-page-enter var(--page-slide-dur) var(--page-slide-ease) backwards;
+  }
+  .t-page[data-dir="forward"] {
+    --t-page-from-x: var(--page-slide-distance);
+  }
+  .t-page[data-dir="back"] {
+    --t-page-from-x: calc(var(--page-slide-distance) * -1);
+  }
+  .t-page[data-dir="none"] {
+    animation: none;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .t-page {
+      animation: t-rm-fade var(--rm-fade-dur) var(--ease-in-out) both !important;
+    }
+  }
+
+  /* ── 09 Icon swap ───────────────────────────────────────────────────────────── */
+  /* transitions.dev 09 + the source app: four states (a–d, the snippet has a/b), centred icon cells; reduced motion
+     cross-fades. */
+  .t-icon-swap {
+    position: relative;
+    display: inline-grid;
+  }
+  .t-icon-swap .t-icon {
+    grid-area: 1 / 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition:
+      opacity var(--icon-swap-dur) var(--icon-swap-ease),
+      filter var(--icon-swap-dur) var(--icon-swap-ease),
+      transform var(--icon-swap-dur) var(--icon-swap-ease);
+    will-change: opacity, filter, transform;
+  }
+  .t-icon-swap[data-state="a"] .t-icon[data-icon="a"],
+  .t-icon-swap[data-state="b"] .t-icon[data-icon="b"],
+  .t-icon-swap[data-state="c"] .t-icon[data-icon="c"],
+  .t-icon-swap[data-state="d"] .t-icon[data-icon="d"] {
+    opacity: 1;
+    filter: blur(0);
+    transform: scale(1);
+  }
+  .t-icon-swap[data-state="a"] .t-icon:not([data-icon="a"]),
+  .t-icon-swap[data-state="b"] .t-icon:not([data-icon="b"]),
+  .t-icon-swap[data-state="c"] .t-icon:not([data-icon="c"]),
+  .t-icon-swap[data-state="d"] .t-icon:not([data-icon="d"]) {
+    opacity: 0;
+    filter: blur(var(--icon-swap-blur));
+    transform: scale(var(--icon-swap-start-scale));
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .t-icon-swap .t-icon {
+      transition: opacity var(--rm-fade-dur) var(--ease-in-out) !important;
+      transform: none !important;
+      filter: none !important;
+    }
+  }
+
+  /* ── 10 Success check ───────────────────────────────────────────────────────── */
+  /* transitions.dev 10 + the source app: dash length calibrated to its tick path; reduced motion fades the finished tick in. */
+  .t-success-check {
+    display: inline-block;
+    transform-origin: center;
+    opacity: 0;
+    will-change: transform, opacity, filter;
+  }
+  .t-success-check svg {
+    display: block;
+    overflow: visible;
+  }
+  /* Calibrated for SuccessCheck's tick path (getTotalLength() = 28.28, rounded up by 1).
+     A different path needs its own value: ceil(path.getTotalLength()) + 1. */
+  .t-success-check svg path {
+    stroke-dasharray: 30;
+    stroke-dashoffset: 30;
+  }
+  .t-success-check[data-state="in"] {
+    animation:
+      t-check-fade var(--check-opacity-dur) var(--check-ease-opacity) forwards,
+      t-check-rotate var(--check-rotate-dur) var(--check-ease-rotate) forwards,
+      t-check-blur var(--check-blur-dur) var(--check-ease-out) forwards,
+      t-check-bob var(--check-bob-dur) var(--check-ease-bob) forwards;
+  }
+  .t-success-check[data-state="in"] svg path {
+    animation: t-check-draw var(--check-path-dur) var(--check-ease-path) var(--check-path-delay, 0ms) forwards;
+  }
+  @keyframes t-check-fade {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  @keyframes t-check-rotate {
+    from {
+      transform: rotate(var(--check-rotate-from));
+    }
+    to {
+      transform: rotate(0deg);
+    }
+  }
+  @keyframes t-check-blur {
+    from {
+      filter: blur(var(--check-blur-from));
+    }
+    to {
+      filter: blur(0);
+    }
+  }
+  @keyframes t-check-bob {
+    from {
+      translate: 0 var(--check-y-amount);
+    }
+    to {
+      translate: 0 0;
+    }
+  }
+  @keyframes t-check-draw {
+    to {
+      stroke-dashoffset: 0;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .t-success-check {
+      animation: t-rm-fade var(--rm-fade-dur) var(--ease-in-out) both !important;
+      opacity: 1;
+    }
+    .t-success-check svg path {
+      animation: none !important;
+      stroke-dashoffset: 0 !important;
+    }
+  }
+
+  /* ── 12 Error state shake (shake + border tween; the source app keeps its own persistent error text: a validation
+     error on an address or amount must not auto-revert while the value is still wrong) ──
+     transitions.dev 12's shake keyframes + border tween. Not ported: the snippet's .t-input-wrap / .t-error-msg
+     auto-reverting message and .is-error revert timing. --revert-dur is kept as a token only. */
+  .t-input {
+    transition: border-color var(--duration-quick) var(--ease-out);
+    will-change: transform;
+  }
+  .t-input.is-shaking {
+    animation: t-input-shake calc(var(--shake-dur-a) * 2 + var(--shake-dur-b) * 2) var(--ease-linear);
+  }
+  /* %-stops are cumulative segment durations (80, 60, 80, 60 = 280 ms): 28.57 %, 57.14 %, 78.57 %, 100 %. */
+  @keyframes t-input-shake {
+    0% {
+      transform: translateX(0);
+      animation-timing-function: var(--shake-ease);
+    }
+    28.57% {
+      transform: translateX(var(--shake-distance));
+      animation-timing-function: var(--shake-ease);
+    }
+    57.14% {
+      transform: translateX(calc(var(--shake-distance) * -1));
+      animation-timing-function: var(--shake-ease);
+    }
+    78.57% {
+      transform: translateX(var(--shake-overshoot));
+      animation-timing-function: var(--shake-ease);
+    }
+    100% {
+      transform: translateX(0);
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .t-input {
+      animation: none !important;
+      transform: none !important;
+    }
+  }
+
+  /* ── 14 Skeleton loader and reveal (shimmer kept per owner spec; the reveal is the snippet's cross-fade +
+     cross-blur). Both layers share one grid cell instead of absolute insets, so the slot sizes itself. ──
+     transitions.dev 14's reveal. Not ported: its .is-pulsing pulse (replaced by .skeleton-shimmer above). */
+  .t-skel {
+    position: relative;
+    display: grid;
+  }
+  .t-skel-skeleton,
+  .t-skel-content {
+    grid-area: 1 / 1;
+    min-width: 0;
+  }
+  .t-skel-skeleton {
+    z-index: 1;
+    opacity: 1;
+    filter: blur(0);
+    transition:
+      opacity var(--reveal-dur) var(--reveal-ease),
+      filter var(--reveal-dur) var(--reveal-ease);
+  }
+  .t-skel-content {
+    z-index: 2;
+    opacity: 0;
+    filter: blur(var(--reveal-blur));
+    transition:
+      opacity var(--reveal-dur) var(--reveal-ease),
+      filter var(--reveal-dur) var(--reveal-ease);
+  }
+  .t-skel.is-revealed .t-skel-skeleton {
+    opacity: 0;
+    filter: blur(var(--reveal-blur));
+  }
+  .t-skel.is-revealed .t-skel-content {
+    opacity: 1;
+    filter: blur(0);
+  }
+  .t-skel.is-resetting .t-skel-skeleton,
+  .t-skel.is-resetting .t-skel-content {
+    transition: none !important;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .t-skel-skeleton,
+    .t-skel-content {
+      transition: opacity var(--rm-fade-dur) var(--ease-in-out) !important;
+    }
+  }
+
+  /* ── 15 Shimmer text ────────────────────────────────────────────────────────── */
+  /* transitions.dev 15 as shipped; colours read the theme (--shimmer-base / --shimmer-highlight above).
+     Markup: <span class="t-shimmer" data-text="Connecting…">Connecting…</span> (data-text = the visible text). */
+  .t-shimmer {
+    position: relative;
+    display: inline-block;
+    color: var(--shimmer-base);
+  }
+  .t-shimmer::before {
+    content: attr(data-text);
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background-image: linear-gradient(
+      90deg,
+      transparent 0%,
+      transparent 40%,
+      var(--shimmer-highlight) 50%,
+      transparent 60%,
+      transparent 100%
+    );
+    background-size: var(--shimmer-band) 100%;
+    background-repeat: no-repeat;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+    animation: t-shimmer var(--shimmer-dur) var(--shimmer-ease) infinite;
+  }
+  @keyframes t-shimmer {
+    0% {
+      background-position: 100% 0;
+    }
+    100% {
+      background-position: 0% 0;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .t-shimmer::before {
+      animation: none !important;
+    }
+  }
+
+  /* ── 16 Tabs sliding (bar/tab sizes are overridden by each component's utilities) ── */
+  /* transitions.dev 16 + the source app: aria-current="page" (nav tabs), pre-hydration fallbacks (:has), .t-tab-panel
+     cross-fade; colours read the theme. */
+  .t-tabs {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
+    padding: 3px;
+    border-radius: 48px;
+    background: var(--tabs-bar-bg);
+  }
+  .t-tab {
+    position: relative;
+    appearance: none;
+    border: 0;
+    background: transparent;
+    height: 30px;
+    padding: 4px 12px;
+    color: var(--tabs-text-muted);
+    cursor: pointer;
+    border-radius: 48px;
+    z-index: 1;
+    transition: color var(--tabs-dur) var(--tabs-ease);
+  }
+  .t-tab:not([aria-selected="true"]):hover,
+  .t-tab[aria-selected="true"],
+  .t-tab[aria-current="page"] {
+    color: var(--tabs-text-active);
+  }
+  /* the source app: before the pill is measured (static HTML, pre-hydration) the active tab carries the pill colour. */
+  .t-tabs:not(:has(> .t-tabs-pill[data-ready])) > .t-tab[aria-current="page"],
+  .t-tabs:not(:has(> .t-tabs-pill[data-ready])) > .t-tab[aria-selected="true"] {
+    background: var(--tabs-pill-bg);
+  }
+  .t-tabs-pill {
+    position: absolute;
+    top: 3px;
+    left: 0;
+    height: 30px;
+    width: 0;
+    background: var(--tabs-pill-bg);
+    border-radius: 48px;
+    transform: translateX(0);
+    transition:
+      transform var(--tabs-dur) var(--tabs-ease),
+      width var(--tabs-dur) var(--tabs-ease);
+    will-change: transform, width;
+    z-index: 0;
+    pointer-events: none;
+  }
+  /* QA-F8: until useSlidingPill has measured the active tab (static HTML before hydration) the pill has no size or
+     position, and its indicator would show as a stray dash at the control's edge. Hide it; the rule above styles the
+     active tab itself in the meantime. */
+  .t-tabs-pill:not([data-ready]) {
+    visibility: hidden;
+  }
+  /* the source app: the panel that a tab reveals cross-fades in. */
+  @keyframes t-tab-panel-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  .t-tab-panel {
+    animation: t-tab-panel-in var(--duration-quick) var(--ease-in-out);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .t-tabs-pill,
+    .t-tab {
+      transition: none !important;
+    }
+    .t-tab-panel {
+      animation: t-rm-fade var(--rm-fade-dur) var(--ease-in-out) both !important;
+    }
+  }
+
+  /* ── 17 Tooltip open/close (Radix positions each tooltip, so the snippet's shared-bubble travel is not used;
+     the appear keeps its delay + fade + scale, the leave is near-instant) ──
+     transitions.dev 17's appear/leave clocks + the source app's Radix adapter. Not ported: .t-tt-group / .t-tt-text /
+     .t-tt-trigger, the translate/width travel lanes and the bubble's own look (the source app styles it with the
+     popover tokens). */
+  .t-tt {
+    scale: var(--tt-scale);
+    opacity: 0;
+    pointer-events: none;
+    transition:
+      opacity var(--tt-out-dur) var(--tt-out-ease),
+      scale var(--tt-out-dur) var(--tt-out-ease);
+  }
+  .t-tt[data-show="true"],
+  .t-tt[data-state="delayed-open"],
+  .t-tt[data-state="instant-open"] {
+    opacity: 1;
+    scale: 1;
+    pointer-events: auto;
+    transition:
+      opacity var(--tt-in-dur) var(--tt-in-ease) var(--tt-delay),
+      scale var(--tt-in-dur) var(--tt-in-ease) var(--tt-delay);
+  }
+  .t-tt[data-state="instant-open"] {
+    transition-delay: 0ms;
+  }
+  @starting-style {
+    .t-tt[data-state="delayed-open"],
+    .t-tt[data-state="instant-open"] {
+      opacity: 0;
+      scale: var(--tt-scale);
+    }
+  }
+  .t-tt[data-state="closed"] {
+    animation: t-presence-hold var(--tt-out-dur) var(--ease-linear);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .t-tt {
+      transition: opacity var(--rm-fade-dur) var(--ease-in-out) !important;
+    }
+  }
+
+  /* ── 18 Texts reveal ────────────────────────────────────────────────────────── */
+  /* transitions.dev 18 as shipped; reduced motion cross-fades. the source app: the sign-in heading + subline, once. */
+  .t-stagger-line {
+    display: block;
+    opacity: 0;
+    transform: translateY(var(--stagger-distance));
+    filter: blur(var(--stagger-blur));
+    transition:
+      opacity var(--stagger-dur) var(--stagger-ease),
+      transform var(--stagger-dur) var(--stagger-ease),
+      filter var(--stagger-dur) var(--stagger-ease);
+    will-change: transform, opacity, filter;
+  }
+  .t-stagger-line--2 {
+    transition-delay: var(--stagger-stagger);
+  }
+  .t-stagger.is-shown .t-stagger-line {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .t-stagger-line {
+      transition: opacity var(--rm-fade-dur) var(--ease-in-out) !important;
+      transform: none !important;
+      filter: none !important;
+    }
+  }
+
+  /* ── 21 Accordion expand ────────────────────────────────────────────────────── */
+  /* transitions.dev 21 as shipped (blur reads --blur-small); reduced motion: the height snaps, the content fades. */
+  .t-acc-panel {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows var(--acc-collapse) var(--acc-ease);
+  }
+  .t-acc[data-open="true"] .t-acc-panel {
+    grid-template-rows: 1fr;
+    transition: grid-template-rows var(--acc-expand) var(--acc-ease);
+  }
+  .t-acc-panel-inner {
+    overflow: hidden;
+    opacity: 0;
+    filter: blur(var(--blur-small));
+    transition:
+      opacity var(--acc-collapse) var(--acc-ease),
+      filter var(--acc-collapse) var(--acc-ease);
+  }
+  .t-acc[data-open="true"] .t-acc-panel-inner {
+    opacity: 1;
+    filter: blur(0);
+    transition:
+      opacity var(--acc-expand) var(--acc-ease),
+      filter var(--acc-expand) var(--acc-ease);
+  }
+  .t-acc-chevron {
+    display: inline-flex;
+    transform: scaleY(1);
+    transform-origin: center;
+    transition: transform var(--acc-chevron) var(--acc-ease);
+  }
+  .t-acc-chevron path {
+    vector-effect: non-scaling-stroke;
+  }
+  .t-acc[data-open="true"] .t-acc-chevron {
+    transform: scaleY(-1);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .t-acc-panel,
+    .t-acc-chevron {
+      transition: none !important;
+    }
+    .t-acc-panel-inner {
+      transition: opacity var(--rm-fade-dur) var(--ease-in-out) !important;
+    }
+  }
+
+  /* ── 27 Toggle (Radix Switch: [data-state=checked] is the snippet's [data-on=true]) ── */
+  /* transitions.dev 27 + the source app: Radix Switch states, per-size travel (data-size="default" | "sm"). */
+  .t-toggle {
+    transition: background-color var(--toggle-track) var(--toggle-ease);
+  }
+  .t-toggle[data-size="default"] {
+    --toggle-travel: 14px;
+  }
+  .t-toggle[data-size="sm"] {
+    --toggle-travel: 10px;
+  }
+  .t-toggle-thumb {
+    translate: 0 0;
+    will-change: translate;
+  }
+  .t-toggle[data-on="true"] .t-toggle-thumb,
+  .t-toggle[data-state="checked"] .t-toggle-thumb {
+    translate: var(--toggle-travel) 0;
+  }
+  .t-toggle.is-init[data-on="true"] .t-toggle-thumb,
+  .t-toggle.is-init[data-state="checked"] .t-toggle-thumb {
+    animation: t-toggle-on var(--toggle-dur) var(--toggle-ease) both;
+  }
+  .t-toggle.is-init[data-on="false"] .t-toggle-thumb,
+  .t-toggle.is-init[data-state="unchecked"] .t-toggle-thumb {
+    animation: t-toggle-off var(--toggle-dur) var(--toggle-ease) both;
+  }
+  @keyframes t-toggle-on {
+    0% {
+      translate: 0 0;
+    }
+    55% {
+      translate: calc(var(--toggle-travel) + var(--toggle-ov1)) 0;
+    }
+    80% {
+      translate: calc(var(--toggle-travel) - var(--toggle-ov2)) 0;
+    }
+    100% {
+      translate: var(--toggle-travel) 0;
+    }
+  }
+  @keyframes t-toggle-off {
+    0% {
+      translate: var(--toggle-travel) 0;
+    }
+    55% {
+      translate: calc(0px - var(--toggle-ov1)) 0;
+    }
+    80% {
+      translate: var(--toggle-ov2) 0;
+    }
+    100% {
+      translate: 0 0;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .t-toggle-thumb {
+      animation: none !important;
+    }
+  }
+
+  /* ── the source app entrances (Motion v2), composed from the tokens ───────────────────
+     Not transitions.dev snippets: the source app's own compositions of the shared token scale (t-rise reuses snippet 18's
+     blurred rise; t-swap-in reuses snippet 04's enter state; t-materialize follows apple-design §12).
+     t-rise: a list row / page block rises in once when it mounts (first load, or an insert later). Polling never
+     remounts a keyed row, so updates do not replay it. --i staggers first-load rows (capped by the component). */
+  @keyframes t-rise {
+    from {
+      opacity: 0;
+      transform: translateY(var(--distance-base));
+      filter: blur(var(--blur-small));
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+      filter: blur(0);
+    }
+  }
+  .t-rise {
+    animation: t-rise var(--duration-slow) var(--ease-smooth-out) backwards;
+    animation-delay: calc(var(--i, 0) * var(--duration-stagger));
+  }
+  /* t-exit: a removed list row fades out in place (usePresenceList keeps it mounted for --exit-dur, inert). */
+  @keyframes t-exit {
+    from {
+      opacity: 1;
+      transform: translateY(0);
+      filter: blur(0);
+    }
+    to {
+      opacity: 0;
+      transform: translateY(calc(var(--distance-micro) * -1));
+      filter: blur(var(--blur-small));
+    }
+  }
+  @keyframes t-rm-fade-out {
+    from {
+      opacity: 1;
+    }
+    to {
+      opacity: 0;
+    }
+  }
+  .t-exit {
+    animation: t-exit var(--exit-dur) var(--ease-smooth-out) forwards;
+    pointer-events: none;
+  }
+  /* Page entry: each top-level block of a route rises in with a 40 ms stagger (max 6 blocks), first paint only. */
+  .t-enter > * {
+    animation: t-rise var(--duration-very-slow) var(--ease-smooth-out) backwards;
+  }
+  .t-enter > :nth-child(2) {
+    animation-delay: calc(var(--duration-stagger) * 1);
+  }
+  .t-enter > :nth-child(3) {
+    animation-delay: calc(var(--duration-stagger) * 2);
+  }
+  .t-enter > :nth-child(4) {
+    animation-delay: calc(var(--duration-stagger) * 3);
+  }
+  .t-enter > :nth-child(5) {
+    animation-delay: calc(var(--duration-stagger) * 4);
+  }
+  .t-enter > :nth-child(n + 6) {
+    animation-delay: calc(var(--duration-stagger) * 5);
+  }
+  /* A surface that appears in place (account chip, swapped badge): the text-swap entrance. */
+  @keyframes t-swap-in {
+    from {
+      opacity: 0;
+      transform: translateY(var(--text-swap-translate-y));
+      filter: blur(var(--text-swap-blur));
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+      filter: blur(0);
+    }
+  }
+  .t-swap-in {
+    animation: t-swap-in var(--duration-fast) var(--ease-in-out) backwards;
+  }
+  /* Header pill "materializes" once on load (blur + scale, apple-design §12). */
+  @keyframes t-materialize {
+    from {
+      opacity: 0;
+      transform: scale(var(--scale-medium));
+      filter: blur(var(--blur-large));
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+      filter: blur(0);
+    }
+  }
+  .t-materialize {
+    animation: t-materialize var(--duration-very-slow) var(--ease-smooth-out) backwards;
+  }
+  /* Interactive cards / rows: hover lifts 1px and brightens the border; press settles to --scale-tiny. */
+  .t-lift {
+    transition:
+      transform var(--duration-quick) var(--ease-out),
+      border-color var(--duration-quick) var(--ease-out),
+      background-color var(--duration-quick) var(--ease-out);
+  }
+  @media (hover: hover) {
+    .t-lift:hover {
+      transform: translateY(-1px);
+      border-color: color-mix(in oklch, var(--foreground) 18%, transparent);
+    }
+  }
+  .t-lift:active {
+    transform: scale(var(--scale-tiny));
+  }
+  /* Slim indeterminate bar under long scans. */
+  @keyframes t-indeterminate {
+    from {
+      transform: translateX(-100%);
+    }
+    to {
+      transform: translateX(300%);
+    }
+  }
+  .t-indeterminate {
+    animation: t-indeterminate var(--progress-indeterminate-dur) var(--ease-in-out) infinite;
+  }
+  /* "Updating" dot next to a section title during a background refetch. */
+  @keyframes t-updating {
+    0%,
+    100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.35;
+    }
+  }
+  .t-updating {
+    animation: t-updating var(--skeleton-shimmer-dur) var(--ease-in-out) infinite;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    /* DQ-24: entries become short opacity cross-fades (no movement), never hard cuts. */
+    .t-rise,
+    .t-enter > *,
+    .t-swap-in,
+    .t-materialize {
+      animation: t-rm-fade var(--rm-fade-dur) var(--ease-in-out) both !important;
+    }
+    .t-exit {
+      animation: t-rm-fade-out var(--rm-fade-dur) var(--ease-in-out) forwards !important;
+    }
+    .t-indeterminate,
+    .t-updating {
+      animation: none !important;
+    }
+    .t-lift,
+    .t-lift:hover,
+    .t-lift:active {
+      transform: none !important;
+    }
+  }
+
+  /* ── Spinner: plain-CSS stand-in for Tailwind's animate-spin (kit addition) ───────────────────────────────
+     the source app retimes Tailwind's utility in @theme (--animate-spin: spin var(--spinner-dur) var(--ease-linear) infinite);
+     these two rules give non-Tailwind apps the same class with the same values. In a Tailwind app the utility of the
+     same name wins (utilities layer) and is identical, so they are harmless there. The global reduced-motion guard
+     at the end stops it. */
+  @keyframes spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  .animate-spin {
+    animation: spin var(--spinner-dur) var(--ease-linear) infinite;
+  }
+}
+
+/* ── 22 Toast open / close, mapped onto sonner's own state attributes ──────────────
+   transitions.dev 22's clocks, distance, blur and scale, applied to sonner (the snippet's .t-toast is not used).
+   Requires sonner with className="toaster" on <Toaster> and toastOptions.classNames.toast = "cn-toast" (as in
+   the source app's components/ui/sonner.tsx). The repeated classes are deliberate specificity, not typos.
+   Sonner injects its stylesheet at runtime (after ours), so these selectors out-rank it on specificity. Opening runs
+   on the slower --toast-open clock, closing on --toast-close (sonner unmounts 200 ms after removal). Stack offsets
+   and swipe keep sonner's own transforms. */
+.toaster.toaster [data-sonner-toast].cn-toast.cn-toast {
+  filter: blur(var(--toast-blur));
+  transition:
+    transform var(--toast-close) var(--toast-ease),
+    opacity var(--toast-close) var(--toast-ease),
+    filter var(--toast-close) var(--toast-ease),
+    height var(--toast-open) var(--toast-ease),
+    box-shadow var(--duration-quick) var(--ease-out);
+}
+.toaster.toaster [data-sonner-toast][data-y-position="bottom"][data-mounted="false"].cn-toast {
+  --y: translateY(var(--toast-distance)) scale(var(--toast-scale));
+}
+.toaster.toaster [data-sonner-toast][data-y-position="top"][data-mounted="false"].cn-toast {
+  --y: translateY(calc(var(--toast-distance) * -1)) scale(var(--toast-scale));
+}
+.toaster.toaster [data-sonner-toast][data-mounted="true"].cn-toast.cn-toast {
+  filter: blur(0);
+  transition:
+    transform var(--toast-open) var(--toast-ease),
+    opacity var(--toast-open) var(--toast-ease),
+    filter var(--toast-open) var(--toast-ease),
+    height var(--toast-open) var(--toast-ease),
+    box-shadow var(--duration-quick) var(--ease-out);
+}
+.toaster.toaster [data-sonner-toast][data-mounted="true"][data-removed="true"].cn-toast.cn-toast.cn-toast {
+  filter: blur(var(--toast-blur));
+  transition:
+    transform var(--toast-close) var(--toast-ease),
+    opacity var(--toast-close) var(--toast-ease),
+    filter var(--toast-close) var(--toast-ease),
+    height var(--toast-close) var(--toast-ease),
+    box-shadow var(--duration-quick) var(--ease-out);
+}
+.toaster.toaster [data-sonner-toast][data-swiping="true"].cn-toast.cn-toast.cn-toast.cn-toast {
+  transition: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .toaster.toaster [data-sonner-toast].cn-toast.cn-toast.cn-toast.cn-toast.cn-toast {
+    transition: opacity var(--rm-fade-dur) var(--ease-in-out) !important;
+    filter: none !important;
+  }
+}
+
+/* ── Theme change cross-fade (the source app) ─────────────────────────────────────────────────────────────────────
+   Theme change cross-fades through a view transition, on the icon-swap clock. Wrap the theme switch in
+   document.startViewTransition(() => applyTheme()) — skip it when the API is missing or reduced motion is on
+   (the source app: theme-toggle.tsx, with flushSync around next-themes' setTheme). */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: var(--duration-fast);
+  animation-timing-function: var(--ease-in-out);
+}
+
+/* Safety net: anything not covered by a per-snippet guard stops moving. The per-snippet guards (in @layer
+   components, whose !important declarations win over this unlayered one) turn entries into --rm-fade-dur
+   opacity cross-fades instead of hard cuts (DQ-24). */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* prefers-reduced-transparency: the translucent header material becomes solid. Put .header-material on any
+   backdrop-blurred bar or pill (the source app: the sticky header and the header pill). */
+@media (prefers-reduced-transparency: reduce) {
+  .header-material {
+    background-color: var(--background) !important;
+    backdrop-filter: none !important;
+  }
+}

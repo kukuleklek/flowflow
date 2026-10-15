@@ -1,0 +1,13 @@
+{
+ "capturedAt": "2026-10-15T07:37:00Z",
+ "request": {
+  "method": "POST",
+  "url": "https://api.hyperliquid.xyz/info",
+  "body": {
+   "type": "userAbstraction",
+   "user": "0x00000000000000000000000000000000000057d1"
+  }
+ },
+ "note": "Unedited answer.",
+ "response": "disabled"
+}

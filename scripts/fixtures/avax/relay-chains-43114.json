@@ -1,0 +1,102 @@
+{
+ "source": "GET https://api.relay.link/chains, 2026-10-15 (plan-avax/swap/chains-live.json), the 43114 entry",
+ "answer": {
+  "id": 43114,
+  "name": "avalanche",
+  "httpRpcUrl": "https://api.avax.network/ext/bc/C/rpc",
+  "depositEnabled": true,
+  "disabled": false,
+  "currency": {
+   "id": "avax",
+   "symbol": "AVAX",
+   "name": "Avax",
+   "address": "0x0000000000000000000000000000000000000000",
+   "decimals": 18,
+   "supportsBridging": false
+  },
+  "featuredTokens": [
+   {
+    "id": "avax",
+    "symbol": "AVAX",
+    "name": "Avax",
+    "address": "0x0000000000000000000000000000000000000000",
+    "decimals": 18,
+    "supportsBridging": false,
+    "metadata": {
+     "logoURI": "https://raw.githubusercontent.com/Uniswap/assets/master/blockchains/avalanchec/assets/0xB31f66AA3C1e785363F0875A1B74E27b85FD66c7/logo.png"
+    }
+   },
+   {
+    "id": "usdc",
+    "symbol": "USDC",
+    "name": "USD Coin",
+    "address": "0xb97ef9ef8734c71904d8002f8b6bc66dd9c48a6e",
+    "decimals": 6,
+    "supportsBridging": true,
+    "metadata": {
+     "logoURI": "https://ethereum-optimism.github.io/data/USDC/logo.png"
+    }
+   },
+   {
+    "symbol": "WAVAX",
+    "name": "Wrapped AVAX",
+    "address": "0xb31f66aa3c1e785363f0875a1b74e27b85fd66c7",
+    "decimals": 18,
+    "supportsBridging": false,
+    "metadata": {
+     "logoURI": "https://raw.githubusercontent.com/Uniswap/assets/master/blockchains/avalanchec/assets/0xB31f66AA3C1e785363F0875A1B74E27b85FD66c7/logo.png"
+    }
+   }
+  ],
+  "erc20Currencies": [
+   {
+    "id": "usdc",
+    "symbol": "USDC",
+    "name": "USD Coin",
+    "address": "0xb97ef9ef8734c71904d8002f8b6bc66dd9c48a6e",
+    "decimals": 6,
+    "supportsBridging": true,
+    "supportsPermit": true,
+    "withdrawalFee": 4,
+    "depositFee": 0,
+    "surgeEnabled": false
+   },
+   {
+    "id": "usde",
+    "symbol": "USDe",
+    "name": "USDe",
+    "address": "0x5d3a1ff2b6bab83b63cd9ad0787074081a52ef34",
+    "decimals": 18,
+    "supportsBridging": true,
+    "withdrawalFee": 1,
+    "depositFee": 0,
+    "surgeEnabled": false
+   }
+  ],
+  "contracts": {
+   "multicall3": "0xca11bde05977b3631167028862be2a173976ca11",
+   "multicaller": "0x0000000000002Bdbf1Bf3279983603Ec279CC6dF",
+   "onlyOwnerMulticaller": "0xb90ed4c123843cbFD66b11411Ee7694eF37E6E72",
+   "relayReceiver": "0xa5f565650890fba1824ee0f21ebbbf660a179934",
+   "erc20Router": "0xb92fe925dc43a0ecde6c8b1a2709c170ec4fff4f",
+   "approvalProxy": "0xccc88a9d1b4ed6b0eaba998850414b24f1c315be",
+   "v3": {
+    "erc20Router": "0xb92fe925dc43a0ecde6c8b1a2709c170ec4fff4f",
+    "approvalProxy": "0xccc88a9d1b4ed6b0eaba998850414b24f1c315be"
+   },
+   "v3.2": {
+    "erc20Router": "0x0729e2a4716d9f7dd17858d5d504426d228697f7",
+    "approvalProxy": "0x5567954cd026cebfe486062cb75848e0f1c12e58"
+   }
+  },
+  "solverAddresses": [
+   "0xf70da97812cb96acdf810712aa562db8dfa3dbef"
+  ],
+  "protocol": {
+   "v2": {
+    "chainId": "avalanche",
+    "depository": "0x4cd00e387622c35bddb9b4c962c136462338bc31"
+   }
+  }
+ }
+}

@@ -1,0 +1,480 @@
+{
+ "note": "LIVE, READ-ONLY captures for scripts/test-intents-withdraw.mjs. Nothing was signed or sent. dry:true quotes reserve no address. Random addresses; no key kept.",
+ "dry": {
+  "arbitrum-usdc": {
+   "capturedAt": "2026-10-15T07:13:35.291Z",
+   "user": "0xEE6359852915e5076360a2dB7de2c35339522afA",
+   "recipient": "0x105ca6978e352b0EBB4696f89f592E0269dd54f4",
+   "body": {
+    "dry": true,
+    "swapType": "EXACT_INPUT",
+    "slippageTolerance": 100,
+    "originAsset": "1cs_v1:hypercore:hip1:0x6d1e7cde53ba9467b783cb7c530ce054",
+    "depositType": "ORIGIN_CHAIN",
+    "destinationAsset": "nep141:arb-0xaf88d065e77c8cc2239327c5edb3a432268e5831.omft.near",
+    "amount": "2000000000",
+    "refundTo": "0xee6359852915e5076360a2db7de2c35339522afa",
+    "refundType": "ORIGIN_CHAIN",
+    "recipient": "0x105ca6978e352b0EBB4696f89f592E0269dd54f4",
+    "recipientType": "DESTINATION_CHAIN",
+    "deadline": "2026-10-15T08:13:35.000Z"
+   },
+   "response": {
+    "quote": {
+     "amountIn": "2000000000",
+     "amountInFormatted": "20.0",
+     "amountInUsd": "19.994480000000",
+     "minAmountIn": "2000000000",
+     "amountOut": "19794700",
+     "amountOutFormatted": "19.7947",
+     "amountOutUsd": "19.789236662800",
+     "minAmountOut": "19596753",
+     "timeEstimate": 34,
+     "refundFee": "31530000",
+     "withdrawFee": "5300"
+    },
+    "quoteRequest": {
+     "dry": true,
+     "depositMode": "SIMPLE",
+     "swapType": "EXACT_INPUT",
+     "slippageTolerance": 100,
+     "originAsset": "1cs_v1:hypercore:hip1:0x6d1e7cde53ba9467b783cb7c530ce054",
+     "depositType": "ORIGIN_CHAIN",
+     "destinationAsset": "nep141:arb-0xaf88d065e77c8cc2239327c5edb3a432268e5831.omft.near",
+     "amount": "2000000000",
+     "refundTo": "0xee6359852915e5076360a2db7de2c35339522afa",
+     "refundType": "ORIGIN_CHAIN",
+     "recipient": "0x105ca6978e352b0EBB4696f89f592E0269dd54f4",
+     "recipientType": "DESTINATION_CHAIN",
+     "deadline": "2026-10-15T08:13:35.000Z",
+     "confidentiality": "public",
+     "quoteWaitingTimeMs": 0,
+     "insured": false,
+     "appFees": []
+    },
+    "signature": "ed25519:4VabdjawYPZd3We7a2L9ugm3sefN4XBKbDcMnshurjrZoTA4YLsuo2jMr3TFCySStem2U6E3PdBVKwW6tduMCMUe",
+    "timestamp": "2026-10-15T07:13:35.858Z",
+    "correlationId": "50c22e3f-c4f3-46c3-af7a-785828f943d2"
+   }
+  },
+  "solana-usdc": {
+   "capturedAt": "2026-10-15T07:13:35.955Z",
+   "user": "0xEE6359852915e5076360a2dB7de2c35339522afA",
+   "recipient": "2XXpr5xJ8LtwXwk21sqm433cSy6nGvzPi1NxFEMGUAzZ",
+   "body": {
+    "dry": true,
+    "swapType": "EXACT_INPUT",
+    "slippageTolerance": 100,
+    "originAsset": "1cs_v1:hypercore:hip1:0x6d1e7cde53ba9467b783cb7c530ce054",
+    "depositType": "ORIGIN_CHAIN",
+    "destinationAsset": "nep141:sol-5ce3bf3a31af18be40ba30f721101b4341690186.omft.near",
+    "amount": "2000000000",
+    "refundTo": "0xee6359852915e5076360a2db7de2c35339522afa",
+    "refundType": "ORIGIN_CHAIN",
+    "recipient": "2XXpr5xJ8LtwXwk21sqm433cSy6nGvzPi1NxFEMGUAzZ",
+    "recipientType": "DESTINATION_CHAIN",
+    "deadline": "2026-10-15T08:13:35.000Z"
+   },
+   "response": {
+    "quote": {
+     "amountIn": "2000000000",
+     "amountInFormatted": "20.0",
+     "amountInUsd": "19.994480000000",
+     "minAmountIn": "2000000000",
+     "amountOut": "19522060",
+     "amountOutFormatted": "19.52206",
+     "amountOutUsd": "19.516671911440",
+     "minAmountOut": "19326839",
+     "timeEstimate": 32,
+     "refundFee": "31530000",
+     "withdrawFee": "274138"
+    },
+    "quoteRequest": {
+     "dry": true,
+     "depositMode": "SIMPLE",
+     "swapType": "EXACT_INPUT",
+     "slippageTolerance": 100,
+     "originAsset": "1cs_v1:hypercore:hip1:0x6d1e7cde53ba9467b783cb7c530ce054",
+     "depositType": "ORIGIN_CHAIN",
+     "destinationAsset": "nep141:sol-5ce3bf3a31af18be40ba30f721101b4341690186.omft.near",
+     "amount": "2000000000",
+     "refundTo": "0xee6359852915e5076360a2db7de2c35339522afa",
+     "refundType": "ORIGIN_CHAIN",
+     "recipient": "2XXpr5xJ8LtwXwk21sqm433cSy6nGvzPi1NxFEMGUAzZ",
+     "recipientType": "DESTINATION_CHAIN",
+     "deadline": "2026-10-15T08:13:35.000Z",
+     "confidentiality": "public",
+     "quoteWaitingTimeMs": 0,
+     "insured": false,
+     "appFees": [
+      {
+       "recipient": "5880ad2b362620fadf759cbceb1cd5737ce8c6ed7fb8e9942881e6731f9247dd",
+       "fee": 1
+      }
+     ]
+    },
+    "signature": "ed25519:3utu8ZnXjbubwbSd3edC4Jsosu1ZdqMyuUZC1Fczn8de2nHPa6seJGCY5eswvE8vwMRbVgFquJ7ghaKWxGif6hBN",
+    "timestamp": "2026-10-15T07:13:36.160Z",
+    "correlationId": "27b2d606-9149-4850-b508-4a8a3ec2b244"
+   }
+  },
+  "base-usdc": {
+   "capturedAt": "2026-10-15T07:26:38.627Z",
+   "user": "0xEE6359852915e5076360a2dB7de2c35339522afA",
+   "recipient": "0x105ca6978e352b0EBB4696f89f592E0269dd54f4",
+   "body": {
+    "dry": true,
+    "swapType": "EXACT_INPUT",
+    "slippageTolerance": 100,
+    "originAsset": "1cs_v1:hypercore:hip1:0x6d1e7cde53ba9467b783cb7c530ce054",
+    "depositType": "ORIGIN_CHAIN",
+    "destinationAsset": "nep141:base-0x833589fcd6edb6e08f4c7c32d4f71b54bda02913.omft.near",
+    "amount": "2000000000",
+    "refundTo": "0xee6359852915e5076360a2db7de2c35339522afa",
+    "refundType": "ORIGIN_CHAIN",
+    "recipient": "0x105ca6978e352b0EBB4696f89f592E0269dd54f4",
+    "recipientType": "DESTINATION_CHAIN",
+    "deadline": "2026-10-15T08:26:38.000Z",
+    "confidentiality": "public"
+   },
+   "response": {
+    "quote": {
+     "amountIn": "2000000000",
+     "amountInFormatted": "20.0",
+     "amountInUsd": "19.994100000000",
+     "minAmountIn": "2000000000",
+     "amountOut": "19793798",
+     "amountOutFormatted": "19.793798",
+     "amountOutUsd": "19.787958829590",
+     "minAmountOut": "19595860",
+     "timeEstimate": 37,
+     "refundFee": "31530000",
+     "withdrawFee": "2400"
+    },
+    "quoteRequest": {
+     "dry": true,
+     "depositMode": "SIMPLE",
+     "swapType": "EXACT_INPUT",
+     "slippageTolerance": 100,
+     "originAsset": "1cs_v1:hypercore:hip1:0x6d1e7cde53ba9467b783cb7c530ce054",
+     "depositType": "ORIGIN_CHAIN",
+     "destinationAsset": "nep141:base-0x833589fcd6edb6e08f4c7c32d4f71b54bda02913.omft.near",
+     "amount": "2000000000",
+     "refundTo": "0xee6359852915e5076360a2db7de2c35339522afa",
+     "refundType": "ORIGIN_CHAIN",
+     "recipient": "0x105ca6978e352b0EBB4696f89f592E0269dd54f4",
+     "recipientType": "DESTINATION_CHAIN",
+     "deadline": "2026-10-15T08:26:38.000Z",
+     "confidentiality": "public",
+     "quoteWaitingTimeMs": 0,
+     "insured": false,
+     "appFees": [
+      {
+       "recipient": "5880ad2b362620fadf759cbceb1cd5737ce8c6ed7fb8e9942881e6731f9247dd",
+       "fee": 1
+      }
+     ]
+    },
+    "signature": "ed25519:3gCuHoCJexK1nnC3azSwpRSqLbRVzwmXED4nyRP3WWc2vrfnSntjX3KNTi3RB8HKNWdG4ezQfFyBNEjgVpeacoAQ",
+    "timestamp": "2026-10-15T07:26:39.077Z",
+    "correlationId": "d217673b-9937-44c4-88fd-f7a61fbc8b88"
+   }
+  },
+  "base-usdc-research": {
+   "capturedAt": "2026-10-15T06:39:40.506Z",
+   "source": "research capture q-hc2base.json (dry:true, keyless); at 07:13-07:14 UTC every Base-destination quote, including Arbitrum->Base, answered 400 \"Quoting for this pair is not available\"",
+   "user": "0x4ce903f1a091c69303b34538018bb6fc37bc9746",
+   "recipient": "0x4ce903f1a091c69303b34538018bb6fc37bc9746",
+   "response": {
+    "quote": {
+     "amountIn": "2000000000",
+     "amountInFormatted": "20.0",
+     "amountInUsd": "19.994820000000",
+     "minAmountIn": "2000000000",
+     "amountOut": "19795174",
+     "amountOutFormatted": "19.795174",
+     "amountOutUsd": "19.790047049934",
+     "minAmountOut": "19597222",
+     "timeEstimate": 37,
+     "refundFee": "31530000",
+     "withdrawFee": "2400"
+    },
+    "quoteRequest": {
+     "dry": true,
+     "depositMode": "SIMPLE",
+     "swapType": "EXACT_INPUT",
+     "slippageTolerance": 100,
+     "originAsset": "1cs_v1:hypercore:hip1:0x6d1e7cde53ba9467b783cb7c530ce054",
+     "depositType": "ORIGIN_CHAIN",
+     "destinationAsset": "nep141:base-0x833589fcd6edb6e08f4c7c32d4f71b54bda02913.omft.near",
+     "amount": "2000000000",
+     "refundTo": "0x4ce903f1a091c69303b34538018bb6fc37bc9746",
+     "refundType": "ORIGIN_CHAIN",
+     "recipient": "0x4ce903f1a091c69303b34538018bb6fc37bc9746",
+     "recipientType": "DESTINATION_CHAIN",
+     "deadline": "2026-10-15T07:09:30.000Z",
+     "confidentiality": "public",
+     "quoteWaitingTimeMs": 0,
+     "insured": false,
+     "appFees": [
+      {
+       "recipient": "5880ad2b362620fadf759cbceb1cd5737ce8c6ed7fb8e9942881e6731f9247dd",
+       "fee": 1
+      }
+     ]
+    },
+    "signature": "ed25519:5A4RAJUDbzhUZoXAEw7a9xtpf9NStjXdtASNajkBw7NBNKY9wFz4PvDHren1ixeB9xUnJ7jDzNTH3bvH4TgGwd6U",
+    "timestamp": "2026-10-15T06:39:40.506Z",
+    "correlationId": "12df2710-1bcb-4f39-ae90-99051551e51f"
+   }
+  }
+ },
+ "baseUnavailable": {
+  "status": 400,
+  "response": {
+   "message": "Quoting for this pair is not available",
+   "correlationId": "a8246f8e-04b5-4730-990f-102ee0f3404d",
+   "timestamp": "2026-10-15T07:13:35.104Z",
+   "path": "/v0/quote"
+  }
+ },
+ "real": {
+  "capturedAt": "2026-10-15T06:45:10.708Z",
+  "source": "research capture raw/live_hl2arb.json: ONE dry:false quote made during research with random addresses (moves no money). Used here only as the SHAPE of a real answer; this task made no dry:false request.",
+  "response": {
+   "quote": {
+    "amountIn": "2000000000",
+    "amountInFormatted": "20.0",
+    "amountInUsd": "19.994560000000",
+    "minAmountIn": "2000000000",
+    "amountOut": "19794700",
+    "amountOutFormatted": "19.7947",
+    "amountOutUsd": "19.789315841600",
+    "minAmountOut": "19596753",
+    "timeEstimate": 34,
+    "refundFee": "31530000",
+    "withdrawFee": "5300",
+    "deadline": "2026-10-18T07:45:10.000Z",
+    "timeWhenInactive": "2026-10-18T07:45:10.000Z",
+    "depositAddress": "0xD991E062BFac9d04C0bC667f7071d3697C752E0E"
+   },
+   "quoteRequest": {
+    "dry": false,
+    "depositMode": "SIMPLE",
+    "swapType": "EXACT_INPUT",
+    "slippageTolerance": 100,
+    "originAsset": "1cs_v1:hypercore:hip1:0x6d1e7cde53ba9467b783cb7c530ce054",
+    "depositType": "ORIGIN_CHAIN",
+    "destinationAsset": "nep141:arb-0xaf88d065e77c8cc2239327c5edb3a432268e5831.omft.near",
+    "amount": "2000000000",
+    "refundTo": "0xd071d8b3d230766552d533ae640cb852e45d1f92",
+    "refundType": "ORIGIN_CHAIN",
+    "recipient": "0xe9c313b7a15cd1a72bed7a2127cf63eeeede5ab9",
+    "recipientType": "DESTINATION_CHAIN",
+    "deadline": "2026-10-15T07:45:10.000Z",
+    "confidentiality": "public",
+    "quoteWaitingTimeMs": 0,
+    "insured": false,
+    "appFees": []
+   },
+   "signature": "ed25519:1mvtR5tRLcF5tBU3AmXkMZKUARGG5CiiU2miApRCE267Gua4cFvH6fbhnxFNx58b3DNjhXQKcbgyfSxhrizc6G9",
+   "timestamp": "2026-10-15T06:45:10.708Z",
+   "correlationId": "884aab70-c3ee-44f6-bc59-6fd444de4070"
+  }
+ },
+ "hl": {
+  "ptcSelf": {
+   "body": {
+    "type": "preTransferCheck",
+    "user": "0xEE6359852915e5076360a2dB7de2c35339522afA",
+    "source": "0xEE6359852915e5076360a2dB7de2c35339522afA"
+   },
+   "response": {
+    "isSanctioned": false,
+    "userExists": false,
+    "fee": "1.0",
+    "userHasSentTx": false
+   }
+  },
+  "ptcFresh": {
+   "body": {
+    "type": "preTransferCheck",
+    "user": "0x105ca6978e352b0EBB4696f89f592E0269dd54f4",
+    "source": "0xEE6359852915e5076360a2dB7de2c35339522afA"
+   },
+   "response": {
+    "isSanctioned": false,
+    "userExists": false,
+    "fee": "1.0",
+    "userHasSentTx": false
+   }
+  },
+  "ptcLazarus": {
+   "body": {
+    "type": "preTransferCheck",
+    "user": "0x7F367cC41522cE07553e823bf3be79A889DEbe1B",
+    "source": "0xEE6359852915e5076360a2dB7de2c35339522afA"
+   },
+   "response": {
+    "isSanctioned": true,
+    "userExists": false,
+    "fee": "1.0",
+    "userHasSentTx": false
+   }
+  },
+  "roleFresh": {
+   "body": {
+    "type": "userRole",
+    "user": "0x105ca6978e352b0EBB4696f89f592E0269dd54f4"
+   },
+   "response": {
+    "role": "missing"
+   }
+  },
+  "chsFresh": {
+   "body": {
+    "type": "clearinghouseState",
+    "user": "0xEE6359852915e5076360a2dB7de2c35339522afA"
+   },
+   "response": {
+    "marginSummary": {
+     "accountValue": "0.0",
+     "totalNtlPos": "0.0",
+     "totalRawUsd": "0.0",
+     "totalMarginUsed": "0.0"
+    },
+    "crossMarginSummary": {
+     "accountValue": "0.0",
+     "totalNtlPos": "0.0",
+     "totalRawUsd": "0.0",
+     "totalMarginUsed": "0.0"
+    },
+    "crossMaintenanceMarginUsed": "0.0",
+    "withdrawable": "0.0",
+    "assetPositions": [],
+    "time": 1792048417919
+   }
+  }
+ },
+ "oracle": {
+  "0x7F367cC41522cE07553e823bf3be79A889DEbe1B": {
+   "sanctioned": true,
+   "answers": [
+    {
+     "chainId": 42161,
+     "answer": true,
+     "error": null
+    },
+    {
+     "chainId": 1,
+     "answer": true,
+     "error": null
+    }
+   ]
+  },
+  "0xEE6359852915e5076360a2dB7de2c35339522afA": {
+   "sanctioned": false,
+   "answers": [
+    {
+     "chainId": 42161,
+     "answer": false,
+     "error": null
+    },
+    {
+     "chainId": 1,
+     "answer": false,
+     "error": null
+    }
+   ]
+  }
+ },
+ "oracleRaw": {
+  "listed": "0x0000000000000000000000000000000000000000000000000000000000000001",
+  "clear": "0x0000000000000000000000000000000000000000000000000000000000000000",
+  "noContractOnBase": "0x"
+ },
+ "status404": {
+  "status": 404,
+  "response": {
+   "message": "Deposit address 0x105ca6978e352b0EBB4696f89f592E0269dd54f4 not found",
+   "error": "Not Found",
+   "statusCode": 404,
+   "timestamp": "2026-10-15T07:13:38.385Z",
+   "path": "/v0/status?depositAddress=0x105ca6978e352b0EBB4696f89f592E0269dd54f4"
+  }
+ },
+ "tokens": [
+  {
+   "assetId": "nep141:arb-0xaf88d065e77c8cc2239327c5edb3a432268e5831.omft.near",
+   "decimals": 6,
+   "blockchain": "arb",
+   "symbol": "USDC",
+   "price": 0.999722,
+   "priceUpdatedAt": "2026-10-15T06:58:00.652Z",
+   "contractAddress": "0xaf88d065e77c8cc2239327c5edb3a432268e5831",
+   "coingeckoId": "usd-coin"
+  },
+  {
+   "assetId": "nep141:base-0x833589fcd6edb6e08f4c7c32d4f71b54bda02913.omft.near",
+   "decimals": 6,
+   "blockchain": "base",
+   "symbol": "USDC",
+   "price": 0.999722,
+   "priceUpdatedAt": "2026-10-15T06:58:00.652Z",
+   "contractAddress": "0x833589fcd6edb6e08f4c7c32d4f71b54bda02913",
+   "coingeckoId": "usd-coin"
+  },
+  {
+   "assetId": "nep141:sol-5ce3bf3a31af18be40ba30f721101b4341690186.omft.near",
+   "decimals": 6,
+   "blockchain": "sol",
+   "symbol": "USDC",
+   "price": 0.999722,
+   "priceUpdatedAt": "2026-10-15T06:58:00.652Z",
+   "contractAddress": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+   "coingeckoId": "usd-coin"
+  },
+  {
+   "assetId": "1cs_v1:hypercore:hip1:0x6d1e7cde53ba9467b783cb7c530ce054",
+   "decimals": 8,
+   "blockchain": "hypercore",
+   "symbol": "USDC",
+   "price": 0.999722,
+   "priceUpdatedAt": "2026-10-15T06:58:00.652Z",
+   "contractAddress": "0x6d1e7cde53ba9467b783cb7c530ce054",
+   "coingeckoId": "usd-coin"
+  },
+  {
+   "assetId": "1cs_v1:hypercore:erc20:0xb88339CB7199b77E23DB6E890353E22632Ba630f",
+   "decimals": 6,
+   "blockchain": "hypercore",
+   "symbol": "USDC",
+   "price": 0.999722,
+   "priceUpdatedAt": "2026-10-15T06:58:00.652Z",
+   "contractAddress": "0xb88339CB7199b77E23DB6E890353E22632Ba630f",
+   "coingeckoId": "usd-coin"
+  },
+  {
+   "assetId": "nep245:v2_1.omni.hot.tg:137_qiStmoQJDQPTebaPjgx5VBxZv6L",
+   "decimals": 6,
+   "blockchain": "pol",
+   "symbol": "USDC",
+   "price": 0.999573,
+   "priceUpdatedAt": "2026-10-15T09:07:00.625Z",
+   "contractAddress": "0x3c499c542cef5e3811e1192ce70d8cc03d5c3359",
+   "coingeckoId": "usd-coin"
+  },
+  {
+   "assetId": "nep245:v2_1.omni.hot.tg:43114_3atVJH3r5c4GqiSYmg9fECvjc47o",
+   "decimals": 6,
+   "blockchain": "avax",
+   "symbol": "USDC",
+   "price": 0.999573,
+   "priceUpdatedAt": "2026-10-15T09:07:00.625Z",
+   "contractAddress": "0xb97ef9ef8734c71904d8002f8b6bc66dd9c48a6e",
+   "coingeckoId": "usd-coin"
+  }
+ ],
+ "tokensCount": 205,
+ "tokensAdded": "Avalanche and Polygon USDC rows added unedited from a second live GET /v0/tokens at 2026-10-15T09:07:44.034Z (205 assets)"
+}

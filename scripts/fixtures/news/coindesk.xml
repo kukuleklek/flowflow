@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:wfw="http://wellformedweb.org/CommentAPI/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:sy="http://purl.org/rss/1.0/modules/syndication/" xmlns:slash="http://purl.org/rss/1.0/modules/slash/" xmlns:media="http://search.yahoo.com/mrss/" version="2.0">
+  <channel>
+    <title>CoinDesk: Bitcoin, Ethereum, Crypto News and Price Data</title>
+    <link>https://www.coindesk.com/</link>
+    <atom:link rel="self" type="application/rss+xml" href="https://www.coindesk.com/arc/outboundfeeds/rss"/>
+    <atom:link rel="hub" href="true"/>
+    <description>Feed</description>
+    <lastBuildDate>Thu, 15 Oct 2026 09:22:37 +0000</lastBuildDate>
+    <language>en-US</language>
+    <copyright>© 2026 CoinDesk, Inc.</copyright>
+    <generator>CoinDesk</generator>
+    <ttl>5</ttl>
+    <sy:updatePeriod>hourly</sy:updatePeriod>
+    <sy:updateFrequency>1</sy:updateFrequency>
+    
+    <item>
+      <title><![CDATA[Hex founder Richard Heart arrested in Istanbul, Turkish media report]]></title>
+      <link>https://www.coindesk.com/policy/2026/10/15/hex-founder-richard-heart-arrested-in-istanbul-turkish-media-report</link>
+      <guid isPermaLink="false">60116bbe-3018-4094-850a-b25ef9635e82</guid>
+      <pubDate>Thu, 15 Oct 2026 09:20:57 +0000</pubDate>
+      <description><![CDATA[<p>BODY-TEXT-MUST-NOT-LEAK</p>]]></description>
+      <dc:creator>Olivier Acuna</dc:creator>
+      <category domain="https://www.coindesk.com/policy"><![CDATA[Policy]]></category>
+      <category domain="tag"><![CDATA[Cryptocurrency]]></category>
+      <category domain="tag"><![CDATA[SEC]]></category>
+      <category domain="tag"><![CDATA[Crime]]></category>
+      <category domain="https://www.coindesk.com/">News</category>
+    </item>
+<item>
+      <title><![CDATA[BlackRock's Fink names a U.S. recession trigger, sounds alarm over $40 trillion national debt]]></title>
+      <link>https://www.coindesk.com/markets/2026/10/15/blackrock-s-larry-fink-names-a-u-s-recession-trigger-and-its-tied-to-ai</link>
+      <guid isPermaLink="false">b94f8196-a076-4370-a121-fa231c628aae</guid>
+      <pubDate>Thu, 15 Oct 2026 06:17:58 +0000</pubDate>
+      <description><![CDATA[<p>BODY-TEXT-MUST-NOT-LEAK</p>]]></description>
+      <dc:creator>Omkar Godbole</dc:creator>
+      <category domain="https://www.coindesk.com/markets"><![CDATA[Markets]]></category>
+      <category domain="tag"><![CDATA[BlackRock]]></category>
+      <category domain="tag"><![CDATA[Artificial Intelligence]]></category>
+      <category domain="https://www.coindesk.com/">News</category>
+    </item>
+<item>
+      <title><![CDATA[Nearly $1 billion in crypto bets liquidated as bitcoin, ether and XRP slide]]></title>
+      <link>https://www.coindesk.com/markets/2026/10/15/nearly-usd1-billion-in-crypto-bets-liquidated-as-bitcoin-ether-and-xrp-slide</link>
+      <guid isPermaLink="false">a1e87579-41a0-46cc-8493-0d763cca9702</guid>
+      <pubDate>Thu, 15 Oct 2026 04:25:15 +0000</pubDate>
+      <description><![CDATA[<p>BODY-TEXT-MUST-NOT-LEAK</p>]]></description>
+      <dc:creator>Shaurya Malwa</dc:creator>
+      <category domain="https://www.coindesk.com/markets"><![CDATA[Markets]]></category>
+      <category domain="https://www.coindesk.com/">News</category>
+    </item>
+<item>
+      <title><![CDATA[Bitcoin mining pool once handling 2.3% of network shuts after hashrate falls 65%]]></title>
+      <link>https://www.coindesk.com/markets/2026/10/15/bitcoin-mining-pool-once-handling-2-3-of-network-shuts-after-hashrate-falls-65</link>
+      <guid isPermaLink="false">5b244df0-d2bb-4afd-85a1-0f0ba117a6e9</guid>
+      <pubDate>Thu, 15 Oct 2026 04:13:56 +0000</pubDate>
+      <description><![CDATA[<p>BODY-TEXT-MUST-NOT-LEAK</p>]]></description>
+      <dc:creator>Shaurya Malwa</dc:creator>
+      <category domain="https://www.coindesk.com/markets"><![CDATA[Markets]]></category>
+      <category domain="https://www.coindesk.com/">News</category>
+    </item>
+<item>
+      <title><![CDATA[Bitcoin wilts as Fed rate uncertainty weighs. Kospi plunges 8%]]></title>
+      <link>https://www.coindesk.com/markets/2026/10/15/bitcoin-is-back-below-usd81-000-as-fed-rate-uncertainty-weighs</link>
+      <guid isPermaLink="false">d43446ab-2a35-44b0-8136-9e945c154c50</guid>
+      <pubDate>Thu, 15 Oct 2026 03:57:45 +0000</pubDate>
+      <description><![CDATA[<p>BODY-TEXT-MUST-NOT-LEAK</p>]]></description>
+      <dc:creator>Omkar Godbole</dc:creator>
+      <category domain="https://www.coindesk.com/markets"><![CDATA[Markets]]></category>
+      <category domain="tag"><![CDATA[Bitcoin News]]></category>
+      <category domain="https://www.coindesk.com/">News</category>
+    </item>
+<item>
+      <title><![CDATA[Kalshi CEO says state-led oversight of U.S. prediction markets would push them out]]></title>
+      <link>https://www.coindesk.com/policy/2026/10/14/kalshi-ceo-says-state-led-oversight-of-u-s-prediction-markets-would-push-them-out</link>
+      <guid isPermaLink="false">48bc7e33-73fc-4ea8-9885-219313246e4e</guid>
+      <pubDate>Wed, 14 Oct 2026 16:34:53 +0000</pubDate>
+      <description><![CDATA[<p>BODY-TEXT-MUST-NOT-LEAK</p>]]></description>
+      <dc:creator>Jesse Hamilton</dc:creator>
+      <category domain="https://www.coindesk.com/policy"><![CDATA[Policy]]></category>
+      <category domain="tag"><![CDATA[Kalshi]]></category>
+      <category domain="tag"><![CDATA[Prediction Markets]]></category>
+      <category domain="tag"><![CDATA[Regulation]]></category>
+      <category domain="https://www.coindesk.com/">News</category>
+    </item>
+<item>
+      <title><![CDATA[AI agents make 138 million crypto payments as U.S. dominates spending on AI models]]></title>
+      <link>https://www.coindesk.com/business/2026/10/14/ai-agents-make-138-million-crypto-payments-as-u-s-dominates-spending-on-ai-models</link>
+      <guid isPermaLink="false">9ab346b7-763f-48a4-928e-ae49cd545dd7</guid>
+      <pubDate>Wed, 14 Oct 2026 15:35:36 +0000</pubDate>
+      <description><![CDATA[<p>BODY-TEXT-MUST-NOT-LEAK</p>]]></description>
+      <dc:creator>Olivier Acuna</dc:creator>
+      <category domain="https://www.coindesk.com/business"><![CDATA[Finance]]></category>
+      <category domain="tag"><![CDATA[Artificial Intelligence]]></category>
+      <category domain="tag"><![CDATA[Coinbase]]></category>
+      <category domain="https://www.coindesk.com/">News</category>
+    </item>
+<item>
+      <title><![CDATA[Crypto Long & Short: Why gold and bitcoin belong in the same portfolio]]></title>
+      <link>https://www.coindesk.com/coindesk-indices/2026/10/14/crypto-long-and-short-why-gold-and-bitcoin-belong-in-the-same-portfolio</link>
+      <guid isPermaLink="false">fd678dca-ed62-4ea2-9e11-6d9e3b15607d</guid>
+      <pubDate>Wed, 14 Oct 2026 15:05:15 +0000</pubDate>
+      <description/>
+      <dc:creator>Steve Neamtz</dc:creator>
+      <category domain="https://www.coindesk.com/coindesk-indices"><![CDATA[CoinDesk Indices]]></category>
+      <category domain="tag"><![CDATA[Crypto Long & Short]]></category>
+      <category domain="https://www.coindesk.com/">News</category>
+    </item>
+<item>
+      <title><![CDATA[EasyA hits $1.1 billion valuation, targets 2027 public listing and tokenized shares]]></title>
+      <link>https://www.coindesk.com/business/2026/10/14/easya-hits-usd1-1-billion-valuation-targets-2027-public-listing-and-tokenized-shares</link>
+      <guid isPermaLink="false">cdddc9f1-006c-4292-9e7c-55613b1e5745</guid>
+      <pubDate>Wed, 14 Oct 2026 14:49:32 +0000</pubDate>
+      <description><![CDATA[<p>BODY-TEXT-MUST-NOT-LEAK</p>]]></description>
+      <dc:creator>Olivier Acuna</dc:creator>
+      <category domain="https://www.coindesk.com/business"><![CDATA[Finance]]></category>
+      <category domain="tag"><![CDATA[IPOs]]></category>
+      <category domain="https://www.coindesk.com/">News</category>
+    </item>
+<item>
+      <title><![CDATA[BlackRock's crypto ETF assets surge 63% but remain far below 2025 peak]]></title>
+      <link>https://www.coindesk.com/markets/2026/10/14/blackrock-s-crypto-etf-assets-surge-63-but-remain-far-below-2025-peak</link>
+      <guid isPermaLink="false">9f30abac-c8a7-4d16-a17e-702c2a60dfe1</guid>
+      <pubDate>Wed, 14 Oct 2026 14:31:14 +0000</pubDate>
+      <description><![CDATA[<p>BODY-TEXT-MUST-NOT-LEAK</p>]]></description>
+      <dc:creator>Helene Braun</dc:creator>
+      <category domain="https://www.coindesk.com/markets"><![CDATA[Markets]]></category>
+      <category domain="tag"><![CDATA[BlackRock]]></category>
+      <category domain="https://www.coindesk.com/">News</category>
+    </item>
+</channel>
+</rss>

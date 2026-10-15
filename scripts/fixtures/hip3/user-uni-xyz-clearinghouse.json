@@ -1,0 +1,148 @@
+{
+ "capturedAt": "2026-10-15T07:37:00Z",
+ "request": {
+  "method": "POST",
+  "url": "https://api.hyperliquid.xyz/info",
+  "body": {
+   "type": "clearinghouseState",
+   "user": "0x000000000000000000000000000000000000a11c",
+   "dex": "xyz"
+  }
+ },
+ "note": "A public unifiedAccount trader, address REDACTED. withdrawable 0.0 on the dex: the spot USDC backs it.",
+ "response": {
+  "marginSummary": {
+   "accountValue": "19942.856124",
+   "totalNtlPos": "277281.528224",
+   "totalRawUsd": "297224.384348",
+   "totalMarginUsed": "19963.113978"
+  },
+  "crossMarginSummary": {
+   "accountValue": "19937.85913",
+   "totalNtlPos": "277270.92044",
+   "totalRawUsd": "297208.77957",
+   "totalMarginUsed": "19958.116984"
+  },
+  "crossMaintenanceMarginUsed": "5949.148764",
+  "withdrawable": "0.0",
+  "assetPositions": [
+   {
+    "type": "oneWay",
+    "position": {
+     "coin": "xyz:XYZ100",
+     "szi": "-1.4758",
+     "leverage": {
+      "type": "cross",
+      "value": 20
+     },
+     "entryPx": "30424.97",
+     "positionValue": "43723.5266",
+     "unrealizedPnl": "1177.649791",
+     "returnOnEquity": "0.5245518651",
+     "liquidationPx": "102585.0586451583",
+     "marginUsed": "2186.17633",
+     "maxLeverage": 30,
+     "cumFunding": {
+      "allTime": "-988.798867",
+      "sinceOpen": "-988.798867",
+      "sinceChange": "0.0"
+     }
+    }
+   },
+   {
+    "type": "oneWay",
+    "position": {
+     "coin": "xyz:TSLA",
+     "szi": "-336.178",
+     "leverage": {
+      "type": "cross",
+      "value": 10
+     },
+     "entryPx": "371.814",
+     "positionValue": "121891.41924",
+     "unrealizedPnl": "3104.562299",
+     "returnOnEquity": "0.2483729685",
+     "liquidationPx": "680.25731641",
+     "marginUsed": "12189.141924",
+     "maxLeverage": 20,
+     "cumFunding": {
+      "allTime": "-2220.733964",
+      "sinceOpen": "-2220.733964",
+      "sinceChange": "0.0"
+     }
+    }
+   },
+   {
+    "type": "oneWay",
+    "position": {
+     "coin": "xyz:NVDA",
+     "szi": "-322.92",
+     "leverage": {
+      "type": "cross",
+      "value": 20
+     },
+     "entryPx": "224.988",
+     "positionValue": "70438.5396",
+     "unrealizedPnl": "2214.606202",
+     "returnOnEquity": "0.6096380762",
+     "liquidationPx": "548.8500696027",
+     "marginUsed": "3521.92698",
+     "maxLeverage": 20,
+     "cumFunding": {
+      "allTime": "-3774.832689",
+      "sinceOpen": "-3774.832689",
+      "sinceChange": "0.0"
+     }
+    }
+   },
+   {
+    "type": "oneWay",
+    "position": {
+     "coin": "xyz:CRCL",
+     "szi": "-0.138",
+     "leverage": {
+      "type": "isolated",
+      "value": 10,
+      "rawUsd": "15.604778"
+     },
+     "entryPx": "101.683",
+     "positionValue": "10.607784",
+     "unrealizedPnl": "3.424481",
+     "returnOnEquity": "2.4404335294",
+     "liquidationPx": "107.6934299517",
+     "marginUsed": "4.996994",
+     "maxLeverage": 10,
+     "cumFunding": {
+      "allTime": "-7.746263",
+      "sinceOpen": "-7.746263",
+      "sinceChange": "-0.076494"
+     }
+    }
+   },
+   {
+    "type": "oneWay",
+    "position": {
+     "coin": "xyz:SP500",
+     "szi": "-5.355",
+     "leverage": {
+      "type": "cross",
+      "value": 20
+     },
+     "entryPx": "7739.161",
+     "positionValue": "41217.435",
+     "unrealizedPnl": "225.776461",
+     "returnOnEquity": "0.1089570297",
+     "liquidationPx": "27936.4408848952",
+     "marginUsed": "2060.87175",
+     "maxLeverage": 50,
+     "cumFunding": {
+      "allTime": "-32.100992",
+      "sinceOpen": "-32.100992",
+      "sinceChange": "0.0"
+     }
+    }
+   }
+  ],
+  "time": 1792049944127
+ }
+}

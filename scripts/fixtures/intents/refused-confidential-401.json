@@ -1,0 +1,11 @@
+{
+ "_source": "live POST /v0/quote dry:true with confidentiality basic and no key, 2026-10-15T06:41Z (research track, plan-private/raw/dry_quotes.json)",
+ "status": 401,
+ "answer": {
+  "message": "User authentication is required for confidential intent quotes",
+  "error": "Unauthorized",
+  "statusCode": 401,
+  "timestamp": "2026-10-15T06:41:10.834Z",
+  "path": "/v0/quote"
+ }
+}

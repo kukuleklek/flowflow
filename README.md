@@ -3,8 +3,8 @@
 </p>
 
 <h1 align="center">FlowFlow</h1>
-<p align="center"><b>Perp DEX trading with chat or voice.</b><br/>
-Hyperliquid perps and US stock perps, one sentence away. Every order waits for your confirm.</p>
+<p align="center"><b>Perp DEX trading. Trade, swap and stake by chat or voice.</b><br/>
+Built on Avalanche and U.Bot Brain. Every order waits for your confirm.</p>
 
 <p align="center"><a href="https://flowflow-alpha.vercel.app">flowflow-alpha.vercel.app</a></p>
 <p align="center">Conceived and built entirely by <b>U.Bot</b>.</p>

@@ -310,7 +310,8 @@ test("A10) the voice session follows the server: env can't raise the caps in its
   assert.match(withKey.instructions, /Unlock figures come only from get_unlocks/, "with the key, voice is told how to use unlocks");
   const earnOn = sessionRequest({ env: { VITE_EARN: "on" } }).session;
   assert.doesNotMatch(earnOn.instructions, /opens with the Spot Account soon/);
-  assert.match(sessionRequest({ env: {} }).session.instructions, /opens with the Spot Account soon/, "control: off, it says so");
+  assert.doesNotMatch(sessionRequest({ env: {} }).session.instructions, /opens with the Spot Account soon/, "owner 2026-10-15: on unless off");
+  assert.match(sessionRequest({ env: { VITE_EARN: "off" } }).session.instructions, /opens with the Spot Account soon/, "control: off, it says so");
 });
 
 /* ── A11 ──────────────────────────────────────────────────────────────────── */

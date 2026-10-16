@@ -12,7 +12,7 @@
 // tools: a trade card, a pick card, a close-all card; each waits for the user's tap and never sends by itself.
 
 export const READ_TOOLS = ["get_markets", "get_market", "get_candles", "get_account", "get_funds", "get_fills", "quote_trade", "get_unlocks", "get_analysis", "get_news"];
-export const ACTION_TOOLS = ["propose_open", "propose_close", "propose_tpsl", "propose_setups", "propose_stake", "open_deposit", "open_withdraw", "plan_trade", "propose_picks", "close_all"];
+export const ACTION_TOOLS = ["propose_open", "propose_close", "propose_tpsl", "propose_setups", "propose_stake", "open_deposit", "open_withdraw", "open_spot", "plan_trade", "propose_picks", "close_all"];
 
 const coin = { type: "string", description: "Market name as listed, e.g. BTC, ETH, SOL, HYPE, kPEPE, or a US stock or index ticker (TSLA, NVDA, AAPL, SP500, US100)." };
 const side = { type: "string", enum: ["long", "short"] };
@@ -95,6 +95,12 @@ export const TOOLS = [
     coin,
     topic: { type: "string", enum: ["crypto", "stocks", "market"] },
   }),
+  fn("open_spot", "Open a Spot Account panel on Avalanche, filled in: swap between USDC, USDT, BTC.b (bitcoin), XAUt0 (gold), WAVAX (avax) and XSGD; stake or unstake USDC in Aave; move USDC in from or out to the Main Account. It moves nothing: the panel shows the quote and the user confirms there, in a Privy window. Use it for swap, convert, buy or sell a coin on Avalanche, unstake, take out of Aave, move money between Main and Spot.", {
+    action: { type: "string", enum: ["swap", "stake", "unstake", "move-in", "move-out"] },
+    from: { type: "string", description: "Swap only: the coin the user gives (default USDC)." },
+    to: { type: "string", description: "Swap only: the coin the user gets. Native AVAX is not offered: use WAVAX." },
+    amount: { type: "number", description: "Only when the user said an amount: in the FROM coin for a swap, in USDC otherwise." },
+  }, ["action"]),
   fn("open_deposit", "Open the Deposit panel (the user's own deposit address, USDC from many chains). The app shows the address; never type one yourself."),
   fn("open_withdraw", "Open the Withdraw panel. The user types the destination address themselves; never suggest one.", {
     amount_usdc: { type: "number" },

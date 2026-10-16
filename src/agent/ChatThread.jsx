@@ -695,7 +695,7 @@ export default function ChatThread({ coin = null, compact = false, onActions = n
   return (
     <ChatActionsContext.Provider value={actions}>
     <div className={`flex min-h-0 flex-col ${compact ? "h-[min(560px,calc(100dvh-260px))] [@container(min-height:240px)]:h-[calc(100cqh-92px)]" : "h-full"}`}>
-      <div ref={scroller} onScroll={onScroll} className={`min-h-0 flex-1 overflow-y-auto ${compact ? "-mx-1 px-1" : ""}`}>
+      <div ref={scroller} onScroll={onScroll} className={`min-h-0 flex-1 overflow-y-auto overflow-x-hidden overscroll-contain ${compact ? "-mx-1 px-1" : ""}`}>
         <div ref={content} className={compact ? "space-y-4 pb-3" : "mx-auto w-full max-w-[760px] space-y-4 px-gutter pb-6 pt-4 md:pt-6 xl:max-w-[880px]"}>
           {messages.length === 0 ? (
             compact ? <Welcome coin={coin} send={send} busy={busy} /> : <PageWelcome signedIn={signedIn} askSignIn={askSignIn} send={send} busy={busy} />

@@ -197,7 +197,13 @@ function pulseCard(id) {
   try { el = document.querySelector(`[data-card-id="${CSS.escape(String(id))}"] > *`); } catch { return; }
   if (!el || typeof el.animate !== "function") return;
   try {
-    el.scrollIntoView({ block: "nearest", behavior: "smooth" });
+    /* Only the chat's own scroller moves (scrollIntoView would scroll every ancestor, the page too). */
+    const box = el.closest(".overflow-y-auto");
+    if (box) {
+      const r = el.getBoundingClientRect();
+      const b = box.getBoundingClientRect();
+      if (r.top < b.top || r.bottom > b.bottom) box.scrollBy({ top: r.bottom > b.bottom ? r.bottom - b.bottom : r.top - b.top, behavior: "smooth" });
+    }
     el.animate(
       [
         { outline: "0px solid rgb(9 9 11 / 0)", outlineOffset: "0px" },

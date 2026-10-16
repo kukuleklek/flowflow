@@ -23,6 +23,9 @@ import {
 } from "./voiceTools.js";
 
 export const SESSION_URL = "/api/realtime-session";
+/** ElevenLabs speech for the model's text answers (api/tts.js), when the session says tts: "elevenlabs". */
+export const TTS_URL = "/api/tts";
+const TTS_TIMEOUT_MS = 12_000;
 export const CALLS_URL = "https://api.openai.com/v1/realtime/calls";
 export const DATA_CHANNEL = "oai-events";
 const TOKEN_TIMEOUT_MS = 12_000;
@@ -423,6 +426,31 @@ export function createVoiceConversation({
 
 /* ── The transport ─────────────────────────────────────────────────────────────────────────────────────────── */
 
+/* The same meter on an <audio> element (the ElevenLabs answers), routed on to the speakers. null when it can't be. */
+function elementMeter(ctx, el) {
+  if (!ctx || !el || typeof ctx.createMediaElementSource !== "function") return null;
+  try {
+    const src = ctx.createMediaElementSource(el);
+    const an = ctx.createAnalyser();
+    an.fftSize = 512;
+    an.smoothingTimeConstant = 0.5;
+    src.connect(an);
+    an.connect(ctx.destination);
+    const buf = new Uint8Array(an.fftSize);
+    return {
+      read() {
+        an.getByteTimeDomainData(buf);
+        let s = 0;
+        for (let i = 0; i < buf.length; i++) { const x = (buf[i] - 128) / 128; s += x * x; }
+        return Math.min(1, Math.sqrt(s / buf.length) * 4);
+      },
+      close() { try { src.disconnect(); an.disconnect(); } catch { /* gone */ } },
+    };
+  } catch {
+    return null;
+  }
+}
+
 /* A level meter on one audio stream: read() → 0..1, a fast RMS of the waveform. */
 function meter(ctx, stream) {
   if (!ctx || !stream) return null;
@@ -468,7 +496,7 @@ export function openVoiceCall({
   PeerConnection = globalThis.RTCPeerConnection,
   AudioCtx = globalThis.AudioContext || globalThis.webkitAudioContext,
   makeAudio = () => (typeof globalThis.Audio === "function" ? new globalThis.Audio() : null),
-  sessionUrl = SESSION_URL, callsUrl = CALLS_URL,
+  sessionUrl = SESSION_URL, callsUrl = CALLS_URL, ttsUrl = TTS_URL,
   setTimer = setTimeout, clearTimer = clearTimeout, now = () => Date.now(),
 } = {}) {
   let ended = false;
@@ -484,6 +512,64 @@ export function openVoiceCall({
   let endsAt = null;
   let maxSeconds = null;
   const aborts = new Set();
+  /* ElevenLabs mode: the model answers in text, each answer is fetched as speech (in order, fetched at once) and played
+     here. The mic is muted while it plays, so the model never hears its own answer as the user (no echo loop). */
+  let ttsMode = false;
+  let ttsAudio = null;
+  let ttsMeter = null;
+  let ttsQueue = [];
+  let ttsPlaying = false;
+  let ttsGen = 0;
+  let unmuteTimer = null;
+
+  function micOn(on) {
+    try { if (mic) for (const t of mic.getAudioTracks ? mic.getAudioTracks() : mic.getTracks()) t.enabled = on; } catch { /* fine */ }
+  }
+
+  function fetchSpeech(text) {
+    return fetchWithin(ttsUrl, { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ text }) }, TTS_TIMEOUT_MS)
+      .then((r) => (r.ok ? r.blob() : null))
+      .catch(() => null);
+  }
+
+  function say(text) {
+    if (ended || !ttsAudio || typeof text !== "string" || !text.trim()) return;
+    ttsQueue.push(fetchSpeech(text.trim()));
+    if (ttsPlaying) return;
+    ttsPlaying = true;
+    clearTimer(unmuteTimer);
+    micOn(false);
+    onEvent({ type: "output_audio_buffer.started", via: "tts" });
+    pump();
+  }
+
+  async function pump() {
+    const gen = ttsGen;
+    const next = ttsQueue.shift();
+    if (!next) {
+      ttsPlaying = false;
+      /* A short tail before the mic opens again: the room's echo of the last word dies down. */
+      unmuteTimer = setTimer(() => { if (!ended && !ttsPlaying) micOn(true); }, 250);
+      onEvent({ type: "output_audio_buffer.stopped", via: "tts" });
+      return;
+    }
+    const blob = await next;
+    if (ended || gen !== ttsGen) return;
+    if (!blob || !ttsAudio || typeof URL === "undefined" || typeof URL.createObjectURL !== "function") { pump(); return; }
+    const url = URL.createObjectURL(blob);
+    const done = () => { try { URL.revokeObjectURL(url); } catch { /* gone */ } if (!ended && gen === ttsGen) pump(); };
+    ttsAudio.onended = done;
+    ttsAudio.onerror = done;
+    ttsAudio.src = url;
+    try { const p = ttsAudio.play && ttsAudio.play(); if (p && p.catch) p.catch(done); } catch { done(); }
+  }
+
+  function hush() {
+    ttsGen += 1;
+    ttsQueue = [];
+    try { if (ttsAudio) { ttsAudio.pause && ttsAudio.pause(); ttsAudio.onended = null; ttsAudio.onerror = null; } } catch { /* gone */ }
+    if (ttsPlaying) { ttsPlaying = false; micOn(true); }
+  }
 
   function fetchWithin(url, init, ms) {
     const ctrl = new AbortController();
@@ -494,6 +580,8 @@ export function openVoiceCall({
 
   function stop(reason = "user", message = null) {
     if (ended) return;
+    hush();
+    clearTimer(unmuteTimer);
     ended = true;
     clearTimer(maxTimer);
     clearTimer(dropTimer);
@@ -505,8 +593,10 @@ export function openVoiceCall({
     try { if (audio) { audio.pause && audio.pause(); audio.srcObject = null; } } catch { /* gone */ }
     if (micMeter) micMeter.close();
     if (outMeter) outMeter.close();
+    if (ttsMeter) ttsMeter.close();
+    try { if (ttsAudio) { ttsAudio.pause && ttsAudio.pause(); ttsAudio.removeAttribute && ttsAudio.removeAttribute("src"); } } catch { /* gone */ }
     try { if (ctx && ctx.close) ctx.close(); } catch { /* closed */ }
-    pc = null; dc = null; mic = null; audio = null; ctx = null; micMeter = null; outMeter = null;
+    pc = null; dc = null; mic = null; audio = null; ctx = null; micMeter = null; outMeter = null; ttsAudio = null; ttsMeter = null;
     onState("idle");
     onEnd({ reason, message });
   }
@@ -526,6 +616,9 @@ export function openVoiceCall({
     try { ctx = AudioCtx ? new AudioCtx() : null; } catch { ctx = null; }
     audio = makeAudio();
     if (audio) { audio.autoplay = true; try { audio.setAttribute && audio.setAttribute("playsinline", ""); } catch { /* fine */ } }
+    /* Also made inside the tap: the element that plays the ElevenLabs answers (unused when the model speaks itself). */
+    ttsAudio = makeAudio();
+    if (ttsAudio) { try { ttsAudio.setAttribute && ttsAudio.setAttribute("playsinline", ""); } catch { /* fine */ } }
     onState("connecting");
 
     /* 1. The microphone first: a refusal costs nothing. */
@@ -546,6 +639,8 @@ export function openVoiceCall({
       if (ended) return false;
       if (!r.ok || !body || typeof body.value !== "string") { stop("session", sessionErrorText(r.status, body)); return false; }
       token = body;
+      ttsMode = body.tts === "elevenlabs" && !!ttsAudio;
+      if (ttsMode) ttsMeter = elementMeter(ctx, ttsAudio);
     } catch {
       if (!ended) stop("session", "Couldn't reach voice. Check your connection and try again.");
       return false;
@@ -570,7 +665,10 @@ export function openVoiceCall({
       dc.onmessage = (e) => {
         let evt = null;
         try { evt = JSON.parse(e.data); } catch { return; }
-        if (!ended) onEvent(evt);
+        if (ended) return;
+        onEvent(evt);
+        /* ElevenLabs mode: each finished text answer is spoken (the chat already shows it). */
+        if (ttsMode && evt && evt.type === "response.output_text.done") say(String(evt.text || ""));
       };
       dc.onopen = () => {
         if (ended) return;
@@ -616,7 +714,7 @@ export function openVoiceCall({
       let m = 0;
       let o = 0;
       try { m = micMeter ? micMeter.read() : 0; } catch { m = 0; }
-      try { o = outMeter ? outMeter.read() : 0; } catch { o = 0; }
+      try { o = ttsMode ? (ttsMeter && ttsPlaying ? ttsMeter.read() : 0) : outMeter ? outMeter.read() : 0; } catch { o = 0; }
       return { mic: m, out: o };
     },
     get ended() { return ended; },

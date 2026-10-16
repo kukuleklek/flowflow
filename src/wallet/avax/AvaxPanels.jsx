@@ -170,7 +170,7 @@ function Why({ why, className = "" }) {
  *   mock      the mock backend: the panel's shape, everything disabled
  *   initialAmount  a typed amount handed over (the Agent's StakeCard: ?panel=earn&amount=…); never priced by itself
  */
-export default function SpotPanel({ kind, v, earnOn, mock, onClose, initialAmount = null }) {
+export default function SpotPanel({ kind, v, earnOn, mock, onClose, initialAmount = null, initialPair = null }) {
   const live = useAvaxAction(kind);
   /* DEV ONLY: ?ffAvaxPanelPreview= swaps in a sample state whose actions do nothing (panelPreview.js). */
   const sample = import.meta.env.DEV ? panelPreview(kind) : null;
@@ -180,8 +180,12 @@ export default function SpotPanel({ kind, v, earnOn, mock, onClose, initialAmoun
   const [amountStr, setAmountStr] = useState(() => (typeof initialAmount === "string" ? typedAmount(initialAmount, 6) : ""));
   /* With the flag off a swap is only ever the exit: something you hold, back to USDC (rule 5). */
   const exitOnlySwap = isSwap && !earnOn;
-  const [from, setFrom] = useState(exitOnlySwap ? "BTC.b" : "USDC");
-  const [to, setTo] = useState(exitOnlySwap ? "USDC" : "BTC.b");
+  /* A pair the chat handed over (?from=&to=): only whitelisted ERC-20s, never native AVAX, never the same coin twice. */
+  const okSym = (s) => { const x = typeof s === "string" ? assetBySymbol(s) : null; return x && !x.native ? x.symbol : null; };
+  const pf = okSym(initialPair && initialPair.from);
+  const pt = okSym(initialPair && initialPair.to);
+  const [from, setFrom] = useState(exitOnlySwap ? (pf && pf !== "USDC" ? pf : "BTC.b") : (pf || "USDC"));
+  const [to, setTo] = useState(exitOnlySwap ? "USDC" : (pt && pt !== (pf || "USDC") ? pt : (pf && pf !== "USDC" ? "USDC" : "BTC.b")));
   const [notice, setNotice] = useState(null);
   const lastArgs = useRef(null);
   const handled = useRef(null);
@@ -380,7 +384,7 @@ export default function SpotPanel({ kind, v, earnOn, mock, onClose, initialAmoun
     </div>
   );
 
-  /* The swap's coins: the whitelist only (from: every ERC-20 — swaps from AVAX open later, AVAX pays the gas). */
+  /* The swap's coins: the whitelist only, ERC-20s on both sides (swaps from or into AVAX open later; AVAX pays the gas). */
   const list = whitelistAssets();
   const pick = (sym, side) => {
     if (exitOnlySwap && (side === "to" || sym === "USDC")) return;
@@ -390,7 +394,7 @@ export default function SpotPanel({ kind, v, earnOn, mock, onClose, initialAmoun
   };
   const coinChips = (side) => (
     <div className="no-scrollbar -mx-gutter !mt-2.5 flex gap-1.5 overflow-x-auto px-gutter py-1.5 md:-mx-1 md:px-1">
-      {list.filter((x) => (exitOnlySwap ? (side === "from" ? !x.native && x.symbol !== "USDC" : x.symbol === "USDC") : side === "from" ? !x.native : x.symbol !== from)).map((x, i) => {
+      {list.filter((x) => (exitOnlySwap ? (side === "from" ? !x.native && x.symbol !== "USDC" : x.symbol === "USDC") : !x.native && (side === "from" || x.symbol !== from))).map((x, i) => {
         const ri = rise(i);
         const on = side === "from" ? x.symbol === from : x.symbol === to;
         const r = row(x.symbol);

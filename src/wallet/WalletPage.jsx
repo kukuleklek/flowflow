@@ -70,7 +70,7 @@ function usePanel() {
   const panel = raw === "deposit" || raw === "withdraw" ? raw : spotPanelKind(typeof raw === "string" ? raw.replace(/^move(in|out)$/, "move-$1") : raw);
   const go = (p) => {
     const next = new URLSearchParams(params);
-    next.delete("amount");
+    next.delete("amount"); next.delete("from"); next.delete("to");
     if (p) next.set("panel", p); else next.delete("panel");
     setParams(next, { replace: true });
   };

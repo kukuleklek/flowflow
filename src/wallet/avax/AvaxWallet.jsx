@@ -175,11 +175,12 @@ function useSpotPanel() {
   const amount = params.get("amount");
   const go = (k) => {
     const next = new URLSearchParams(params);
-    next.delete("amount");
+    next.delete("amount"); next.delete("from"); next.delete("to");
     if (k) next.set("panel", k); else next.delete("panel");
     setParams(next, { replace: true });
   };
-  return [kind, go, typeof amount === "string" && /^\d{1,6}(\.\d{1,6})?$/.test(amount) ? amount : null];
+  const pair = kind === "swap" ? { from: params.get("from"), to: params.get("to") } : null;
+  return [kind, go, typeof amount === "string" && /^\d{1,6}(\.\d{1,6})?$/.test(amount) ? amount : null, pair];
 }
 
 /** The Spot Account card: its one figure (coins + staked USDC), every coin held, the staked row, the actions; or,
@@ -187,7 +188,7 @@ function useSpotPanel() {
  *  `v` is usePortfolio()'s view. */
 export function AvaxWalletCard({ v, id = "spot" }) {
   const b = useBackend();
-  const [panel, go, handed] = useSpotPanel();
+  const [panel, go, handed, pair] = useSpotPanel();
   const ref = useRef(null);
 
   /* A panel opened on a phone: bring the card to the top of the screen (MainCard's own rule). */
@@ -203,7 +204,7 @@ export function AvaxWalletCard({ v, id = "spot" }) {
       <section id={id} ref={ref} className={`${CARD} scroll-mt-20 pt-1`}>
         <AutoHeight>
           <div key={panel} className="t-swap-in">
-            <SpotPanel kind={panel} v={v} earnOn={EARN_ON} mock={!!b.mock} onClose={() => go(null)} initialAmount={panel === "stake" ? handed : null} />
+            <SpotPanel kind={panel} v={v} earnOn={EARN_ON} mock={!!b.mock} onClose={() => go(null)} initialAmount={handed} initialPair={pair} />
           </div>
         </AutoHeight>
       </section>

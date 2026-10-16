@@ -22,7 +22,7 @@ import { TOOLS } from "../src/agent/tools.js";
 import { parsePerpMarkets } from "../src/lib/hyperliquid/markets.js";
 import { quoteOpenLive, quoteAddLive } from "../src/perp/live/perpBackend.js";
 import {
-  createVoiceConversation, openVoiceCall, legacyRunToolCall, resolveRunToolCall, CALLS_URL, SESSION_URL, DATA_CHANNEL,
+  createVoiceConversation, openVoiceCall, legacyRunToolCall, resolveRunToolCall, CALLS_URL, SESSION_URL, TTS_URL, DATA_CHANNEL,
 } from "../src/agent/voice/session.js";
 import {
   saysConfirm, confirmNotice, voiceCard, followUp, functionCalls, contextNote, micErrorText, VOICE_CANT_CONFIRM,
@@ -565,4 +565,62 @@ test("S15) spoken like typed: a market + an opening word is the app's setups car
   await tick();
   assert.match(JSON.parse(outputs(r.sent)[0].item.output).error, /already on screen/);
   assert.equal(r.chat.get().messages.filter((m) => m.role === "card").length, 1);
+});
+
+test("O-TTS) ElevenLabs mode: each text answer is fetched from /api/tts and played; the mic is muted while it speaks", async () => {
+  const PC = fakePC();
+  const mic = new FakeStream();
+  const t = timers();
+  const audios = [];
+  class FakeAudio { constructor() { this.played = []; audios.push(this); } setAttribute() {} pause() { this.paused = true; } play() { this.played.push(this.src); return Promise.resolve(); } }
+  const calls = [];
+  const f = async (url, init) => {
+    calls.push({ url, init });
+    if (url === SESSION_URL) return { ok: true, status: 200, json: async () => ({ value: "ek_test", maxSeconds: 180, tts: "elevenlabs" }) };
+    if (url === CALLS_URL) return { ok: true, status: 201, text: async () => "v=0\r\no=answer" };
+    return { ok: true, status: 200, blob: async () => new Blob([new Uint8Array([1, 2, 3])], { type: "audio/mpeg" }) };
+  };
+  const events = [];
+  const call = openVoiceCall({
+    fetchImpl: f, PeerConnection: PC, AudioCtx: null, makeAudio: () => new FakeAudio(), mediaDevices: { getUserMedia: async () => mic },
+    onEvent: (e) => events.push(e), ...t, now: () => 1_000,
+  });
+  assert.equal(await call.start(), true);
+  const pc = PC.made[0];
+  pc.dc.readyState = "open";
+  pc.dc.onopen();
+  pc.dc.onmessage({ data: JSON.stringify({ type: "response.output_text.done", text: "Your BTC card is ready." }) });
+  assert.equal(events.at(-1).type, "output_audio_buffer.started", "the button shows speech at once");
+  assert.equal(mic.t[0].enabled, false, "mic muted while it speaks");
+  await new Promise((r) => setTimeout(r, 0));
+  await new Promise((r) => setTimeout(r, 0));
+  const tts = calls.find((c) => c.url === TTS_URL);
+  assert.ok(tts, "asked /api/tts");
+  assert.deepEqual(JSON.parse(tts.init.body), { text: "Your BTC card is ready." });
+  const player = audios[1];
+  assert.equal(player.played.length, 1, "played once");
+  player.onended();
+  await new Promise((r) => setTimeout(r, 0));
+  assert.equal(events.at(-1).type, "output_audio_buffer.stopped");
+  t.list.filter((x) => x.on && x.ms === 250).forEach((x) => x.fn());
+  assert.equal(mic.t[0].enabled, true, "mic back on after the answer");
+  call.stop("user");
+});
+
+test("O-TTS2) without tts in the session answer, nothing is fetched from /api/tts (the model speaks itself)", async () => {
+  const PC = fakePC();
+  const calls = [];
+  const f = async (url) => {
+    calls.push(url);
+    if (url === SESSION_URL) return { ok: true, status: 200, json: async () => ({ value: "ek_test", maxSeconds: 180 }) };
+    return { ok: true, status: 201, text: async () => "v=0\r\no=answer" };
+  };
+  const call = openVoiceCall({ fetchImpl: f, PeerConnection: PC, AudioCtx: null, makeAudio: () => ({ setAttribute() {} }), mediaDevices: { getUserMedia: async () => new FakeStream() }, ...timers() });
+  assert.equal(await call.start(), true);
+  PC.made[0].dc.readyState = "open";
+  PC.made[0].dc.onopen();
+  PC.made[0].dc.onmessage({ data: JSON.stringify({ type: "response.output_text.done", text: "hi" }) });
+  await new Promise((r) => setTimeout(r, 0));
+  assert.equal(calls.includes(TTS_URL), false);
+  call.stop("user");
 });

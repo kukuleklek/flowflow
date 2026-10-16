@@ -510,6 +510,7 @@ test("H16) swap: independent-price loss bound, trusted Settlers, approve + swap 
   assert.match((await lossy.money.review("swap", { from: "USDC", to: "BTC.b", amount: "2" })).whyNot, /could lose 5\.\d\d%, over the 2%/);
   /* AVAX in: refused before any quote (rule 2). */
   assert.match((await r.money.review("swap", { from: "AVAX", to: "USDC", amount: "0.1" })).whyNot, /Swaps from AVAX open later/);
+  assert.match((await r.money.review("swap", { from: "USDC", to: "AVAX", amount: "1" })).whyNot, /Swaps into AVAX open later/);
 });
 
 test("H17) swap with too little AVAX: a PRINTED gas leg (USDC → AVAX) runs first under its own record, then the swap", async () => {

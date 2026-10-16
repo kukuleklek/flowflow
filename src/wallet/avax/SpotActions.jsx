@@ -31,8 +31,11 @@ export function SpotPanelHost({ kind, v, onBack }) {
   const k = spotPanelKind(kind);
   if (!k) return null;
   const raw = params.get("amount");
-  const handed = k === "stake" && typeof raw === "string" && /^\d{1,6}(\.\d{1,6})?$/.test(raw) ? raw : null;
-  return <SpotPanel key={k} kind={k} v={v} earnOn={EARN_ON} mock={!!b.mock} onClose={onBack} initialAmount={handed} />;
+  /* The chat hands over an amount (any panel) and, for a swap, the two coins: typed in, never priced or confirmed by
+     themselves. */
+  const handed = typeof raw === "string" && /^\d{1,6}(\.\d{1,6})?$/.test(raw) ? raw : null;
+  const pair = k === "swap" ? { from: params.get("from"), to: params.get("to") } : null;
+  return <SpotPanel key={k} kind={k} v={v} earnOn={EARN_ON} mock={!!b.mock} onClose={onBack} initialAmount={handed} initialPair={pair} />;
 }
 
 /* Keeps this account's flow watcher running while the Wallet shows (it settles a move whose outcome was unknown, with

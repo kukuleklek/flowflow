@@ -46,7 +46,7 @@ test("V1) the session is decided on the server: model, prompt + voice rules, too
   assert.equal(s.type, "realtime");
   assert.equal(s.model, REALTIME_MODEL);
   assert.equal(REALTIME_MODEL, "gpt-realtime-2.1-mini");
-  assert.ok(s.instructions.startsWith(systemPrompt({ maxMarginUsdc: 20, maxLeverage: 10, now })), "FlowFlow's own prompt first");
+  assert.ok(s.instructions.startsWith(systemPrompt({ maxMarginUsdc: 20, maxLeverage: 10, earnOn: true, now })), "FlowFlow's own prompt first (earn on unless VITE_EARN=off)");
   assert.ok(s.instructions.endsWith(VOICE_STYLE), "then the voice rules");
   assert.deepEqual(s.output_modalities, ["audio"]);
   assert.equal(s.audio.output.voice, VOICE);
@@ -79,7 +79,7 @@ test("V2) a call: POST client_secrets with the key as Bearer; the answer has the
   assert.equal(f.calls[0].init.headers["openai-safety-identifier"], safetyId(ip));
   assert.doesNotMatch(f.calls[0].init.headers["openai-safety-identifier"], /10\.0\./);
   assert.equal(f.calls[0].body.session.model, REALTIME_MODEL);
-  assert.deepEqual(r.body, { value: "ek_68af0abc1234", expiresAt: 1_800_000_060, model: REALTIME_MODEL, voice: VOICE, maxSeconds: MAX_SESSION_SECONDS });
+  assert.deepEqual(r.body, { value: "ek_68af0abc1234", expiresAt: 1_800_000_060, model: REALTIME_MODEL, voice: VOICE, tts: null, maxSeconds: MAX_SESSION_SECONDS });
   assert.doesNotMatch(JSON.stringify(r.body), new RegExp(KEY));
   assert.equal("session" in r.body, false, "the prompt and tools stay on the server's side of the answer");
 });

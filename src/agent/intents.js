@@ -60,6 +60,7 @@ import { recommendHeldTpSl, setupsForModel } from "./setups.js";
 import { formatHlPrice, formatHlPct, formatHlFunding } from "../lib/hyperliquid/format.js";
 import { perpCoinLabel } from "../perp/live/perpLiveView.js";
 import { parseStakeAmount, stakeLine, peekEarnApy } from "./earn.js";
+import { parseSwapAsk, parseUnstakeAsk, spotHref, spotLabel } from "./spotAsk.js";
 import { analysisLine, analysisNote } from "./analyze.js";
 import { assetState, suggestAssets, assetsCard, onboardingLine, assetsForModel } from "./suggest.js";
 
@@ -89,6 +90,7 @@ const MOVERS = /\b(top\s*)?movers?\b|\bgainers?\b|\blosers?\b|วิ่งแร
 const NOT_STAKE = /open\s+interest|unstak|withdraw|did\s+i\s+earn|i\s+earned|have\s+i\s+earned|ถอน/i;
 const ANALYZE = /\b(analy[sz](e|is|es|ing)|tokenomics?|unlocks?|vesting|emissions?|supply\s+schedule)\b|วิเคราะห์|ปลดล็อก|อันล็อก|โทเคโนมิกส์/i;
 const TPSL = /\b(tp\s*\/?\s*sl|take\s*profit|stop\s*loss|set\s+(a\s+)?stop)\b|ตั้ง\s*(tp|sl|สต็อป|stop)|ตั้งจุด(ตัด|ขาย)/i;
+const UNSTAKE = /\bun-?stak\w*|(?:withdraw|take\s+out)[^.?!]{0,24}\b(?:aave|stake|staked|staking)\b|ถอน[^.?!]{0,20}(?:aave|stake|สเตค|สเตก|ดอกเบี้ย)/i;
 const SWAP = /\b(swap|convert)\b|แปลง|แลก|เปลี่ยน.{0,20}เป็น/i;
 /* "ย้ายเงินไปบัญชีหุ้น 50", "move money to my stock account": there is none (owner: the money moves by itself). */
 const STOCK_ACCOUNT = /บัญชีหุ้น|\bstocks?\s+(?:account|wallet|balance)\b|\b(?:move|transfer|send|put)\s+(?:my\s+)?(?:money|usdc|funds?|cash|\$?\d[\d.,]*\s*(?:usdc|usd|dollars?)?)\s+(?:in)?to\s+(?:my\s+|the\s+)?stocks?\b|(?:ย้าย|โอน)(?:เงิน)?[^?]{0,12}(?:ไป|เข้า)\s*หุ้น/i;
@@ -151,7 +153,7 @@ export function longTradeIntent(text, { coins = [], markets = null, anyLength = 
  * The intent of a sentence, or null (the LLM answers it).
  * @param {string} text
  * @param {{ coins?: string[], contextCoin?: string|null }} o coins: the live market names (shortcuts.findCoin)
- * @returns {{ kind: "plan"|"greet"|"setups"|"stake"|"analyze"|"tpsl"|"swap", coin?: string|null, side?: "buy"|"sell"|null,
+ * @returns {{ kind: "plan"|"greet"|"setups"|"stake"|"analyze"|"tpsl"|"swap"|"unstake", coin?: string|null, side?: "buy"|"sell"|null,
  *   amountUsdc?: number|null, profile?: "Safer"|"Balanced"|"Bolder"|null, leverage?: number|null, venue?: boolean,
  *   lang: "en"|"th" } | null}
  */
@@ -186,8 +188,9 @@ export function detectIntent(text, { coins = [], contextCoin = null, markets = n
   /* There is no stock account to move money into (the money moves by itself on a stock order), and Main ↔ Spot moves
      live in the Wallet: both before the trade / stake readings of "ย้ายเงิน …". */
   if (STOCK_ACCOUNT.test(t)) return { kind: "stockAccount", lang };
-  if (MOVE.test(t)) return { kind: "move", to: TO_SPOT.test(t) ? "spot" : TO_MAIN.test(t) ? "main" : null, lang };
-  if (SWAP.test(t) || (side === "buy" && /\bon\s+avax(alanche)?\b|บน\s*avax/i.test(t))) return { kind: "swap", lang };
+  if (MOVE.test(t)) return { kind: "move", to: TO_SPOT.test(t) ? "spot" : TO_MAIN.test(t) ? "main" : null, amount: parseUnstakeAsk(t).amount, lang };
+  if (UNSTAKE.test(t)) return { kind: "unstake", ...parseUnstakeAsk(t), lang };
+  if (SWAP.test(t) || (side === "buy" && /\bon\s+(avax|avalanche)\b|บน\s*(avax|avalanche|อวาแลนช์)/i.test(t))) return { kind: "swap", ...parseSwapAsk(t), lang };
   const tradeWords = !!side || TPSL.test(t) || SETUPS.test(t) || PLAN.test(t);
   if ((STAKE.test(t) || (AAVE.test(t) && !tradeWords)) && !NOT_STAKE.test(t)) return { kind: "stake", amountUsdc: parseStakeAmount(t), lang };
   if (DEPOSIT.test(t) && !NOT_DEPOSIT.test(t)) return { kind: "deposit", lang };
@@ -471,9 +474,9 @@ export async function runIntent(intent, { ctx, io, contextCoin = null, subject =
         const earn = flag(ctx, "earnEnabled");
         const items = [];
         if (intent.to !== "main") {
-          if (earn) items.push({ label: th ? "ย้ายเข้า Spot" : "Move in to Spot", to: "/wallet?panel=move-in", icon: "arrowDown", main: true });
+          if (earn) items.push({ label: spotLabel({ action: "move-in", amount: intent.amount }, th), to: spotHref({ action: "move-in", amount: intent.amount }), icon: "arrowDown", main: true });
         }
-        if (intent.to !== "spot") items.push({ label: th ? "ย้ายกลับ Main" : "Move out to Main", to: "/wallet?panel=move-out", icon: "arrowUp", main: intent.to === "main" });
+        if (intent.to !== "spot") items.push({ label: spotLabel({ action: "move-out", amount: intent.amount }, th), to: spotHref({ action: "move-out", amount: intent.amount }), icon: "arrowUp", main: intent.to === "main" });
         if (!items.length) items.push({ label: th ? "เปิด Wallet" : "Open Wallet", to: "/wallet", icon: "wallet" });
         say(intent.to === "spot" && !earn
           ? (th ? "การย้ายเงินจาก Main เข้า Spot Account เปิดเร็วๆนี้ ตอนนี้ย้ายจาก Spot กลับ Main ได้แล้ว" : "Moving USDC from Main into the Spot Account opens soon. Moving from Spot back to Main works now.")
@@ -680,9 +683,27 @@ export async function runIntent(intent, { ctx, io, contextCoin = null, subject =
         break;
       }
       case "swap": {
-        const stake = await stakeCardFor(tctx, {}).catch(() => null);
-        say(W.swap(th));
-        card(assetsCard(suggestAssets(stateOf(ctx, stake ? stake.apyPct : null), { surface: "empty" })));
+        /* The Spot Account's swap panel, coins and amount filled in: its review, Confirm and Privy window do the rest. */
+        if (!flag(ctx, "earnEnabled") && intent.to !== "USDC") {
+          const stake = await stakeCardFor(tctx, {}).catch(() => null);
+          say(W.swap(th));
+          card(assetsCard(suggestAssets(stateOf(ctx, stake ? stake.apyPct : null), { surface: "empty" })));
+          break;
+        }
+        const ask = { action: "swap", from: intent.from, to: intent.to, amount: intent.amount };
+        say(th
+          ? `Swap ใน Spot Account บน Avalanche: เช็คราคาแล้วกด Confirm ในหน้า Review${intent.to ? "" : " (เลือกเหรียญปลายทางได้เลย)"}`
+          : `Swaps run in your Spot Account on Avalanche: check the quote, then Confirm on the review${intent.to ? "" : " (pick the coin to get)"}.`);
+        card({ kind: "choices", items: [{ label: spotLabel(ask, th), to: spotHref(ask), icon: "arrowUpRight", main: true }] });
+        break;
+      }
+      case "unstake": {
+        const ask = { action: "unstake", amount: intent.amount };
+        say(th ? "ถอน USDC จาก Aave กลับเข้า Spot Account: เช็คแล้วกด Confirm ในหน้า Review" : "Unstaking brings your USDC back from Aave to your Spot Account: check it, then Confirm on the review.");
+        card({ kind: "choices", items: [
+          { label: spotLabel(ask, th), to: spotHref(ask), icon: "arrowUpRight", main: true },
+          { label: spotLabel({ action: "move-out" }, th), to: spotHref({ action: "move-out" }), icon: "arrowUp" },
+        ] });
         break;
       }
       default:

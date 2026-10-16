@@ -158,7 +158,7 @@ export function resetPerpDiagLatch() {
 
 /** Is this path one of the perp pages? */
 export function perpDiagPathOk(pathname) {
-  return typeof pathname === "string" && (pathname === PERP_DIAG_PATH || pathname.startsWith(`${PERP_DIAG_PATH}/`) || pathname.startsWith("/agent") || pathname.startsWith("/wallet"));
+  return typeof pathname === "string" && (pathname === PERP_DIAG_PATH || pathname.startsWith(`${PERP_DIAG_PATH}/`) || pathname === "/home" || pathname.startsWith("/agent") || pathname.startsWith("/wallet"));
 }
 
 /**

@@ -700,6 +700,8 @@ export function createAvaxMoney(deps = {}) {
     if (!from || !to) return { pub, int: { ...int, why: "Only the assets listed in your Spot Account can be swapped." } };
     if (from === to) return { pub, int: { ...int, why: "Pick two different assets." } };
     if (from.native) return { pub, int: { ...int, why: "Swaps from AVAX open later. AVAX pays the network fee." } };
+    // AVAX can't be swapped back yet, so a swap into it would strand the money; gas AVAX comes with Move in.
+    if (to.native) return { pub, int: { ...int, why: "Swaps into AVAX open later. Pick WAVAX instead; Move in brings the AVAX for gas." } };
     if (!exit && !on) return { pub, int: { ...int, why: MONEY_WHY.notOn } };
     if (!a) return { pub, int: { ...int, why: MONEY_WHY.amount } };
 

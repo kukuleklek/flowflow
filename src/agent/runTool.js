@@ -3,6 +3,7 @@
 //
 // Results are deliberately small: rounded figures, no raw candles, no fields the model does not need. They go to a
 // free-tier model with a token budget, and anything we send may be used by the provider.
+import { SPOT_ACTIONS, spotHref, spotSymbol } from "./spotAsk.js";
 import { formatHlPrice, formatHlPct, formatHlUsdCompact, formatHlFunding } from "../lib/hyperliquid/format.js";
 import {
   balanceView, positionView, riskView, perpMarketFeeRate, perpCoinLabel, tpslBasisFromQuote, tpslLegView,
@@ -281,6 +282,15 @@ export async function runReadTool(name, args = {}, ctx) {
  */
 export function proposeAction(name, args = {}, ctx) {
   const snap = ctx.snapshot;
+  if (name === "open_spot") {
+    const action = SPOT_ACTIONS.includes(args.action) ? args.action : null;
+    if (!action) return { ok: false, error: "Which one: swap, stake, unstake, move-in or move-out?" };
+    const enabled = typeof ctx.earnEnabled === "boolean" ? ctx.earnEnabled : EARN_ENABLED;
+    const exit = action === "unstake" || action === "move-out" || (action === "swap" && spotSymbol(args.to) === "USDC");
+    if (!enabled && !exit) return { ok: false, error: "This opens with the Spot Account soon. Today: trade, or move and sell back to USDC." };
+    const to = spotHref({ action, from: args.from, to: args.to, amount: fin(args.amount) ? args.amount : null });
+    return { ok: true, navigate: to, note: `The ${action} panel is open in the Spot Account, filled in. The user checks the quote and confirms there.` };
+  }
   if (name === "open_deposit") return { ok: true, navigate: "/wallet?panel=deposit", note: "Deposit panel opened." };
   if (name === "open_withdraw") return { ok: true, navigate: "/wallet?panel=withdraw", note: "Withdraw panel opened. The user types the address." };
   if (name === "close_all") return proposeCloseAll(args, ctx);

@@ -6,10 +6,10 @@ import react from "@vitejs/plugin-react";
    NEAR_INTENTS_*, INTENTS_*) read from .env.local into process.env (never into the bundle; only VITE_* reach the
    browser). A variable already in the process env wins over the file: `PRIVATE_MODE=on npx vite` turns Private on
    for that server (the handlers read process.env at each request). */
-const DEV_API = ["chat", "relay-quote", "realtime-session", "tokenomist", "intents-quote", "intents-status", "news", "onchain-withdraw"];
+const DEV_API = ["chat", "relay-quote", "realtime-session", "tokenomist", "intents-quote", "intents-status", "news", "onchain-withdraw", "tts"];
 const SERVER_ENV = (k) => k.startsWith("LLM_") || k === "RELAY_API_KEY" || k === "OPENAI_API_KEY"
   || k === "TOKENOMIST_API_KEY" || k.startsWith("TOKENOMIST_") || k.startsWith("VOICE_")
-  || k === "PRIVATE_MODE" || k.startsWith("NEAR_INTENTS_") || k.startsWith("INTENTS_") || k.startsWith("AVAX_");
+  || k === "PRIVATE_MODE" || k.startsWith("NEAR_INTENTS_") || k.startsWith("INTENTS_") || k.startsWith("AVAX_") || k.startsWith("ELEVENLABS_");
 
 function apiInDev(env) {
   return {
@@ -43,10 +43,22 @@ function tokenomistFlag(env, mode) {
   return mode === "development" && set === "on" ? "on" : "off";
 }
 
+/* VITE_EARN (Move in, Stake, Swap on the Avalanche Spot Account): ON unless an env says "off" (owner, 2026-10-15:
+   "เปิดไปก่อนเลย"). The exits never waited for it. api/chat.js reads the same rule for the Agent's prompt. */
+function earnFlag(env) {
+  return String(env.VITE_EARN || "").trim().toLowerCase() === "off" ? "off" : "on";
+}
+
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), "");
   return {
+    /* Two dev servers on one checkout (5173 live, 5174 mock) must not share one prebundle cache: one rewriting it
+       under the other loads two copies of React (a blank page). The mock sets VITE_CACHE_DIR. */
+    ...(process.env.VITE_CACHE_DIR ? { cacheDir: process.env.VITE_CACHE_DIR } : {}),
     plugins: [react(), apiInDev(env)],
-    define: { "import.meta.env.VITE_TOKENOMIST": JSON.stringify(tokenomistFlag({ ...env, ...process.env }, mode)) },
+    define: {
+      "import.meta.env.VITE_TOKENOMIST": JSON.stringify(tokenomistFlag({ ...env, ...process.env }, mode)),
+      "import.meta.env.VITE_EARN": JSON.stringify(earnFlag({ ...env, ...process.env })),
+    },
   };
 });

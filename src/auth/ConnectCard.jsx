@@ -13,7 +13,8 @@ import { methodOn } from "../services/privyMethods.js";
 /* The motion kit's connect card, with Privy's headless sign-in in the rows instead of
    wallet extensions. The button opens into Log in / Sign up, each opens into its list inside the same card
    (AutoHeight + t-swap-in), rows rise in one after another, the chosen row shimmers "Connecting…", then a check,
-   and Back plays the morph in reverse. No modal, ever.
+   and Back plays the morph in reverse. Its only modal host is the first-visit welcome (WelcomeModal), which draws
+   this same card, so there is still one sign-in path.
    Google and email are one flow for both (Privy makes the account on first use); a passkey is not: logging in
    needs one already, so Sign up offers "Create a passkey" (signupWithPasskey) and Log in "Use your passkey". */
 
@@ -62,12 +63,16 @@ const TEXT_INPUT = "h-11 w-full rounded-lg bg-input/30 px-3 text-sm ring-1 ring-
 const CODE_INPUT = "num h-12 w-full rounded-lg bg-input/30 px-3 text-center text-xl tracking-[0.4em] ring-1 ring-inset ring-input outline-none transition-[background-color,box-shadow] focus:bg-card focus:shadow-halo focus:ring-ring focus-visible:outline-none";
 
 /**
- * @param {{ start?: "button"|"list", onDone?: () => void, title?: string, sub?: string, bare?: boolean }} props
- *   start "list" skips the Connect button (the header popover); bare drops the card's own frame.
+ * @param {{ start?: "button"|"list"|"pair", onDone?: () => void, onBegin?: (kind: string) => void, title?: string, sub?: string, bare?: boolean }} props
+ *   start "list" skips the Connect button (the header popover); "pair" opens on two buttons, Sign in and Sign up,
+ *   each going straight to its list (the welcome modal). bare drops the card's own frame. onBegin is told a sign-in
+ *   is starting (before Google's redirect), so a host can remember where it began.
  */
-export default function ConnectCard({ start = "button", onDone, title = "Sign in", sub = "Long, short or ask FlowFlow.", bare = false }) {
+export default function ConnectCard({ start = "button", onDone, onBegin, title = "Sign in", sub = "Long, short or ask FlowFlow.", bare = false }) {
   const w = useWallet();
   const first = start === "list" ? "choose" : start;
+  /* The welcome's buttons say "Sign in" (owner), so its lists do too; the header keeps "Log in". */
+  const logIn = start === "pair" ? "Sign in" : "Log in";
   const [view, setView] = useState(first); // button | choose | list | email | code
   const [mode, setMode] = useState("login"); // login | signup
   const [pending, setPending] = useState(null); // google | email | code | passkey
@@ -81,7 +86,7 @@ export default function ConnectCard({ start = "button", onDone, title = "Sign in
   const methods = useSyncExternalStore(subscribePrivyMethods, getPrivyMethods, getPrivyMethods);
 
   useEffect(() => { if (configured) loadPrivyMethods(); }, [configured]);
-  useEffect(() => { if (view !== "button") requestPrivyMount(); }, [view]);
+  useEffect(() => { if (view !== "button" && view !== "pair") requestPrivyMount(); }, [view]);
 
   /* Signed in: hold the check for the kit's success beat, then hand over. */
   useEffect(() => {
@@ -92,6 +97,7 @@ export default function ConnectCard({ start = "button", onDone, title = "Sign in
 
   const run = async (kind, fn) => {
     const my = ++attempt.current;
+    try { onBegin?.(kind); } catch { /* the host's bookkeeping never blocks a sign-in */ }
     setPending(kind);
     setError(null);
     try {
@@ -112,7 +118,7 @@ export default function ConnectCard({ start = "button", onDone, title = "Sign in
     attempt.current++;
     setPending(null);
     setError(null);
-    setView(view === "code" ? "email" : view === "email" ? "list" : view === "list" ? "choose" : first);
+    setView(view === "code" ? "email" : view === "email" ? "list" : view === "list" ? (start === "pair" ? "pair" : "choose") : first);
   };
 
   const busy = !!pending;
@@ -146,6 +152,14 @@ export default function ConnectCard({ start = "button", onDone, title = "Sign in
         </Button>
       </div>
     );
+  } else if (view === "pair") {
+    const pick = (m) => { setMode(m); setError(null); setView("list"); };
+    body = (
+      <div key="pair" className="t-swap-in w-full space-y-2.5">
+        <Button variant="primary" size="xl" className="w-full !h-[52px] !rounded-[14px]" onClick={() => pick("login")}>Sign in</Button>
+        <Button variant="outline" size="xl" className="w-full !h-[52px] !rounded-[14px]" onClick={() => pick("signup")}>Sign up</Button>
+      </div>
+    );
   } else if (view === "choose") {
     const pick = (m) => { setMode(m); setError(null); setView("list"); };
     body = (
@@ -160,10 +174,10 @@ export default function ConnectCard({ start = "button", onDone, title = "Sign in
   } else if (view === "list") {
     const signup = mode === "signup";
     const rows = [
-      methodOn(methods, "google") && { key: "google", icon: <GoogleMark />, title: signup ? "Sign up with Google" : "Log in with Google",
+      methodOn(methods, "google") && { key: "google", icon: <GoogleMark />, title: signup ? "Sign up with Google" : `${logIn} with Google`,
         sub: signup ? "Wallet made for you" : "Your Google account",
         pending: pending === "google", onClick: () => run("google", loginWithGoogle) },
-      methodOn(methods, "email") && { key: "email", icon: <Icon name="mail" size={16} />, title: signup ? "Sign up with email" : "Log in with email",
+      methodOn(methods, "email") && { key: "email", icon: <Icon name="mail" size={16} />, title: signup ? "Sign up with email" : `${logIn} with email`,
         sub: "One-time code", onClick: () => { setError(null); setView("email"); } },
       signup
         ? methodOn(methods, "passkeySignup") && { key: "passkey", icon: <Icon name="key" size={16} />, title: "Create a passkey",
@@ -173,7 +187,7 @@ export default function ConnectCard({ start = "button", onDone, title = "Sign in
     ].filter(Boolean);
     body = (
       <div key={`list-${mode}`} className="t-swap-in w-full space-y-3 text-left">
-        <BackHead onBack={back} title={signup ? "Sign up" : "Log in"} />
+        <BackHead onBack={back} title={signup ? "Sign up" : logIn} />
         {rows.length ? (
           <ul className="border-t border-hairline" aria-label="Ways to sign in">
             {rows.map(({ key, ...r }, i) => <Row key={key} i={i} disabled={busy} {...r} />)}
@@ -196,7 +210,7 @@ export default function ConnectCard({ start = "button", onDone, title = "Sign in
           if (await run("email", () => sendEmailCode(email.trim()))) setView("code");
         }}
       >
-        <BackHead onBack={back} title={mode === "signup" ? "Sign up with email" : "Log in with email"} />
+        <BackHead onBack={back} title={mode === "signup" ? "Sign up with email" : `${logIn} with email`} />
         <input
           autoFocus
           type="email"

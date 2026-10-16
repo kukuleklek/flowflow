@@ -27,7 +27,7 @@ import StakeCard from "./cards/StakeCard.jsx";
 import UnlockCard from "./cards/UnlockCard.jsx";
 import AnalysisCard from "./cards/AnalysisCard.jsx";
 import { AssetsCard } from "./cards/AssetBoxes.jsx";
-import FinalTradeSheet from "./cards/FinalTradeSheet.jsx";
+import { createOpenLatch } from "./cards/finalTradeView.js";
 import PickCard from "./cards/PickCard.jsx";
 import CloseAllCard from "./cards/CloseAllCard.jsx";
 import NewsCard from "./cards/NewsCard.jsx";
@@ -169,16 +169,14 @@ async function verifyFill({ b, mid, rb }) {
 }
 
 /** The FlowFlow proposed order. It re-quotes itself from the live market; the LLM's own numbers are never shown.
- *  🔴 Its Confirm no longer sends (owner item 17): it opens the final chart sheet (cards/FinalTradeSheet.jsx), whose ONE
- *  Open button is the only send, once, after the freshness and cap re-checks below. */
+ *  🔴 Its Confirm is the ONE send (owner, 2026-10-16), latched to one call per tap, after the freshness and cap
+ *  re-checks below. The final chart sheet (cards/FinalTradeSheet.jsx) is no longer opened from here. */
 function OpenCard({ mid, card, latest }) {
   const b = useBackend();
   const { market, stale } = usePerpMarket(card.coin);
-  const [phase, setPhase] = useState(card.status === "filled" ? "done" : card.status === "cancelled" ? "cancelled" : "review");
-  const [error, setError] = useState(null);
+  const [phase, setPhase] = useState(card.status === "filled" ? "done" : card.status === "cancelled" ? "cancelled" : card.status === "unknown" ? "locked" : "review");
+  const [error, setError] = useState(card.status === "unknown" ? { title: "Not confirmed", text: "Check your positions before trying again." } : null);
   const [signIn, setSignIn] = useState(false);
-  const [sheet, setSheet] = useState(false);
-  const [sheetKey, setSheetKey] = useState(0);
   const [edited, setEdited] = useState(null);
   const box = useRef(null);
   const buy = card.side === "buy";
@@ -223,14 +221,26 @@ function OpenCard({ mid, card, latest }) {
   /* The plan's lines come in the language the user wrote in; its capped line follows them. */
   const planThai = !!(plan && Array.isArray(plan.steps) && /[฀-๿]/.test(plan.steps.join(" ")));
 
-  /* The card's Confirm: the final chart sheet, nothing sent yet. */
-  const confirm = () => {
-    if (phase !== "review" || !q.ready) return;
+  /* 🔴 The card's Confirm SENDS (owner, 2026-10-16: "กด Confirm ที่นี่แล้ว Long ได้เลย ไม่ต้องมี Popup อีกรอบ" — the card
+     draws the TP / SL chart itself now). The final sheet's guarantees stay, here: the send latch (one openNow per tap,
+     whatever the clicks), openNow's fresh-price, cap and quote re-checks, the card inert while sending, and an unknown
+     outcome locks Confirm until the positions are checked; only a clean "nothing was sent" lets a new tap try. */
+  const openNowRef = useRef(null);
+  const latch = useRef(null);
+  if (!latch.current) latch.current = createOpenLatch(() => openNowRef.current());
+  const confirm = async () => {
+    if (phase !== "review" || !q.ready || latch.current.state !== "idle") return;
     setError(null);
-    setSheet(true);
+    const o = await latch.current.fire();
+    if (o.state === "ignored" || o.state === "ok") return;
+    if (o.state === "locked") {
+      setPhase("locked");
+      try { chat.patchCard(mid, { status: "unknown" }); } catch { /* moved on */ }
+    }
+    setError((e) => e || { title: o.state === "locked" ? "Not confirmed" : "Not sent", text: o.text || "Nothing was sent." });
   };
 
-  /* 🔴 THE ONE SEND (FinalTradeSheet's Open, latched there to one call per tap). Before it: a fresh price (the market
+  /* 🔴 THE ONE SEND (the card's Confirm, latched to one call per tap). Before it: a fresh price (the market
      store's row now, not the one the card rendered with), a stock's limits AGAIN at this moment (a card made in US
      hours and confirmed after the close goes out at most at 5x, never at the card's 10x: EXECUTION-ASSURANCE need 6),
      a fresh quote, and the card's claim (store.js: a card is confirmed once, in one tab). */
@@ -308,8 +318,8 @@ function OpenCard({ mid, card, latest }) {
           ...(q.adding ? { priorSzi } : { tpPx: q.tp ?? null, slPx: q.sl ?? null }),
         },
       });
-      /* The sheet shows "Filled" for a beat, closes, and the position card (the big live P&L) takes the card's place. */
-      setTimeout(() => { setSheet(false); setPhase("done"); }, 700);
+      /* "Filled" for a beat, then the position card (the big live P&L) takes the card's place. */
+      setTimeout(() => { setPhase("done"); }, 700);
       return { ok: true };
     }
     const err = customerError(tradeErrorView(r || {}));
@@ -319,6 +329,8 @@ function OpenCard({ mid, card, latest }) {
     setError(err);
     return { ok: false, unknown, code: r && r.code, message: `${err.title}: ${err.text}` };
   };
+
+  openNowRef.current = openNow;
 
   /* Edit in the sheet: prices typed, back to the card's ROE legs at this leverage (the quote re-prices them on the
      tick, and its own checks hold: a leg on the wrong side is refused before anything can be sent). */
@@ -485,28 +497,13 @@ function OpenCard({ mid, card, latest }) {
       ) : (
         <div className={`grid grid-cols-[2fr_1fr] gap-2 border-t border-hairline px-4 pb-3 pt-2.5 ${hasNotes ? "mt-2.5" : ""}`}>
           {/* A short's Confirm is solid red like a long's lime (pass-2 review: the 12% tint read as disabled). */}
-          <Button variant={buy ? "brand" : "short"} size="md" className={buy ? "" : SHORT_SOLID} onClick={confirm} disabled={!q.ready && phase === "review"} aria-busy={busy} aria-haspopup="dialog">
+          <Button variant={buy ? "brand" : "short"} size="md" className={buy ? "" : SHORT_SOLID} onClick={confirm} disabled={(!q.ready && phase === "review") || phase === "locked"} aria-busy={phase === "sending"}>
             <IconSwap state={phase === "sending" ? "b" : "a"} a={<Icon name="check" size={16} />} b={<Spinner size={16} />} c={<Icon name="check" size={16} strokeWidth={2.4} />} />
-            <TextSwap text={phase === "sending" ? "Placing…" : q.adding ? "Confirm add" : `Confirm ${Side.toLowerCase()}`} />
+            <TextSwap text={phase === "sending" ? "Placing…" : phase === "locked" ? "Check your positions" : q.adding ? "Confirm add" : `Confirm ${Side.toLowerCase()}`} />
           </Button>
           <Button variant="outline" size="md" onClick={cancel} disabled={busy}>Cancel</Button>
         </div>
       )}
-      {/* Into <body>: the card's frame clips (overflow-hidden) and is a size container, either of which would trap a
-          fixed layer inside the card. */}
-      {typeof document !== "undefined" ? createPortal(
-        <FinalTradeSheet
-          key={sheetKey}
-          open={sheet}
-          onClose={() => { setSheet(false); if (card.status === "unknown") setSheetKey((k) => k + 1); }}
-          plan={sheetPlan}
-          market={market}
-          onOpen={openNow}
-          onEdit={q.adding ? null : onEdit}
-          stale={!!q.isStale}
-        />,
-        document.body,
-      ) : null}
     </div>
   );
 }

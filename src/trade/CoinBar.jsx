@@ -98,7 +98,7 @@ export default function CoinBar({ coin, market, stale }) {
     <header className="border-b border-border bg-background lg:col-span-2">
       <div className="flex flex-wrap items-center gap-x-6 gap-y-3 px-gutter pb-3 pt-[max(12px,env(safe-area-inset-top))] lg:py-3 xl:flex-nowrap">
         <div className="relative flex min-w-0 basis-full items-center gap-2.5 lg:static xl:basis-auto">
-          <Link to="/trade" aria-label="Back to markets" title="Back to markets"
+          <Link to="/home" aria-label="Back to markets" title="Back to markets"
             className="ff-press -ml-2.5 grid size-11 shrink-0 place-items-center rounded-full text-muted-foreground transition-colors hover:bg-muted hover:text-foreground lg:-ml-1.5 lg:size-9">
             <Icon name="arrowLeft" size={20} />
           </Link>

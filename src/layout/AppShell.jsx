@@ -1,5 +1,5 @@
 import { useContext, useEffect, useLayoutEffect, useReducer, useRef, useState } from "react";
-import { NavLink, UNSAFE_LocationContext as LocationContext, useLocation, useOutlet } from "react-router-dom";
+import { Link, NavLink, UNSAFE_LocationContext as LocationContext, useLocation, useOutlet } from "react-router-dom";
 import { useSlidingPill, prefersReducedMotion, parseCssTime, INERT, ShimmerText } from "../ui/kit/index.ts";
 import Logo from "../ui/Logo.jsx";
 import Icon from "../ui/Icon.jsx";
@@ -9,11 +9,19 @@ import { useBackend } from "../perp/BackendContext.jsx";
 import { balanceView } from "../perp/live/perpLiveView.js";
 import { useWallet } from "../context/WalletContext.jsx";
 
+/* Trade opens the markets list (/home) and stays lit on every coin terminal (/trade/:coin). */
 const NAV = [
-  { to: "/trade", label: "Trade", icon: "trade" },
-  { to: "/agent", label: "FlowFlow", icon: "agent" },
-  { to: "/wallet", label: "Wallet", icon: "wallet" },
+  { to: "/home", label: "Trade", icon: "trade", on: (p) => p === "/home" || p.startsWith("/trade") },
+  { to: "/agent", label: "FlowFlow", icon: "agent", on: (p) => p.startsWith("/agent") },
+  { to: "/wallet", label: "Wallet", icon: "wallet", on: (p) => p.startsWith("/wallet") },
 ];
+
+/** A nav link whose "current" follows NAV's own rule (NavLink only matches its own path). */
+function NavItem({ n, className, children }) {
+  const { pathname } = useLocation();
+  const on = n.on(pathname);
+  return <Link to={n.to} aria-current={on ? "page" : undefined} className={className}>{children}</Link>;
+}
 
 /* A nav tab fills the bar's full height, so its focus ring is drawn inside the tab (a rounded box around the label)
    instead of outside it, where the viewport top or the screen bottom would clip it. */
@@ -29,9 +37,9 @@ function TopNav() {
     <nav ref={list} aria-label="Main" className="t-tabs ff-line hidden h-14 items-stretch md:flex [--line-bottom:-1px] [--line-inset:12px]">
       <span ref={pill} className="t-tabs-pill" aria-hidden="true" />
       {NAV.map((n) => (
-        <NavLink key={n.to} to={n.to} className={`t-tab inline-flex h-14 items-center px-3 text-sm font-medium ${FOCUS_IN}`}>
+        <NavItem key={n.to} n={n} className={`t-tab inline-flex h-14 items-center px-3 text-sm font-medium ${FOCUS_IN}`}>
           {n.label}
-        </NavLink>
+        </NavItem>
       ))}
     </nav>
   );
@@ -46,10 +54,10 @@ function BottomNav() {
     <nav ref={list} aria-label="Main" className="t-tabs ff-line ff-bar-top grid h-16 w-full grid-cols-3">
       <span ref={pill} className="t-tabs-pill" aria-hidden="true" />
       {NAV.map((n) => (
-        <NavLink key={n.to} to={n.to} className={`t-tab flex h-16 flex-col items-center justify-center gap-1 text-[11px] font-medium ${FOCUS_IN}`}>
+        <NavItem key={n.to} n={n} className={`t-tab flex h-16 flex-col items-center justify-center gap-1 text-[11px] font-medium ${FOCUS_IN}`}>
           <Icon name={n.icon} size={20} />
           {n.label}
-        </NavLink>
+        </NavItem>
       ))}
     </nav>
   );
@@ -219,7 +227,7 @@ export default function AppShell() {
           onAnimationEnd={intro ? (e) => { if (e.target === e.currentTarget) setIntro(false); } : undefined}
         >
           <div className="flex items-center gap-8">
-            <NavLink to="/trade" aria-label="FlowFlow home" className="rounded-lg"><Logo size={26} /></NavLink>
+            <NavLink to="/home" aria-label="FlowFlow home" className="rounded-lg"><Logo size={26} /></NavLink>
             <TopNav />
           </div>
           <div className="flex items-center gap-4">

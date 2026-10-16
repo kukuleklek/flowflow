@@ -380,7 +380,7 @@ export default function PositionsPanel({ coin = null, extraTabs = null, historyL
         <EmptyState
           title={<EmptyLine text="No open positions" tip="Positions show up here once an order fills." />}
           action={coin ? null : (
-            <Link to="/trade" className="ff-press -ml-1 inline-flex h-11 items-center px-1 text-sm font-medium text-foreground underline-offset-4 hover:underline lg:h-8 lg:text-xs">
+            <Link to="/home" className="ff-press -ml-1 inline-flex h-11 items-center px-1 text-sm font-medium text-foreground underline-offset-4 hover:underline lg:h-8 lg:text-xs">
               Browse markets <span aria-hidden="true">&nbsp;→</span>
             </Link>
           )}

@@ -15,7 +15,7 @@ Built on Avalanche and U.Bot Brain. Every order waits for your confirm.</p>
 
 | | |
 |---|---|
-| **Trade by chat or voice** | "Long NVDA 10 USDC, max loss $3" → a plan card with entry, TP, SL and R:R computed in code → a final chart with the lines → one tap to open. Voice runs on OpenAI Realtime with the same tools and caps. |
+| **Trade by chat or voice** | "Long NVDA 10 USDC, max loss $3" → a plan card with entry, TP, SL and R:R computed in code → a final chart with the lines → one tap to open. Voice: OpenAI Realtime is the brain (it listens and calls the same tools, under the same caps), and every answer is spoken in an **ElevenLabs** voice. |
 | **Crypto + US stocks** | Every Hyperliquid perp, plus whitelisted HIP-3 stock perps (TSLA, NVDA, AAPL, S&P 500 …). Stock margin moves in and out automatically. |
 | **Analyze with Tokenomist** | Trend on 1h / 4h / 1d, flip levels, risks, suggested R:R, and token unlocks / emission from Tokenomist. |
 | **Deposit from Avalanche, Base & more** | USDC from Avalanche, Base, Arbitrum, Polygon, Ethereum, Optimism, BNB via Relay, landing in your Hyperliquid account. |
@@ -27,7 +27,7 @@ Built on Avalanche and U.Bot Brain. Every order waits for your confirm.</p>
 - **Your wallet, your money.** Privy embedded wallet (one EOA on every chain). Funds only move to your own address, except a withdrawal you type yourself.
 - **Every money action is a card you confirm.** The Agent never signs; caps live in code (20 USDC margin per order, Agent ≤ 10x).
 - **No silent money signatures.** The only no-window signatures are Hyperliquid's "enable trading" approvals and one first-deposit bridge transfer; everything else opens Privy's window, and each request is rebuilt and compared before Privy is asked.
-- **Keys stay on the server.** LLM, Relay, Tokenomist and NEAR keys are server-only (`api/*`), never `VITE_`.
+- **Keys stay on the server.** LLM, ElevenLabs, Relay, Tokenomist and NEAR keys are server-only (`api/*`), never `VITE_`.
 
 ## Business model
 
@@ -43,14 +43,14 @@ Built on Avalanche and U.Bot Brain. Every order waits for your confirm.</p>
 
 ## Stack
 
-Vite + React 18 · Tailwind · Privy · Hyperliquid (perps + HIP-3) · Relay · Avalanche (Aave V3) · NEAR Intents 1Click · Tokenomist · OpenAI (chat + Realtime voice) · Vercel functions.
+Vite + React 18 · Tailwind · Privy · Hyperliquid (perps + HIP-3) · Relay · Avalanche (Aave V3) · NEAR Intents 1Click · Tokenomist · OpenAI (chat + Realtime voice) · ElevenLabs (spoken answers) · Vercel functions.
 
 ```
 src/agent        chat + voice agent: intents, plans, cards, analysis
 src/lib          hyperliquid (signing, orders, HIP-3), relay, avax, intents, tokenomist
 src/avax         Spot Account money flows (registry, signers, watcher)
 src/wallet       Home, Wallet, Deposit / Withdraw panels
-api/             serverless: chat, realtime-session, relay-quote, tokenomist, intents-*
+api/             serverless: chat, realtime-session, tts, relay-quote, tokenomist, intents-*
 contracts/       FlowFlowAccountFactory (Solidity 0.8.24, Hardhat)
 scripts/         node --test suites (1,600+ tests, no network)
 ```
@@ -66,6 +66,6 @@ npm run build
 ```
 
 `VITE_PERP_BACKEND=mock` runs on real mainnet prices with a simulated $1,000 account and never sends an order.
-Key env (server-only): `LLM_*`, `OPENAI_API_KEY`, `RELAY_API_KEY`, `TOKENOMIST_API_KEY`, `PRIVATE_MODE`, `NEAR_INTENTS_JWT`. See `.env.example`.
+Key env (server-only): `LLM_*`, `OPENAI_API_KEY`, `ELEVENLABS_API_KEY`, `RELAY_API_KEY`, `TOKENOMIST_API_KEY`, `PRIVATE_MODE`, `NEAR_INTENTS_JWT`. See `.env.example`.
 
 Built for a hackathon on mainnet. FlowFlow is U.Bot's idea, and U.Bot built all of it.

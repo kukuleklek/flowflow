@@ -55,7 +55,14 @@ function choose(mid, s, market, card) {
     try { chat.patchCard(mid, { chosen: s.id }); } catch { /* the setups card is gone: still show the trade card */ }
   }
   chat.noteLlm(`The user chose the ${c.setupLabel || "recommended"} setup: ${Side} ${agentTicker(c.coin)} ${c.marginUsdc} USDC ${c.leverage}x, TP +${c.tpPct ?? "-"}% SL -${c.slPct ?? "-"}% (ROE). A trade card is on screen; nothing is sent until they confirm it.`);
-  chat.push({ role: "card", card: c });
+  /* The trade card joins the setups card's own chat: on a coin's trade page the thread shows only that coin's messages
+     (store.js scope), and a card pushed without it never appeared there ("Use this setup" did nothing). */
+  let scope = null;
+  try {
+    const src = mid != null ? chat.get().messages.find((m) => m && m.id === mid) : null;
+    scope = src && typeof src.scope === "string" && src.scope ? src.scope : null;
+  } catch { scope = null; }
+  chat.push({ role: "card", card: c, ...(scope ? { scope } : {}) });
 }
 
 function Line({ label, children, tone = "" }) {

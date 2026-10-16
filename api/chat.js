@@ -60,7 +60,7 @@ const str = (v) => (typeof v === "string" ? v.slice(0, MAX_CHARS) : "");
 
 /** What this server has: a Tokenomist key (get_unlocks is offered only then), and the earn entry's build flag. */
 export function serverFlags(env = {}) {
-  return { unlocks: !!String(env.TOKENOMIST_API_KEY || "").trim(), earnOn: String(env.VITE_EARN || "") === "on" };
+  return { unlocks: !!String(env.TOKENOMIST_API_KEY || "").trim(), earnOn: String(env.VITE_EARN || "").trim().toLowerCase() !== "off" };
 }
 
 /* FlowFlow's caps as the prompt states them: an env value may lower one, never raise it (the browser enforces the same

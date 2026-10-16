@@ -14,6 +14,7 @@ import TradePanel from "./TradePanel.jsx";
 import TradeForm from "./TradeForm.jsx";
 import CoinLogo from "../ui/CoinLogo.jsx";
 import PositionsPanel from "./PositionsPanel.jsx";
+import Welcome from "../auth/WelcomeModal.jsx";
 
 function useIsDesktop() {
   const q = "(min-width: 1024px)";
@@ -116,14 +117,16 @@ export default function MarketPage() {
       <div className="t-enter mx-auto max-w-md px-gutter pt-16">
         <h1 className="text-h2">No market called {coin}</h1>
         <p className="mt-1 text-sm text-muted-foreground">It may have been delisted.</p>
-        <Link to="/trade" className="mt-4 inline-block"><Button variant="primary" size="md" tabIndex={-1}>Browse markets</Button></Link>
+        <Link to="/home" className="mt-4 inline-block"><Button variant="primary" size="md" tabIndex={-1}>Browse markets</Button></Link>
       </div>
     );
   }
 
   return (
     <>
-      <div className="t-enter pb-[calc(88px+env(safe-area-inset-bottom))] lg:grid lg:h-[calc(100dvh-57px)] lg:grid-cols-[minmax(0,1fr)_384px] lg:grid-rows-[auto_minmax(0,1fr)_232px] lg:overflow-hidden lg:pb-0">
+      {/* overflow CLIP, not hidden: Safari scrolled a hidden grid itself (an input's focus, a card brought into view)
+          and the whole terminal slid up over a blank strip (owner, 2026-10-15). A clipped box cannot be scrolled. */}
+      <div className="t-enter pb-[calc(88px+env(safe-area-inset-bottom))] lg:grid lg:h-[calc(100dvh-57px)] lg:grid-cols-[minmax(0,1fr)_384px] lg:grid-rows-[auto_minmax(0,1fr)_232px] lg:overflow-clip lg:pb-0">
         <CoinBar coin={coin} market={market} stale={stale} />
         <div className="min-w-0 lg:col-start-1 lg:row-start-2 lg:flex lg:min-h-0 lg:flex-col lg:border-r lg:border-border">
           <PriceChart
@@ -135,17 +138,19 @@ export default function MarketPage() {
             compact={desktop}
           />
         </div>
-        <div className="min-w-0 border-t border-border lg:col-start-1 lg:row-start-3 lg:min-h-0 lg:overflow-y-auto lg:border-r">
+        <div className="min-w-0 border-t border-border lg:col-start-1 lg:row-start-3 lg:min-h-0 lg:overflow-y-auto lg:overscroll-contain lg:border-r">
           <PositionsPanel coin={coin} />
         </div>
         {/* The aside is a size container so the Chat tab can fill its height (ChatThread compact). */}
         {desktop ? (
-          <aside aria-label={`Trade ${label}`} className="min-h-0 overflow-y-auto bg-card [container-type:size] lg:col-start-2 lg:row-span-2 lg:row-start-2">
+          <aside aria-label={`Trade ${label}`} className="min-h-0 overflow-y-auto overscroll-contain bg-card [container-type:size] lg:col-start-2 lg:row-span-2 lg:row-start-2">
             <TradePanel coin={coin} market={market} stale={stale} tab={tab} onTab={setTab} />
           </aside>
         ) : null}
       </div>
       {!desktop ? <MobileTradeBar coin={coin} market={market} stale={stale} /> : null}
+      {/* First visit (desktop only): the sign-in welcome; a sign-in that began there lands on the Chat tab. */}
+      {desktop ? <Welcome coin={coin} onChat={() => setTab("chat")} /> : null}
     </>
   );
 }

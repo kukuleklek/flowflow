@@ -18,6 +18,7 @@ import { toolsFor } from "../src/agent/tools.js";
 import { realtimeTools, voiceInstructions } from "../src/agent/voice/voiceTools.js";
 import { paidOriginAllowed } from "../src/lib/originCheck.js";
 import { capsFromEnv, serverFlags } from "./chat.js";
+import { ttsConfigured } from "./tts.js";
 
 const UPSTREAM = "https://api.openai.com/v1/realtime/client_secrets";
 /** On the owner's key (GET /v1/models lists it). VOICE_MODEL may name another gpt-realtime model. */
@@ -92,7 +93,9 @@ export function sessionRequest({ env = {}, now = new Date() } = {}) {
       type: "realtime",
       model,
       instructions: voiceInstructions(base),
-      output_modalities: ["audio"],
+      /* With ElevenLabs set up (api/tts.js) the model answers in text and the browser speaks it in that voice; the
+         listening, the tools and the prompt are the same. */
+      output_modalities: ttsConfigured(env) ? ["text"] : ["audio"],
       audio: {
         input: {
           noise_reduction: { type: "near_field" },
@@ -109,7 +112,7 @@ export function sessionRequest({ env = {}, now = new Date() } = {}) {
             interrupt_response: true,
           },
         },
-        output: { voice: VOICE },
+        ...(ttsConfigured(env) ? {} : { output: { voice: VOICE } }),
       },
       tools: realtimeTools(toolsFor({ unlocks: flags.unlocks })),
       tool_choice: "auto",
@@ -184,6 +187,7 @@ export async function createVoiceSession({ origin, ip, env = process.env, fetchI
         expiresAt: json && Number.isFinite(json.expires_at) ? json.expires_at : null,
         model: request.session.model,
         voice: VOICE,
+        tts: ttsConfigured(env) ? "elevenlabs" : null,
         maxSeconds: limits.maxSeconds,
       },
     };
